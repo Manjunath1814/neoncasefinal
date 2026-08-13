@@ -1586,77 +1586,36 @@ a {
 
 }
 
-
-
 /* =========================================================
-   NIGHT STATE
+   NIGHT MODE
+   ONLY THE PRODUCT IMAGE BOX CHANGES
 ========================================================= */
 
+
+/* Keep the entire experience page unchanged */
+
 .experience-section.night-mode {
-
-    background:
-        linear-gradient(
-            145deg,
-            #08111f,
-            #050a12
-        );
-
+    background: #f3eadb;
 }
 
 
-/* Heading */
+/* Heading stays exactly the same */
 
 .experience-section.night-mode
 .experience-heading h2 {
-
-    color: #ffffff;
-
+    color: #111111;
 }
 
 
 .experience-section.night-mode
 .experience-heading p {
-
-    color: #aeb9c9;
-
+    color: #66615a;
 }
 
 
-/* Labels */
-
-.experience-section.night-mode
-.day-label {
-
-    color: #8d96a3;
-
-}
-
-
-.experience-section.night-mode
-.night-label {
-
-    color: #70aaff;
-
-}
-
-
-/* Toggle knob */
-
-.experience-section.night-mode
-.toggle-knob {
-
-    left: 100%;
-
-    border-color: #438cff;
-
-    box-shadow:
-        0 0 12px rgba(50,140,255,0.55),
-        0 0 25px rgba(50,140,255,0.25);
-
-}
-
-
-/* Image box */
+/* =========================================================
+   IMAGE BOX — THIS ALONE TURNS NIGHT
+========================================================= */
 
 .experience-section.night-mode
 .experience-image-box {
@@ -1664,22 +1623,57 @@ a {
     background:
 
         radial-gradient(
-            circle at 50% 45%,
-            rgba(12,76,150,0.35),
-            transparent 45%
+            circle at 50% 48%,
+            rgba(18, 92, 190, 0.30),
+            transparent 42%
         ),
 
         linear-gradient(
             145deg,
-            #101d31,
-            #050b15
+            #071a32,
+            #030b18
         );
 
+    border-color:
+        rgba(48, 126, 220, 0.25);
+
     box-shadow:
-        0 25px 80px
-        rgba(0,40,100,0.35);
+        0 25px 70px
+        rgba(0, 55, 130, 0.28);
 
 }
+
+
+/* =========================================================
+   BLUE FOG STAYS INSIDE IMAGE BOX
+========================================================= */
+
+.experience-section.night-mode
+.image-glow {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT PHONE IMAGE
+========================================================= */
+
+.experience-section.night-mode
+.experience-phone {
+
+    filter:
+        drop-shadow(
+            0 20px 35px
+            rgba(0, 100, 255, 0.20)
+        );
+
+}
+
+
 
 
 /* Blue fog */
