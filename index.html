@@ -1806,6 +1806,239 @@ a {
     }
 
 }
+    /* =========================================================
+   EXPERIENCE IMAGE BOX
+========================================================= */
+
+.experience-image-box {
+
+    width: min(850px, 90%);
+
+    height: 540px;
+
+    margin: 50px auto 0;
+
+    border-radius: 28px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.95),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #e9ddca
+        );
+
+    border: 1px solid
+        rgba(255,255,255,0.9);
+
+    box-shadow:
+        0 25px 70px
+        rgba(40,35,25,0.10);
+
+    transition:
+        background 1.2s ease,
+        border-color 1.2s ease,
+        box-shadow 1.2s ease;
+
+}
+
+
+/* =========================================================
+   BOTH PHONE IMAGES
+   EXACT SAME POSITION
+========================================================= */
+
+.experience-phone {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 500px;
+
+    height: 500px;
+
+    object-fit: contain;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: block;
+
+    z-index: 3;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   DAY IMAGE
+========================================================= */
+
+.day-phone {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT IMAGE
+========================================================= */
+
+.night-phone {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   BLUE FOG
+========================================================= */
+
+.image-glow {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 58%;
+
+    width: 500px;
+
+    height: 350px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.7);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,120,255,0.45),
+            rgba(0,90,220,0.18) 40%,
+            transparent 72%
+        );
+
+    filter: blur(35px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   NIGHT MODE
+   ONLY IMAGE BOX CHANGES
+========================================================= */
+
+.experience-section.night-mode
+.experience-image-box {
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(15,85,180,0.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #071a32,
+            #030a15
+        );
+
+    border-color:
+        rgba(45,120,220,0.30);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,60,150,0.30);
+
+}
+
+
+/* =========================================================
+   DAY → NIGHT IMAGE SWITCH
+========================================================= */
+
+.experience-section.night-mode
+.day-phone {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+.experience-section.night-mode
+.night-phone {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT BLUE FOG
+========================================================= */
+
+.experience-section.night-mode
+.image-glow {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+            }
 </style>
 <body>
 
@@ -2171,19 +2404,30 @@ a {
 
 
         <!-- PRODUCT IMAGE PLACE -->
+<!-- =====================================================
+     EXPERIENCE IMAGE BOX
+====================================================== -->
 
-        <div class="experience-image-box">
+<div class="experience-image-box">
 
-            <div class="image-glow"></div>
+    <!-- DAY IMAGE -->
+    <img
+        src="day-phone-case.png"
+        alt="NeonCase daytime phone case"
+        class="experience-phone day-phone"
+    >
 
-            <img
-                src="day-phone-case.png"
-                alt="NeonCase daytime phone case"
-                class="experience-phone"
-            >
+    <!-- NIGHT IMAGE -->
+    <img
+        src="night-phone-case.png"
+        alt="NeonCase glowing night phone case"
+        class="experience-phone night-phone"
+    >
 
-        </div>
+    <!-- BLUE FOG / ATMOSPHERIC GLOW -->
+    <div class="image-glow"></div>
 
+</div>
 
     </div>
 
@@ -2199,9 +2443,7 @@ const experienceSection =
 
 glowToggle.addEventListener("click", function () {
 
-    experienceSection.classList.toggle(
-        "night-mode"
-    );
+    experienceSection.classList.toggle("night-mode");
 
 });
 </script>
