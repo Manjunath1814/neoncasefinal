@@ -2039,6 +2039,549 @@ a {
         scale(1);
 
             }
+    /* =========================================================
+   PART 3 — LIGHT. CAPTURED.
+========================================================= */
+
+.light-captured-section {
+
+    width: 100%;
+
+    min-height: 1000px;
+
+    padding:
+        110px 0 120px;
+
+    background: #f7f1e6;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.light-captured-heading {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+.section-number {
+
+    display: block;
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.light-captured-heading h2 {
+
+    color: #111111;
+
+    font-size:
+        clamp(45px, 6vw, 82px);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    font-weight: 800;
+
+}
+
+
+.light-captured-heading h2 span {
+
+    display: block;
+
+    color: #1766d4;
+
+}
+
+
+.light-captured-heading p {
+
+    margin-top: 20px;
+
+    color: #625d55;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =========================================================
+   CINEMATIC REEL
+========================================================= */
+
+.product-reel {
+
+    width: 100%;
+
+    margin-top: 70px;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* Soft fade at edges */
+
+.product-reel::before,
+.product-reel::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 12%;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+}
+
+
+.product-reel::before {
+
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #f7f1e6,
+            transparent
+        );
+
+}
+
+
+.product-reel::after {
+
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            #f7f1e6,
+            transparent
+        );
+
+}
+
+
+
+/* =========================================================
+   MOVING TRACK
+========================================================= */
+
+.reel-track {
+
+    display: flex;
+
+    width: max-content;
+
+    gap: 22px;
+
+    animation:
+        cinematicScroll 34s
+        linear
+        infinite;
+
+}
+
+
+.reel-track:hover {
+
+    animation-play-state: paused;
+
+}
+
+
+
+/* =========================================================
+   IMAGE CARDS
+========================================================= */
+
+.reel-image {
+
+    width: 420px;
+
+    height: 500px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #ebe1d1;
+
+    position: relative;
+
+}
+
+
+.reel-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 1s ease;
+
+}
+
+
+.reel-image:hover img {
+
+    transform:
+        scale(1.035);
+
+}
+
+
+
+/* =========================================================
+   SLOW INFINITE ANIMATION
+========================================================= */
+
+@keyframes cinematicScroll {
+
+    from {
+
+        transform:
+            translateX(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(
+                calc(
+                    -50% - 11px
+                )
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PURCHASE AREA
+========================================================= */
+
+.light-purchase {
+
+    margin:
+        110px auto 0;
+
+    width: min(600px, 90%);
+
+    text-align: center;
+
+}
+
+
+.purchase-brand {
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.light-purchase h3 {
+
+    margin-top: 15px;
+
+    color: #111111;
+
+    font-size:
+        clamp(30px, 4vw, 50px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.light-purchase h3 span {
+
+    display: block;
+
+    color: #1766d4;
+
+}
+
+
+.purchase-price {
+
+    margin-top: 28px;
+
+    color: #111111;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+
+.purchase-note {
+
+    margin-top: 6px;
+
+    color: #625d55;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.purchase-button {
+
+    width: 160px;
+
+    height: 50px;
+
+    margin:
+        25px auto 0;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d6ce0,
+            #0d58c8
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    box-shadow:
+        0 12px 28px
+        rgba(23,102,212,0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.purchase-button span {
+
+    font-size: 19px;
+
+}
+
+
+.purchase-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 17px 32px
+        rgba(23,102,212,0.30);
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .light-captured-section {
+
+        padding:
+            90px 0 100px;
+
+    }
+
+
+    .reel-image {
+
+        width: 350px;
+
+        height: 430px;
+
+    }
+
+
+    .reel-track {
+
+        gap: 17px;
+
+        animation-duration: 30s;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .light-captured-section {
+
+        min-height: 850px;
+
+        padding:
+            75px 0 90px;
+
+    }
+
+
+    .light-captured-heading {
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .light-captured-heading h2 {
+
+        font-size: 46px;
+
+        letter-spacing: -2.5px;
+
+    }
+
+
+    .light-captured-heading p {
+
+        font-size: 11px;
+
+    }
+
+
+    .product-reel {
+
+        margin-top: 50px;
+
+    }
+
+
+    .reel-image {
+
+        width: 275px;
+
+        height: 360px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .reel-track {
+
+        gap: 12px;
+
+        animation-duration: 26s;
+
+    }
+
+
+    .light-purchase {
+
+        margin-top: 80px;
+
+    }
+
+
+    .light-purchase h3 {
+
+        font-size: 31px;
+
+        letter-spacing: -1.5px;
+
+    }
+
+
+    .purchase-price {
+
+        font-size: 30px;
+
+    }
+
+}
 </style>
 <body>
 
@@ -2432,7 +2975,175 @@ a {
     </div>
 
 </section>
+<!-- =====================================================
+     PART 3 — LIGHT. CAPTURED.
+====================================================== -->
 
+<section class="light-captured-section" id="lightCaptured">
+
+    <!-- SECTION INTRO -->
+
+    <div class="light-captured-heading">
+
+        <span class="section-number">
+            02
+        </span>
+
+        <h2>
+            LIGHT.
+            <span>CAPTURED.</span>
+        </h2>
+
+        <p>
+            It charges in daylight.
+            It comes alive at night.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         CINEMATIC IMAGE REEL
+    ================================================== -->
+
+    <div class="product-reel">
+
+        <div class="reel-track" id="reelTrack">
+
+
+            <!-- IMAGE 1 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-1.jpg"
+                    alt="NeonCase in daylight"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 2 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-2.jpg"
+                    alt="NeonCase sand texture close up"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 3 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-3.jpg"
+                    alt="NeonCase beginning to glow"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 4 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-4.jpg"
+                    alt="NeonCase glowing in darkness"
+                >
+
+            </div>
+
+
+            <!-- DUPLICATE IMAGES
+                 Creates seamless infinite loop -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-1.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-2.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-3.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-4.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PURCHASE SECTION
+    ================================================== -->
+
+    <div class="light-purchase">
+
+        <span class="purchase-brand">
+            NEONCASE™
+        </span>
+
+        <h3>
+            THE GLOW-IN-THE-DARK
+            <span>PHONE CASE.</span>
+        </h3>
+
+        <div class="purchase-price">
+            ₹699
+        </div>
+
+        <div class="purchase-note">
+            PREPAID ONLY
+        </div>
+
+        <a
+            href="#shop"
+            class="purchase-button"
+        >
+            BUY NOW
+            <span>→</span>
+        </a>
+
+    </div>
+
+</section>
 <script>
     const glowToggle =
     document.getElementById("glowToggle");
