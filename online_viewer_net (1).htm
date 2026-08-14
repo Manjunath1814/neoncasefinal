@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NeonCase Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                NEON<span>CASE</span>
+
+            </div>
+
+            <div class="admin-label">
+                ADMIN PANEL
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <button class="nav-button active">
+
+                    <span class="nav-icon">⌂</span>
+
+                    Dashboard
+
+                </button>
+
+
+                <button class="nav-button">
+
+                    <span class="nav-icon">□</span>
+
+                    Orders
+
+                </button>
+
+
+                <button class="nav-button">
+
+                    <span class="nav-icon">◉</span>
+
+                    iPhone Models
+
+                </button>
+
+
+                <button class="nav-button">
+
+                    <span class="nav-icon">○</span>
+
+                    Customers
+
+                </button>
+
+
+                <button class="nav-button">
+
+                    <span class="nav-icon">→</span>
+
+                    Tracking
+
+                </button>
+
+
+                <button class="nav-button">
+
+                    <span class="nav-icon">⚙</span>
+
+                    Settings
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="development-label">
+                DEVELOPMENT MODE
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="eyebrow">
+                    OVERVIEW
+                </div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="online-status">
+
+                <span></span>
+
+                Admin Panel
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================
+             STAT CARDS
+        ====================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    TOTAL ORDERS
+                </div>
+
+                <div
+                    id="totalOrders"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-description">
+                    All orders received
+                </div>
+
+            </div>
+
+
+
+            <!-- PENDING -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    PENDING
+                </div>
+
+                <div
+                    id="pendingOrders"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Waiting for approval
+                </div>
+
+            </div>
+
+
+
+            <!-- PROCESSING -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    PROCESSING
+                </div>
+
+                <div
+                    id="processingOrders"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Orders being prepared
+                </div>
+
+            </div>
+
+
+
+            <!-- DELIVERED -->
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    DELIVERED
+                </div>
+
+                <div
+                    id="deliveredOrders"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Successfully delivered
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             RECENT ORDERS
+        ====================================== -->
+
+        <section class="orders-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <div class="section-eyebrow">
+                        ACTIVITY
+                    </div>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                    <p>
+                        Latest orders received through NeonCase.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="orderCountText"
+                    class="order-count"
+                >
+                    0 orders
+                </div>
+
+            </div>
+
+
+
+            <!-- ORDER TABLE -->
+
+            <div class="orders-card">
+
+
+                <!-- TABLE HEADER -->
+
+                <div class="orders-header">
+
+                    <div>
+                        ORDER
+                    </div>
+
+                    <div>
+                        CUSTOMER
+                    </div>
+
+                    <div>
+                        MODEL
+                    </div>
+
+                    <div>
+                        AMOUNT
+                    </div>
+
+                    <div>
+                        STATUS
+                    </div>
+
+                    <div>
+                        ACTION
+                    </div>
+
+                </div>
+
+
+
+                <!-- ORDERS WILL COME HERE -->
+
+                <div
+                    id="recentOrders"
+                    class="orders-list"
+                >
+
+                    <div class="loading">
+
+                        Loading orders...
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================
+     ORDER VIEW MODAL
+========================================== -->
+
+<div
+    id="orderModal"
+    class="modal"
+    hidden
+>
+
+
+    <div class="modal-box">
+
+
+        <button
+            id="closeModal"
+            class="close-button"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-eyebrow">
+            ORDER DETAILS
+        </div>
+
+
+        <h2
+            id="modalOrderNumber"
+        >
+            Order
+        </h2>
+
+
+        <div
+            id="modalDetails"
+            class="modal-details"
+        >
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<style>
+    /* =========================================================
+   NEONCASE ADMIN DASHBOARD
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f6f2ea;
+
+    color: #111;
+
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.admin-layout {
+
+    min-height: 100vh;
+
+    display: flex;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: 230px;
+
+    min-height: 100vh;
+
+    padding: 32px 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    background: #111;
+
+    color: white;
+
+}
+
+
+.logo {
+
+    padding-left: 12px;
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.logo span {
+
+    color: #1768d8;
+
+}
+
+
+.admin-label {
+
+    padding-left: 13px;
+
+    margin-top: 6px;
+
+    color: #666;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+
+    margin-top: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.nav-button {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #858585;
+
+    text-align: left;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: default;
+
+}
+
+
+.nav-button.active {
+
+    background: #1768d8;
+
+    color: white;
+
+}
+
+
+.nav-icon {
+
+    width: 18px;
+
+    font-size: 14px;
+
+    text-align: center;
+
+}
+
+
+.sidebar-bottom {
+
+    padding: 12px;
+
+}
+
+
+.development-label {
+
+    color: #555;
+
+    font-size: 6px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 38px 42px 70px;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+
+}
+
+
+.eyebrow {
+
+    color: #1768d8;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.topbar h1 {
+
+    margin-top: 7px;
+
+    font-size: 31px;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.online-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #777;
+
+    font-size: 8px;
+
+}
+
+
+.online-status span {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #36a653;
+
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.stat-card {
+
+    min-height: 140px;
+
+    padding: 22px;
+
+    border:
+        1px solid #e2dcd1;
+
+    border-radius: 10px;
+
+    background: #fffdf9;
+
+}
+
+
+.stat-label {
+
+    color: #999188;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.stat-number {
+
+    margin-top: 18px;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+}
+
+
+.stat-description {
+
+    margin-top: 6px;
+
+    color: #999;
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   ORDERS SECTION
+========================================================= */
+
+.orders-section {
+
+    margin-top: 22px;
+
+}
+
+
+.section-header {
+
+    margin-bottom: 15px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+}
+
+
+.section-eyebrow {
+
+    color: #1768d8;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.section-header h2 {
+
+    margin-top: 7px;
+
+    font-size: 21px;
+
+    letter-spacing: -1px;
+
+}
+
+
+.section-header p {
+
+    margin-top: 6px;
+
+    color: #888;
+
+    font-size: 9px;
+
+}
+
+
+.order-count {
+
+    color: #777;
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   ORDER CARD
+========================================================= */
+
+.orders-card {
+
+    overflow: hidden;
+
+    border:
+        1px solid #e2dcd1;
+
+    border-radius: 10px;
+
+    background: #fffdf9;
+
+}
+
+
+/* =========================================================
+   ORDER HEADER
+========================================================= */
+
+.orders-header {
+
+    min-height: 48px;
+
+    padding:
+        0 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.3fr
+        1.2fr
+        .7fr
+        .9fr
+        .6fr;
+
+    gap: 12px;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid #ebe5dc;
+
+    color: #999188;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   ORDER ROW
+========================================================= */
+
+.order-row {
+
+    min-height: 72px;
+
+    padding:
+        0 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.3fr
+        1.2fr
+        .7fr
+        .9fr
+        .6fr;
+
+    gap: 12px;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid #eee9e1;
+
+    font-size: 8px;
+
+}
+
+
+.order-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.order-number {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+}
+
+
+.customer-name {
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.customer-phone {
+
+    margin-top: 3px;
+
+    color: #999;
+
+    font-size: 7px;
+
+}
+
+
+.model-name {
+
+    font-size: 8px;
+
+    color: #555;
+
+}
+
+
+.amount {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    width: fit-content;
+
+    padding:
+        6px 8px;
+
+    border-radius: 20px;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+
+}
+
+
+.status.pending {
+
+    background: #fff0d8;
+
+    color: #a76a00;
+
+}
+
+
+.status.approved {
+
+    background: #e6efff;
+
+    color: #1768d8;
+
+}
+
+
+.status.processing {
+
+    background: #e6efff;
+
+    color: #1768d8;
+
+}
+
+
+.status.shipped {
+
+    background: #eee8ff;
+
+    color: #6946bf;
+
+}
+
+
+.status.delivered {
+
+    background: #e5f5e9;
+
+    color: #29823d;
+
+}
+
+
+.status.cancelled {
+
+    background: #fde8e8;
+
+    color: #c44444;
+
+}
+
+
+/* =========================================================
+   VIEW BUTTON
+========================================================= */
+
+.view-button {
+
+    height: 29px;
+
+    padding:
+        0 10px;
+
+    border:
+        1px solid #ddd7cd;
+
+    border-radius: 5px;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.view-button:hover {
+
+    border-color: #1768d8;
+
+    color: #1768d8;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+
+    min-height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #999;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-orders {
+
+    min-height: 180px;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, .55);
+
+}
+.modal[hidden] {
+    display: none !important;
+}
+
+.modal-box {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 28px;
+
+    position: relative;
+
+    border-radius: 12px;
+
+    background: #fffdf9;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, .25);
+
+}
+
+
+.close-button {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f0ece4;
+
+    color: #555;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.modal-eyebrow {
+
+    color: #1768d8;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.modal-box h2 {
+
+    margin-top: 8px;
+
+    margin-bottom: 25px;
+
+    font-size: 25px;
+
+    letter-spacing: -1px;
+
+}
+
+
+.modal-details {
+
+    border:
+        1px solid #e5ded3;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+}
+
+
+.detail-row {
+
+    min-height: 50px;
+
+    padding:
+        12px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom:
+        1px solid #eee8df;
+
+    font-size: 9px;
+
+}
+
+
+.detail-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.detail-row span {
+
+    color: #999;
+
+}
+
+
+.detail-row strong {
+
+    text-align: right;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+
+        width: 190px;
+
+    }
+
+
+    .main {
+
+        padding:
+            30px 25px 60px;
+
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .orders-header,
+    .order-row {
+
+        grid-template-columns:
+            1fr
+            1.2fr
+            1fr
+            .7fr
+            .8fr
+            .6fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-layout {
+
+        display: block;
+
+    }
+
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 18px;
+
+    }
+
+
+    .sidebar-nav {
+
+        margin-top: 20px;
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+    }
+
+
+    .nav-button {
+
+        min-width: 110px;
+
+        justify-content: center;
+
+    }
+
+
+    .sidebar-bottom {
+
+        display: none;
+
+    }
+
+
+    .main {
+
+        padding:
+            25px 16px 50px;
+
+    }
+
+
+    .topbar {
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .topbar h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .online-status {
+
+        display: none;
+
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+
+    }
+
+
+    .stat-card {
+
+        min-height: 115px;
+
+        padding: 17px;
+
+    }
+
+
+    .stat-number {
+
+        font-size: 28px;
+
+    }
+
+
+    .orders-card {
+
+        overflow-x: auto;
+
+    }
+
+
+    .orders-header,
+    .order-row {
+
+        min-width: 650px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .section-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+}
+</style>
+
+<script
+    type="module"
+    src="admin.js"
+></script>
+<script>
+    /* =========================================================
+   NEONCASE ADMIN DASHBOARD
+   NO AUTHENTICATION - DEVELOPMENT VERSION
+========================================================= */
+
+import { firebaseConfig } from "../firebase-config.js";
+
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+
+import {
+    getFirestore,
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const db =
+    getFirestore(app);
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let orders = [];
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const totalOrders =
+    document.getElementById(
+        "totalOrders"
+    );
+
+
+const pendingOrders =
+    document.getElementById(
+        "pendingOrders"
+    );
+
+
+const processingOrders =
+    document.getElementById(
+        "processingOrders"
+    );
+
+
+const deliveredOrders =
+    document.getElementById(
+        "deliveredOrders"
+    );
+
+
+const recentOrders =
+    document.getElementById(
+        "recentOrders"
+    );
+
+
+const orderCountText =
+    document.getElementById(
+        "orderCountText"
+    );
+
+
+const orderModal =
+    document.getElementById(
+        "orderModal"
+    );
+
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+const modalOrderNumber =
+    document.getElementById(
+        "modalOrderNumber"
+    );
+
+
+const modalDetails =
+    document.getElementById(
+        "modalDetails"
+    );
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadOrders();
+
+
+/* =========================================================
+   LOAD ORDERS FROM FIRESTORE
+========================================================= */
+
+async function loadOrders() {
+
+    try {
+
+        showLoading();
+
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "orders"
+                )
+            );
+
+
+        orders = [];
+
+
+        snapshot.forEach(
+            (document) => {
+
+                orders.push({
+
+                    id:
+                        document.id,
+
+                    ...document.data()
+
+                });
+
+            }
+        );
+
+
+        /*
+         * Newest orders first.
+         */
+
+        orders.sort(
+            (a, b) => {
+
+                return (
+                    getTime(b.createdAt) -
+                    getTime(a.createdAt)
+                );
+
+            }
+        );
+
+
+        updateDashboard();
+
+
+        renderRecentOrders();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ERROR LOADING ORDERS:",
+            error
+        );
+
+
+        showError();
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE DASHBOARD NUMBERS
+========================================================= */
+
+function updateDashboard() {
+
+
+    const total =
+        orders.length;
+
+
+    const pending =
+        orders.filter(
+            order => {
+
+                return (
+                    (
+                        order.orderStatus ||
+                        "pending"
+                    ).toLowerCase()
+                    ===
+                    "pending"
+                );
+
+            }
+        ).length;
+
+
+    const processing =
+        orders.filter(
+            order => {
+
+                return (
+                    (
+                        order.orderStatus ||
+                        ""
+                    ).toLowerCase()
+                    ===
+                    "processing"
+                );
+
+            }
+        ).length;
+
+
+    const delivered =
+        orders.filter(
+            order => {
+
+                return (
+                    (
+                        order.orderStatus ||
+                        ""
+                    ).toLowerCase()
+                    ===
+                    "delivered"
+                );
+
+            }
+        ).length;
+
+
+    totalOrders.textContent =
+        total;
+
+
+    pendingOrders.textContent =
+        pending;
+
+
+    processingOrders.textContent =
+        processing;
+
+
+    deliveredOrders.textContent =
+        delivered;
+
+
+    orderCountText.textContent =
+        `${total} ${
+            total === 1
+            ? "order"
+            : "orders"
+        }`;
+
+}
+
+
+/* =========================================================
+   RENDER RECENT ORDERS
+========================================================= */
+
+function renderRecentOrders() {
+
+
+    /*
+     * Only the latest 5 orders
+     * are displayed on Dashboard.
+     */
+
+    const recent =
+        orders.slice(
+            0,
+            5
+        );
+
+
+    if (!recent.length) {
+
+        recentOrders.innerHTML = `
+
+            <div class="empty-orders">
+
+                <div>
+
+                    <strong>
+                        No orders yet
+                    </strong>
+
+                    <br><br>
+
+                    When customers place orders,
+                    they will appear here.
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    recentOrders.innerHTML = "";
+
+
+    recent.forEach(
+        (order) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "order-row";
+
+
+            const status =
+                (
+                    order.orderStatus ||
+                    "pending"
+                ).toLowerCase();
+
+
+            const safeStatus =
+                getSafeStatus(
+                    status
+                );
+
+
+            const orderNumber =
+                order.orderId ||
+                order.id;
+
+
+            const customer =
+                order.customerName ||
+                "Customer";
+
+
+            const phone =
+                order.phone ||
+                "";
+
+
+            const model =
+                order.modelName ||
+                order.model ||
+                "NeonCase";
+
+
+            const price =
+                Number(
+                    order.price ||
+                    699
+                );
+
+
+            row.innerHTML = `
+
+                <div>
+
+                    <div class="order-number">
+
+                        #${escapeHTML(
+                            orderNumber
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="customer-name">
+
+                        ${escapeHTML(
+                            customer
+                        )}
+
+                    </div>
+
+
+                    <div class="customer-phone">
+
+                        ${escapeHTML(
+                            phone
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="model-name">
+
+                        ${escapeHTML(
+                            model
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="amount">
+
+                        ₹${price}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span
+                        class="status ${safeStatus}"
+                    >
+
+                        ${escapeHTML(
+                            status.toUpperCase()
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <button
+                        class="view-button"
+                        data-order-id="${escapeHTML(
+                            order.id
+                        )}"
+                    >
+
+                        VIEW
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            recentOrders.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    /*
+     * Add VIEW button listeners
+     */
+
+    recentOrders
+        .querySelectorAll(
+            ".view-button"
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        openOrder(
+                            button.dataset.orderId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   OPEN ORDER
+========================================================= */
+
+function openOrder(id) {
+
+
+    const order =
+        orders.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!order) {
+
+        alert(
+            "Order not found."
+        );
+
+        return;
+
+    }
+
+
+    const orderNumber =
+        order.orderId ||
+        order.id;
+
+
+    modalOrderNumber.textContent =
+        `#${orderNumber}`;
+
+
+    const address =
+        [
+
+            order.address1,
+
+            order.address2,
+
+            order.district,
+
+            order.state,
+
+            order.pincode
+
+        ]
+            .filter(
+                value =>
+                    value !== undefined &&
+                    value !== null &&
+                    String(value).trim() !== ""
+            )
+            .join(", ");
+
+
+    modalDetails.innerHTML = `
+
+        <div class="detail-row">
+
+            <span>
+                Customer
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    order.customerName ||
+                    "Not provided"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                Email
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    order.email ||
+                    "Not provided"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                Phone
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    order.phone ||
+                    "Not provided"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                iPhone Model
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    order.modelName ||
+                    order.model ||
+                    "Not provided"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                Amount
+            </span>
+
+            <strong>
+                ₹${Number(
+                    order.price ||
+                    699
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                Payment
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    order.paymentStatus ||
+                    "Pending"
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span>
+                Address
+            </span>
+
+            <strong>
+                ${escapeHTML(
+                    address ||
+                    "Not provided"
+                )}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    orderModal.hidden =
+        false;
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+closeModal.addEventListener(
+    "click",
+    () => {
+
+        orderModal.hidden =
+            true;
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
+
+orderModal.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            event.target ===
+            orderModal
+        ) {
+
+            orderModal.hidden =
+                true;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            orderModal.hidden =
+                true;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function showLoading() {
+
+    recentOrders.innerHTML = `
+
+        <div class="loading">
+
+            Loading orders...
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showError() {
+
+    recentOrders.innerHTML = `
+
+        <div class="empty-orders">
+
+            <div>
+
+                <strong>
+                    Unable to load orders
+                </strong>
+
+                <br><br>
+
+                Check your Firebase connection
+                and Firestore permissions.
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function getSafeStatus(status) {
+
+    const allowed = [
+
+        "pending",
+
+        "approved",
+
+        "processing",
+
+        "shipped",
+
+        "delivered",
+
+        "cancelled"
+
+    ];
+
+
+    if (
+        allowed.includes(
+            status
+        )
+    ) {
+
+        return status;
+
+    }
+
+
+    return "pending";
+
+}
+
+
+/* =========================================================
+   TIMESTAMP
+========================================================= */
+
+function getTime(timestamp) {
+
+    if (!timestamp) {
+
+        return 0;
+
+    }
+
+
+    /*
+     * Firestore Timestamp
+     */
+
+    if (
+        typeof timestamp.seconds ===
+        "number"
+    ) {
+
+        return timestamp.seconds;
+
+    }
+
+
+    /*
+     * JavaScript Date
+     */
+
+    if (
+        timestamp instanceof Date
+    ) {
+
+        return timestamp.getTime();
+
+    }
+
+
+    /*
+     * String date
+     */
+
+    if (
+        typeof timestamp === "string"
+    ) {
+
+        const date =
+            new Date(timestamp);
+
+
+        return date.getTime();
+
+    }
+
+
+    return 0;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+closeModal.addEventListener("click", () => {
+    orderModal.hidden = true;
+});
+
+orderModal.addEventListener("click", (event) => {
+
+    if (event.target === orderModal) {
+        orderModal.hidden = true;
+    }
+
+});
+</script>
+
+</body>
+
+</html>
