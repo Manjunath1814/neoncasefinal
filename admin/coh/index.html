@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f3eb"
+    >
+
+    <title>NeonCase — Customer History</title>
+
+    <link
+        rel="stylesheet"
+        href="coh.css"
+    >
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div>
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    NEON<span>CASE</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    ADMIN PANEL
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+
+                <a
+                    href="/admin/dashboard/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a
+                    href="/admin/orders/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ≡
+                    </span>
+
+                    Orders
+
+                </a>
+
+
+                <a
+                    href="/admin/models/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ▯
+                    </span>
+
+                    iPhone Models
+
+                </a>
+
+
+                <a
+                    href="/admin/coh/"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+                        ◉
+                    </span>
+
+                    Customer History
+
+                </a>
+
+
+                <a
+                    href="/admin/tracking/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ⌁
+                    </span>
+
+                    Tracking
+
+                </a>
+
+
+                <div class="nav-divider"></div>
+
+
+                <button
+                    class="nav-item nav-disabled"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    Settings
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="store-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Store Online
+                    </strong>
+
+                    <small>
+                        neoncase.in
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="sign-out"
+                type="button"
+            >
+
+                ↪ &nbsp; Sign Out
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="mobile-logo">
+                NEON<span>CASE</span>
+            </div>
+
+
+            <div class="mobile-avatar">
+                A
+            </div>
+
+        </header>
+
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="topbar-label">
+                    CUSTOMER MANAGEMENT
+                </div>
+
+                <h1>
+                    Customer History
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span></span>
+
+                    LIVE
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             CONTENT
+        =================================================== -->
+
+        <div class="customers-content">
+
+
+            <!-- INTRO -->
+
+            <section class="page-intro">
+
+                <div>
+
+                    <div class="intro-label">
+                        CUSTOMER DATABASE
+                    </div>
+
+                    <h2>
+                        Customers
+                    </h2>
+
+                    <p>
+                        View customers and their complete
+                        NeonCase order history.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CUSTOMER STATS
+            =================================================== -->
+
+            <section class="customer-stats">
+
+
+                <div class="mini-stat">
+
+                    <span>
+                        CUSTOMERS
+                    </span>
+
+                    <strong id="customerCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat blue-stat">
+
+                    <span>
+                        TOTAL ORDERS
+                    </span>
+
+                    <strong id="orderCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat green-stat">
+
+                    <span>
+                        TOTAL REVENUE
+                    </span>
+
+                    <strong id="revenueCount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat orange-stat">
+
+                    <span>
+                        REPEAT CUSTOMERS
+                    </span>
+
+                    <strong id="repeatCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 SEARCH
+            =================================================== -->
+
+            <section class="search-card">
+
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="customerSearch"
+                        placeholder="Search customer, phone or email..."
+                    >
+
+                </div>
+
+
+                <div class="connection-status">
+
+                    <span
+                        class="connection-dot"
+                        id="connectionDot"
+                    ></span>
+
+                    <span id="connectionText">
+                        Connecting to Firestore...
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CUSTOMER TABLE
+            =================================================== -->
+
+            <section class="customers-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span>
+                            CUSTOMER DATABASE
+                        </span>
+
+                        <h3>
+                            All Customers
+                        </h3>
+
+                    </div>
+
+
+                    <div class="customer-total">
+
+                        <span id="visibleCustomers">
+                            0
+                        </span>
+
+                        CUSTOMERS
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    CUSTOMER
+                                </th>
+
+                                <th>
+                                    CONTACT
+                                </th>
+
+                                <th>
+                                    ORDERS
+                                </th>
+
+                                <th>
+                                    TOTAL SPENT
+                                </th>
+
+                                <th>
+                                    LAST ORDER
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="customersTable"
+                        >
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="loading-cell"
+                                >
+
+                                    <div class="loader"></div>
+
+                                    Loading customers...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- ==================================================
+     CUSTOMER DETAILS MODAL
+=================================================== -->
+
+<div
+    class="modal-overlay"
+    id="customerModal"
+>
+
+
+    <div class="customer-modal">
+
+
+        <button
+            class="close-modal"
+            id="closeModal"
+            type="button"
+        >
+
+            ×
+
+        </button>
+
+
+        <div class="modal-label">
+            CUSTOMER PROFILE
+        </div>
+
+
+        <div class="profile-header">
+
+            <div
+                class="large-avatar"
+                id="modalAvatar"
+            >
+                A
+            </div>
+
+
+            <div>
+
+                <h3 id="modalName">
+                    Customer
+                </h3>
+
+                <small id="modalEmail">
+                    —
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTACT -->
+
+        <div class="profile-info">
+
+
+            <div>
+
+                <span>
+                    PHONE
+                </span>
+
+                <strong id="modalPhone">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TOTAL ORDERS
+                </span>
+
+                <strong id="modalOrders">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TOTAL SPENT
+                </span>
+
+                <strong id="modalSpent">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    LAST ORDER
+                </span>
+
+                <strong id="modalLastOrder">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ORDER HISTORY -->
+
+        <div class="history-heading">
+
+            <span>
+                ORDER HISTORY
+            </span>
+
+            <h4>
+                Previous Orders
+            </h4>
+
+        </div>
+
+
+        <div
+            class="history-list"
+            id="historyList"
+        >
+
+        </div>
+
+
+        <button
+            class="close-button"
+            id="modalCloseButton"
+            type="button"
+        >
+
+            CLOSE
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+
+<script
+    type="module"
+    src="coh.js"
+></script>
+
+</body>
+
+  </html>
