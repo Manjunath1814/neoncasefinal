@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f3eb"
+    >
+
+    <title>NeonCase — Orders</title>
+
+    <link
+        rel="stylesheet"
+        href="orders.css"
+    >
+
+</head>
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <div>
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    NEON<span>CASE</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    ADMIN PANEL
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="navigation">
+
+
+                <a
+                    href="/admin/dashboard/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="3"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="3"
+                                y="14"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="14"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                        </svg>
+
+                    </span>
+
+                    Dashboard
+
+                </a>
+
+
+
+                <a
+                    href="/admin/orders/"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M5 7h14"></path>
+
+                            <path d="M5 12h14"></path>
+
+                            <path d="M5 17h9"></path>
+
+                        </svg>
+
+                    </span>
+
+                    Orders
+
+                </a>
+
+
+
+                <a
+                    href="/admin/models/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="7"
+                                y="2"
+                                width="10"
+                                height="20"
+                                rx="2"
+                            ></rect>
+
+                            <path d="M10 18h4"></path>
+
+                        </svg>
+
+                    </span>
+
+                    iPhone Models
+
+                </a>
+
+
+
+                <a
+                    href="/admin/coh/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3"
+                            ></circle>
+
+                            <path
+                                d="M5 21c0-4 3-6 7-6s7 2 7 6"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    Customer History
+
+                </a>
+
+
+
+                <a
+                    href="/admin/tracking/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle
+                                cx="6"
+                                cy="18"
+                                r="2"
+                            ></circle>
+
+                            <circle
+                                cx="18"
+                                cy="6"
+                                r="2"
+                            ></circle>
+
+                            <path
+                                d="M8 17l8-10"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    Tracking
+
+                </a>
+
+
+                <div class="nav-divider"></div>
+
+
+                <button
+                    class="nav-item nav-disabled"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        ⚙
+
+                    </span>
+
+                    Settings
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="store-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Store Online
+                    </strong>
+
+                    <small>
+                        neoncase.in
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="sign-out"
+                type="button"
+            >
+
+                ↪ &nbsp; Sign Out
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="mobile-logo">
+                NEON<span>CASE</span>
+            </div>
+
+
+            <div class="mobile-avatar">
+                A
+            </div>
+
+        </header>
+
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <div class="topbar-label">
+                    STORE MANAGEMENT
+                </div>
+
+                <h1>
+                    Orders
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <div class="store-online">
+
+                    <span></span>
+
+                    Store Online
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             ORDERS CONTENT
+        =================================================== -->
+
+        <div class="orders-content">
+
+
+            <!-- PAGE INTRO -->
+
+            <section class="page-intro">
+
+                <div>
+
+                    <div class="intro-label">
+                        ORDER MANAGEMENT
+                    </div>
+
+                    <h2>
+                        All Orders
+                    </h2>
+
+                    <p>
+                        Review, approve and manage
+                        customer orders.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 ORDER STATISTICS
+            =================================================== -->
+
+            <section class="order-stats">
+
+
+                <div class="mini-stat">
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="totalCount">
+                        24
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat pending-stat">
+
+                    <span>
+                        PENDING
+                    </span>
+
+                    <strong id="pendingCount">
+                        6
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat processing-stat">
+
+                    <span>
+                        PROCESSING
+                    </span>
+
+                    <strong id="processingCount">
+                        8
+                    </strong>
+
+                </div>
+
+
+                <div class="mini-stat delivered-stat">
+
+                    <span>
+                        DELIVERED
+                    </span>
+
+                    <strong id="deliveredCount">
+                        10
+                    </strong>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 FILTER BAR
+            =================================================== -->
+
+            <section class="filter-card">
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="orderSearch"
+                        placeholder="Search order, customer or phone..."
+                    >
+
+                </div>
+
+
+                <select
+                    id="statusFilter"
+                    class="filter-select"
+                >
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="approved">
+                        Approved
+                    </option>
+
+                    <option value="processing">
+                        Processing
+                    </option>
+
+                    <option value="shipped">
+                        Shipped
+                    </option>
+
+                    <option value="delivered">
+                        Delivered
+                    </option>
+
+                </select>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 ORDERS TABLE
+            =================================================== -->
+
+            <section class="orders-card">
+
+
+                <div class="orders-card-header">
+
+                    <div>
+
+                        <span>
+                            CUSTOMER ORDERS
+                        </span>
+
+                        <h3>
+                            Recent Orders
+                        </h3>
+
+                    </div>
+
+
+                    <div class="order-total-label">
+
+                        <span id="visibleOrders">
+                            4
+                        </span>
+
+                        ORDERS
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DESKTOP TABLE -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ORDER
+                                </th>
+
+                                <th>
+                                    CUSTOMER
+                                </th>
+
+                                <th>
+                                    MODEL
+                                </th>
+
+                                <th>
+                                    DATE
+                                </th>
+
+                                <th>
+                                    AMOUNT
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ordersTable">
+
+
+                            <!-- ORDER 1 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <strong class="order-number">
+                                        #NC1024
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div class="customer-avatar">
+                                            R
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Rahul Kumar
+                                            </strong>
+
+                                            <small>
+                                                +91 98765 43210
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        iPhone 16 Pro
+                                    </strong>
+
+                                    <small class="muted">
+                                        NeonCase
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    14 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        ₹699
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="view-button"
+                                        onclick="viewOrder('NC1024')"
+                                    >
+                                        VIEW
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <!-- ORDER 2 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <strong class="order-number">
+                                        #NC1023
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div class="customer-avatar">
+                                            A
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Arjun Kumar
+                                            </strong>
+
+                                            <small>
+                                                +91 91234 56789
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        iPhone 15
+                                    </strong>
+
+                                    <small class="muted">
+                                        NeonCase
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    13 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        ₹699
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status approved">
+                                        Approved
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="view-button"
+                                        onclick="viewOrder('NC1023')"
+                                    >
+                                        VIEW
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <!-- ORDER 3 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <strong class="order-number">
+                                        #NC1022
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div class="customer-avatar">
+                                            R
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Ravi
+                                            </strong>
+
+                                            <small>
+                                                +91 99887 77665
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        iPhone 17 Pro Max
+                                    </strong>
+
+                                    <small class="muted">
+                                        NeonCase
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    12 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        ₹699
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status processing">
+                                        Processing
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="view-button"
+                                        onclick="viewOrder('NC1022')"
+                                    >
+                                        VIEW
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <!-- ORDER 4 -->
+
+                            <tr>
+
+                                <td>
+
+                                    <strong class="order-number">
+                                        #NC1021
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div class="customer-avatar">
+                                            S
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Sandeep
+                                            </strong>
+
+                                            <small>
+                                                +91 90000 11223
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        iPhone 14
+                                    </strong>
+
+                                    <small class="muted">
+                                        NeonCase
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+                                    10 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        ₹699
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status delivered">
+                                        Delivered
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="view-button"
+                                        onclick="viewOrder('NC1021')"
+                                    >
+                                        VIEW
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- ==================================================
+     ORDER DETAILS MODAL
+=================================================== -->
+
+<div
+    class="modal-overlay"
+    id="orderModal"
+>
+
+
+    <div class="order-modal">
+
+
+        <button
+            class="close-modal"
+            id="closeModal"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-label">
+            ORDER DETAILS
+        </div>
+
+
+        <h3 id="modalOrderNumber">
+            #NC1024
+        </h3>
+
+
+        <div class="modal-product">
+
+            <div class="phone-icon">
+                ▯
+            </div>
+
+            <div>
+
+                <strong id="modalModel">
+                    iPhone 16 Pro
+                </strong>
+
+                <small>
+                    NeonCase
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="customer-details">
+
+
+            <div>
+
+                <span>
+                    CUSTOMER
+                </span>
+
+                <strong id="modalCustomer">
+                    Rahul Kumar
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    PHONE
+                </span>
+
+                <strong id="modalPhone">
+                    +91 98765 43210
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    AMOUNT
+                </span>
+
+                <strong>
+                    ₹699
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    STATUS
+                </span>
+
+                <span
+                    class="status pending"
+                    id="modalStatus"
+                >
+                    Pending
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="approve-button"
+                id="approveButton"
+            >
+                APPROVE ORDER
+            </button>
+
+
+            <button
+                class="close-button"
+                id="modalCloseButton"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="orders.js"></script>
+
+</body>
+
+</html>
