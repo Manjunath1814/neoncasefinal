@@ -23,56 +23,57 @@
 <body>
 
 
-    <!-- =================================================
-         ADMIN LOADING / ACCESS SCREEN
-    ================================================== -->
+<!-- =====================================================
+     ACCESS SCREEN
+====================================================== -->
 
-    <div
-        id="accessScreen"
-        class="access-screen"
-    >
+<div
+    id="accessScreen"
+    class="access-screen"
+>
 
-        <div class="access-card">
+    <div class="access-card">
 
-            <div class="access-logo">
-                NEON<span>CASE</span>
-            </div>
-
-            <div class="access-label">
-                ADMINISTRATOR
-            </div>
-
-            <div class="loader"></div>
-
-            <p id="accessMessage">
-                Verifying administrator access...
-            </p>
-
+        <div class="access-logo">
+            NEON<span>CASE</span>
         </div>
+
+        <div class="access-label">
+            ADMINISTRATOR
+        </div>
+
+        <div class="loader"></div>
+
+        <p id="accessMessage">
+            Verifying administrator access...
+        </p>
 
     </div>
 
+</div>
+
+
+
+<!-- =====================================================
+     ADMIN APP
+====================================================== -->
+
+<div
+    id="adminApp"
+    class="admin-app"
+    hidden
+>
 
 
     <!-- =================================================
-         ADMIN APPLICATION
+         SIDEBAR
     ================================================== -->
 
-    <div
-        id="adminApp"
-        class="admin-app"
-        hidden
-    >
+    <aside class="sidebar">
 
 
-        <!-- =================================================
-             SIDEBAR
-        ================================================== -->
+        <div class="sidebar-top">
 
-        <aside class="sidebar">
-
-
-            <!-- LOGO -->
 
             <div class="sidebar-logo">
 
@@ -87,9 +88,6 @@
             </div>
 
 
-
-            <!-- NAVIGATION -->
-
             <nav class="sidebar-navigation">
 
 
@@ -99,13 +97,42 @@
                     data-section="dashboard"
                 >
 
-                    <span class="nav-icon">
-                        ◈
-                    </span>
+                    <span class="nav-icon">◈</span>
 
-                    <span>
-                        Dashboard
-                    </span>
+                    <span>Dashboard</span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-section="orders"
+                >
+
+                    <span class="nav-icon">□</span>
+
+                    <span>Orders</span>
+
+                    <b
+                        id="pendingBadge"
+                        class="nav-badge"
+                    >
+                        0
+                    </b>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-section="models"
+                >
+
+                    <span class="nav-icon">◉</span>
+
+                    <span>iPhone Models</span>
 
                 </button>
 
@@ -116,17 +143,11 @@
                     disabled
                 >
 
-                    <span class="nav-icon">
-                        □
-                    </span>
+                    <span class="nav-icon">○</span>
 
-                    <span>
-                        Orders
-                    </span>
+                    <span>Customers</span>
 
-                    <small>
-                        SOON
-                    </small>
+                    <small>STEP 3</small>
 
                 </button>
 
@@ -137,452 +158,808 @@
                     disabled
                 >
 
-                    <span class="nav-icon">
-                        ◉
-                    </span>
+                    <span class="nav-icon">→</span>
 
-                    <span>
-                        iPhone Models
-                    </span>
+                    <span>Tracking</span>
 
-                    <small>
-                        SOON
-                    </small>
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="nav-item disabled-nav"
-                    disabled
-                >
-
-                    <span class="nav-icon">
-                        ○
-                    </span>
-
-                    <span>
-                        Customers
-                    </span>
-
-                    <small>
-                        SOON
-                    </small>
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="nav-item disabled-nav"
-                    disabled
-                >
-
-                    <span class="nav-icon">
-                        →
-                    </span>
-
-                    <span>
-                        Tracking
-                    </span>
-
-                    <small>
-                        SOON
-                    </small>
+                    <small>STEP 3</small>
 
                 </button>
 
 
             </nav>
 
+        </div>
 
 
-            <!-- SIDEBAR BOTTOM -->
 
-            <div class="sidebar-bottom">
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="account-box">
+
+                <div class="account-label">
+                    SIGNED IN AS
+                </div>
+
+                <div
+                    id="adminEmail"
+                    class="account-email"
+                >
+                    —
+                </div>
+
+            </div>
 
 
-                <div class="account-box">
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+                Sign Out
+            </button>
 
-                    <div class="account-label">
-                        SIGNED IN AS
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div
+                    id="pageEyebrow"
+                    class="topbar-eyebrow"
+                >
+                    OVERVIEW
+                </div>
+
+                <h1
+                    id="pageTitle"
+                >
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="online-status">
+
+                <span></span>
+
+                Admin Online
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+            id="dashboardSection"
+            class="page-section"
+        >
+
+
+            <div class="welcome-area">
+
+                <div class="section-label">
+                    OVERVIEW
+                </div>
+
+                <h2>
+                    Welcome back.
+                </h2>
+
+                <p>
+                    Your NeonCase store at a glance.
+                </p>
+
+            </div>
+
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        TOTAL ORDERS
                     </div>
 
                     <div
-                        id="adminEmail"
-                        class="account-email"
+                        id="totalOrders"
+                        class="stat-number"
                     >
-                        —
+                        0
                     </div>
+
+                    <div class="stat-description">
+                        All orders
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        PENDING
+                    </div>
+
+                    <div
+                        id="pendingOrders"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-description">
+                        Awaiting approval
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        PROCESSING
+                    </div>
+
+                    <div
+                        id="processingOrders"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-description">
+                        Being prepared
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        DELIVERED
+                    </div>
+
+                    <div
+                        id="deliveredOrders"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-description">
+                        Completed
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="dashboard-grid">
+
+
+                <!-- RECENT ORDERS -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <div class="panel-label">
+                                ACTIVITY
+                            </div>
+
+                            <h3>
+                                Recent Orders
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="panel-button"
+                            data-open-section="orders"
+                        >
+                            VIEW ALL
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="recentOrders"
+                        class="recent-orders"
+                    >
+
+                        <div class="empty-dashboard">
+                            No orders yet.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MODELS SUMMARY -->
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <div class="panel-label">
+                                CATALOG
+                            </div>
+
+                            <h3>
+                                iPhone Models
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="panel-button"
+                            data-open-section="models"
+                        >
+                            MANAGE
+                        </button>
+
+                    </div>
+
+
+                    <div class="model-summary">
+
+                        <div>
+
+                            <strong
+                                id="activeModelCount"
+                            >
+                                0
+                            </strong>
+
+                            <span>
+                                Active
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong
+                                id="inactiveModelCount"
+                            >
+                                0
+                            </strong>
+
+                            <span>
+                                OFF
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="catalog-note">
+
+                        Models turned OFF will not be
+                        available to customers.
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ORDERS
+        ================================================== -->
+
+        <section
+            id="ordersSection"
+            class="page-section"
+            hidden
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="section-label">
+                        CUSTOMER ORDERS
+                    </div>
+
+                    <h2>
+                        Orders
+                    </h2>
+
+                    <p>
+                        Review and manage every order.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        id="orderSearch"
+                        type="search"
+                        placeholder="Search order, customer, phone, email..."
+                    >
+
+                </div>
+
+
+                <select
+                    id="orderFilter"
+                    class="select-box"
+                >
+
+                    <option value="all">
+                        All Orders
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="approved">
+                        Approved
+                    </option>
+
+                    <option value="processing">
+                        Processing
+                    </option>
+
+                    <option value="shipped">
+                        Shipped
+                    </option>
+
+                    <option value="delivered">
+                        Delivered
+                    </option>
+
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- ORDERS TABLE -->
+
+            <div class="table-panel">
+
+                <div class="table-header">
+
+                    <span>ORDER</span>
+
+                    <span>CUSTOMER</span>
+
+                    <span>MODEL</span>
+
+                    <span>AMOUNT</span>
+
+                    <span>STATUS</span>
+
+                    <span></span>
+
+                </div>
+
+
+                <div
+                    id="ordersList"
+                    class="orders-list"
+                >
+
+                    <div class="empty-dashboard">
+                        Loading orders...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MODELS
+        ================================================== -->
+
+        <section
+            id="modelsSection"
+            class="page-section"
+            hidden
+        >
+
+
+            <div class="section-heading model-heading">
+
+                <div>
+
+                    <div class="section-label">
+                        PRODUCT CATALOG
+                    </div>
+
+                    <h2>
+                        iPhone Models
+                    </h2>
+
+                    <p>
+                        Manage which iPhone models customers
+                        can select.
+                    </p>
 
                 </div>
 
 
                 <button
                     type="button"
-                    id="logoutButton"
-                    class="logout-button"
+                    id="addModelButton"
+                    class="primary-button"
                 >
 
-                    Sign Out
+                    <span>+</span>
+
+                    ADD MODEL
 
                 </button>
 
             </div>
 
 
-        </aside>
 
+            <div class="model-search">
 
+                <div class="search-box">
 
-        <!-- =================================================
-             MAIN CONTENT
-        ================================================== -->
+                    <span>⌕</span>
 
-        <main class="main-content">
-
-
-            <!-- TOP BAR -->
-
-            <header class="topbar">
-
-
-                <div>
-
-                    <div class="topbar-eyebrow">
-                        NEONCASE ADMIN
-                    </div>
-
-                    <h1>
-                        Dashboard
-                    </h1>
+                    <input
+                        id="modelSearch"
+                        type="search"
+                        placeholder="Search iPhone model..."
+                    >
 
                 </div>
 
-
-                <div class="online-status">
-
-                    <span></span>
-
-                    Admin Online
-
-                </div>
-
-
-            </header>
+            </div>
 
 
 
-            <!-- =================================================
-                 DASHBOARD
-            ================================================== -->
-
-            <section
-                id="dashboardSection"
-                class="dashboard-section"
+            <div
+                id="modelsGrid"
+                class="models-grid"
             >
 
-
-                <!-- WELCOME -->
-
-                <div class="welcome-area">
-
-                    <div>
-
-                        <div class="section-label">
-                            OVERVIEW
-                        </div>
-
-                        <h2>
-                            Welcome back.
-                        </h2>
-
-                        <p>
-                            Manage NeonCase orders,
-                            products and customers from
-                            one place.
-                        </p>
-
-                    </div>
-
+                <div class="empty-dashboard">
+                    Loading models...
                 </div>
 
+            </div>
 
 
-                <!-- STAT CARDS -->
-
-                <div class="stats-grid">
+        </section>
 
 
-                    <div class="stat-card">
+    </main>
 
-                        <div class="stat-label">
-                            TOTAL ORDERS
-                        </div>
 
-                        <div
-                            id="totalOrders"
-                            class="stat-number"
-                        >
-                            0
-                        </div>
-
-                        <div class="stat-description">
-                            All orders
-                        </div>
-
-                    </div>
+</div>
 
 
 
-                    <div class="stat-card">
+<!-- =====================================================
+     MODEL MODAL
+====================================================== -->
 
-                        <div class="stat-label">
-                            PENDING
-                        </div>
+<div
+    id="modelModal"
+    class="modal-overlay"
+    hidden
+>
 
-                        <div
-                            id="pendingOrders"
-                            class="stat-number"
-                        >
-                            0
-                        </div>
+    <div class="modal">
 
-                        <div class="stat-description">
-                            Awaiting approval
-                        </div>
+        <div class="modal-header">
 
-                    </div>
+            <div>
 
-
-
-                    <div class="stat-card">
-
-                        <div class="stat-label">
-                            PROCESSING
-                        </div>
-
-                        <div
-                            id="processingOrders"
-                            class="stat-number"
-                        >
-                            0
-                        </div>
-
-                        <div class="stat-description">
-                            Being prepared
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="stat-card">
-
-                        <div class="stat-label">
-                            DELIVERED
-                        </div>
-
-                        <div
-                            id="deliveredOrders"
-                            class="stat-number"
-                        >
-                            0
-                        </div>
-
-                        <div class="stat-description">
-                            Completed orders
-                        </div>
-
-                    </div>
-
-
+                <div class="modal-label">
+                    PRODUCT CATALOG
                 </div>
 
+                <h2 id="modelModalTitle">
+                    Add iPhone Model
+                </h2>
 
+            </div>
 
-                <!-- BOTTOM DASHBOARD -->
 
-                <div class="dashboard-grid">
+            <button
+                type="button"
+                id="closeModelModal"
+                class="close-button"
+            >
+                ×
+            </button>
 
+        </div>
 
-                    <!-- RECENT ORDERS -->
 
-                    <div class="dashboard-panel">
+        <form id="modelForm">
 
 
-                        <div class="panel-header">
+            <div class="form-group">
 
-                            <div>
+                <label>
+                    Model Name
+                </label>
 
-                                <div class="panel-label">
-                                    ACTIVITY
-                                </div>
+                <input
+                    id="modelNameInput"
+                    type="text"
+                    placeholder="iPhone 17 Pro"
+                    required
+                >
 
-                                <h3>
-                                    Recent Orders
-                                </h3>
+            </div>
 
-                            </div>
 
+            <div class="form-group">
 
-                            <div class="coming-soon">
-                                ORDERS
-                            </div>
+                <label>
+                    Display Order
+                </label>
 
-                        </div>
+                <input
+                    id="modelOrderInput"
+                    type="number"
+                    min="1"
+                    placeholder="1"
+                    required
+                >
 
+                <small>
+                    Smaller numbers appear first.
+                </small>
 
-                        <div
-                            id="recentOrders"
-                            class="recent-orders"
-                        >
+            </div>
 
-                            <div class="empty-dashboard">
 
-                                <div class="empty-icon">
-                                    □
-                                </div>
+            <div class="form-group">
 
-                                <strong>
-                                    No orders yet
-                                </strong>
+                <label>
+                    Availability
+                </label>
 
-                                <p>
-                                    Orders will appear here
-                                    once customers start
-                                    purchasing.
-                                </p>
 
-                            </div>
+                <label class="main-toggle">
 
-                        </div>
+                    <input
+                        id="modelActiveInput"
+                        type="checkbox"
+                        checked
+                    >
 
+                    <span class="toggle-track"></span>
 
-                    </div>
+                    <span
+                        id="availabilityLabel"
+                        class="toggle-label"
+                    >
+                        Available to customers
+                    </span>
 
+                </label>
 
+            </div>
 
-                    <!-- SYSTEM STATUS -->
 
-                    <div class="dashboard-panel">
+            <div class="modal-actions">
 
+                <button
+                    type="button"
+                    id="cancelModelButton"
+                    class="secondary-button"
+                >
+                    CANCEL
+                </button>
 
-                        <div class="panel-header">
 
-                            <div>
+                <button
+                    type="submit"
+                    id="saveModelButton"
+                    class="primary-button"
+                >
+                    SAVE MODEL
+                </button>
 
-                                <div class="panel-label">
-                                    SYSTEM
-                                </div>
+            </div>
 
-                                <h3>
-                                    Store Status
-                                </h3>
 
-                            </div>
-
-                        </div>
-
-
-                        <div class="system-list">
-
-
-                            <div class="system-row">
-
-                                <div>
-
-                                    <strong>
-                                        Firebase
-                                    </strong>
-
-                                    <span>
-                                        Database connection
-                                    </span>
-
-                                </div>
-
-                                <div
-                                    id="firebaseStatus"
-                                    class="status-pill checking"
-                                >
-                                    Checking
-                                </div>
-
-                            </div>
-
-
-                            <div class="system-row">
-
-                                <div>
-
-                                    <strong>
-                                        Authentication
-                                    </strong>
-
-                                    <span>
-                                        Admin access
-                                    </span>
-
-                                </div>
-
-                                <div
-                                    id="authStatus"
-                                    class="status-pill online"
-                                >
-                                    Active
-                                </div>
-
-                            </div>
-
-
-                            <div class="system-row">
-
-                                <div>
-
-                                    <strong>
-                                        Admin Panel
-                                    </strong>
-
-                                    <span>
-                                        Current session
-                                    </span>
-
-                                </div>
-
-                                <div class="status-pill online">
-                                    Online
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-        </main>
-
+        </form>
 
     </div>
 
+</div>
 
 
-    <!-- JAVASCRIPT -->
 
-    <script
-        type="module"
-        src="admin.js"
-    ></script>
+<!-- =====================================================
+     ORDER MODAL
+====================================================== -->
+
+<div
+    id="orderModal"
+    class="modal-overlay"
+    hidden
+>
+
+    <div class="modal order-modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-label">
+                    ORDER DETAILS
+                </div>
+
+                <h2 id="orderModalTitle">
+                    Order
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeOrderModal"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="orderDetails"
+            class="order-details"
+        >
+        </div>
+
+
+
+        <div class="order-control">
+
+            <label>
+                ORDER STATUS
+            </label>
+
+
+            <select
+                id="orderStatusSelect"
+                class="order-status-select"
+            >
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="approved">
+                    Approved
+                </option>
+
+                <option value="processing">
+                    Processing
+                </option>
+
+                <option value="shipped">
+                    Shipped
+                </option>
+
+                <option value="delivered">
+                    Delivered
+                </option>
+
+                <option value="cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                id="approveOrderButton"
+                class="approve-button"
+            >
+                APPROVE ORDER
+            </button>
+
+
+            <button
+                type="button"
+                id="updateOrderButton"
+                class="primary-button full-button"
+            >
+                UPDATE STATUS
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="admin.js"
+></script>
 
 
 </body>
