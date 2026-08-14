@@ -129,61 +129,176 @@ if (sidebarOverlay) {
 ========================================================= */
 
 const navItems =
-    document.querySelectorAll(
-        ".nav-item"
-    );
+    document.querySelectorAll(".nav-item");
 
 
 navItems.forEach((item) => {
 
-    item.addEventListener(
-        "click",
-        () => {
+    item.addEventListener("click", () => {
 
-            navItems.forEach(
-                (nav) => {
-
-                    nav.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
+        const page =
+            item.dataset.page;
 
 
-            item.classList.add(
-                "active"
-            );
+        /* Make clicked menu active */
+
+        navItems.forEach((nav) => {
+            nav.classList.remove("active");
+        });
+
+        item.classList.add("active");
 
 
-            const page =
-                item.dataset.page;
+        /* =========================================
+           IPHONE MODELS
+        ========================================= */
+
+        if (page === "models") {
+
+            const dashboardContent =
+                document.querySelector(
+                    ".dashboard-content"
+                );
+
+            const modelsPage =
+                document.getElementById(
+                    "modelsPage"
+                );
 
 
-            /*
-             * Step 2 only.
-             *
-             * Other pages will be built later.
-             */
+            /* Hide dashboard */
+
+            if (dashboardContent) {
+                dashboardContent.hidden = true;
+            }
+
+
+            /* Show iPhone Models */
+
+            if (modelsPage) {
+                modelsPage.hidden = false;
+            }
+
+
+            /* Change top heading */
+
+            const eyebrow =
+                document.querySelector(
+                    ".topbar .eyebrow"
+                );
+
+            const title =
+                document.querySelector(
+                    ".topbar h1"
+                );
+
+
+            if (eyebrow) {
+                eyebrow.textContent =
+                    "PRODUCT CATALOG";
+            }
+
+
+            if (title) {
+                title.textContent =
+                    "iPhone Models";
+            }
+
+
+            /* Load models */
 
             if (
-                page !== "dashboard"
+                typeof loadPhoneModels ===
+                "function"
             ) {
 
-                console.log(
-                    `${page} section will be built in the next step.`
-                );
+                loadPhoneModels();
 
             }
 
 
             closeSidebar();
 
+            return;
+
         }
-    );
+
+
+        /* =========================================
+           DASHBOARD
+        ========================================= */
+
+        if (page === "dashboard") {
+
+            const dashboardContent =
+                document.querySelector(
+                    ".dashboard-content"
+                );
+
+            const modelsPage =
+                document.getElementById(
+                    "modelsPage"
+                );
+
+
+            /* Show dashboard */
+
+            if (dashboardContent) {
+                dashboardContent.hidden = false;
+            }
+
+
+            /* Hide models */
+
+            if (modelsPage) {
+                modelsPage.hidden = true;
+            }
+
+
+            /* Restore heading */
+
+            const eyebrow =
+                document.querySelector(
+                    ".topbar .eyebrow"
+                );
+
+            const title =
+                document.querySelector(
+                    ".topbar h1"
+                );
+
+
+            if (eyebrow) {
+                eyebrow.textContent =
+                    "OVERVIEW";
+            }
+
+
+            if (title) {
+                title.textContent =
+                    "Dashboard";
+            }
+
+
+            closeSidebar();
+
+            return;
+
+        }
+
+
+        /* Other pages later */
+
+        console.log(
+            `${page} section will be built later.`
+        );
+
+
+        closeSidebar();
+
+    });
 
 });
-
 
 
 /* =========================================================
@@ -463,22 +578,7 @@ const modelSearch =
    OPEN MODELS FROM SIDEBAR
 ========================================================= */
 
-document
-    .querySelectorAll(
-        '.nav-item[data-page="models"]'
-    )
-    .forEach((button) => {
 
-        button.addEventListener(
-            "click",
-            async () => {
-
-                openModelsPage();
-
-            }
-        );
-
-    });
 
 
 /* =========================================================
