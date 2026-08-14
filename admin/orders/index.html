@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    
 
     <meta charset="UTF-8">
 
@@ -27,7 +26,6 @@
 
 <body>
 
-
 <div class="admin-layout">
 
 
@@ -37,9 +35,7 @@
 
     <aside class="sidebar" id="sidebar">
 
-
         <div>
-
 
             <!-- BRAND -->
 
@@ -60,6 +56,8 @@
 
             <nav class="navigation">
 
+
+                <!-- DASHBOARD -->
 
                 <a
                     href="/admin/dashboard/"
@@ -111,6 +109,7 @@
                 </a>
 
 
+                <!-- ORDERS -->
 
                 <a
                     href="/admin/orders/"
@@ -136,6 +135,7 @@
                 </a>
 
 
+                <!-- IPHONE MODELS -->
 
                 <a
                     href="/admin/models/"
@@ -165,6 +165,7 @@
                 </a>
 
 
+                <!-- CUSTOMER HISTORY -->
 
                 <a
                     href="/admin/coh/"
@@ -194,6 +195,7 @@
                 </a>
 
 
+                <!-- TRACKING -->
 
                 <a
                     href="/admin/tracking/"
@@ -231,6 +233,8 @@
 
                 <div class="nav-divider"></div>
 
+
+                <!-- SETTINGS -->
 
                 <button
                     class="nav-item nav-disabled"
@@ -291,7 +295,7 @@
 
 
     <!-- ==================================================
-         MAIN
+         MAIN CONTENT
     =================================================== -->
 
     <main class="main-content">
@@ -305,6 +309,7 @@
                 class="menu-button"
                 id="menuButton"
                 type="button"
+                aria-label="Open menu"
             >
 
                 <span></span>
@@ -315,19 +320,23 @@
 
 
             <div class="mobile-logo">
+
                 NEON<span>CASE</span>
+
             </div>
 
 
             <div class="mobile-avatar">
+
                 A
+
             </div>
 
         </header>
 
 
 
-        <!-- TOPBAR -->
+        <!-- DESKTOP TOPBAR -->
 
         <header class="topbar">
 
@@ -473,13 +482,12 @@
 
                 </div>
 
-
             </section>
 
 
 
             <!-- ==================================================
-                 FILTER BAR
+                 SEARCH + FILTER
             =================================================== -->
 
             <section class="filter-card">
@@ -529,7 +537,6 @@
 
                 </select>
 
-
             </section>
 
 
@@ -569,8 +576,6 @@
                 </div>
 
 
-
-                <!-- DESKTOP TABLE -->
 
                 <div class="table-wrapper">
 
@@ -615,368 +620,13 @@
 
                         <tbody id="ordersTable">
 
-
-                            <!-- ORDER 1 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <strong class="order-number">
-                                        #NC1024
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <div class="customer-cell">
-
-                                        <div class="customer-avatar">
-                                            R
-                                        </div>
-
-                                        <div>
-
-                                            <strong>
-                                                Rahul Kumar
-                                            </strong>
-
-                                            <small>
-                                                +91 98765 43210
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        iPhone 16 Pro
-                                    </strong>
-
-                                    <small class="muted">
-                                        NeonCase
-                                    </small>
-
-                                </td>
-
-
-                                <td>
-                                    14 Aug 2026
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        ₹699
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status pending">
-                                        Pending
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-
-                                    <button
-                                        class="view-button"
-                                        onclick="viewOrder('NC1024')"
-                                    >
-                                        VIEW
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-
-
-                            <!-- ORDER 2 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <strong class="order-number">
-                                        #NC1023
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <div class="customer-cell">
-
-                                        <div class="customer-avatar">
-                                            A
-                                        </div>
-
-                                        <div>
-
-                                            <strong>
-                                                Arjun Kumar
-                                            </strong>
-
-                                            <small>
-                                                +91 91234 56789
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        iPhone 15
-                                    </strong>
-
-                                    <small class="muted">
-                                        NeonCase
-                                    </small>
-
-                                </td>
-
-
-                                <td>
-                                    13 Aug 2026
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        ₹699
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status approved">
-                                        Approved
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-
-                                    <button
-                                        class="view-button"
-                                        onclick="viewOrder('NC1023')"
-                                    >
-                                        VIEW
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-
-
-                            <!-- ORDER 3 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <strong class="order-number">
-                                        #NC1022
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <div class="customer-cell">
-
-                                        <div class="customer-avatar">
-                                            R
-                                        </div>
-
-                                        <div>
-
-                                            <strong>
-                                                Ravi
-                                            </strong>
-
-                                            <small>
-                                                +91 99887 77665
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        iPhone 17 Pro Max
-                                    </strong>
-
-                                    <small class="muted">
-                                        NeonCase
-                                    </small>
-
-                                </td>
-
-
-                                <td>
-                                    12 Aug 2026
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        ₹699
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status processing">
-                                        Processing
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-
-                                    <button
-                                        class="view-button"
-                                        onclick="viewOrder('NC1022')"
-                                    >
-                                        VIEW
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
-
-
-                            <!-- ORDER 4 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <strong class="order-number">
-                                        #NC1021
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <div class="customer-cell">
-
-                                        <div class="customer-avatar">
-                                            S
-                                        </div>
-
-                                        <div>
-
-                                            <strong>
-                                                Sandeep
-                                            </strong>
-
-                                            <small>
-                                                +91 90000 11223
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        iPhone 14
-                                    </strong>
-
-                                    <small class="muted">
-                                        NeonCase
-                                    </small>
-
-                                </td>
-
-
-                                <td>
-                                    10 Aug 2026
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        ₹699
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <span class="status delivered">
-                                        Delivered
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-
-                                    <button
-                                        class="view-button"
-                                        onclick="viewOrder('NC1021')"
-                                    >
-                                        VIEW
-                                    </button>
-
-                                </td>
-
-                            </tr>
-
+                            <!-- JS WILL LOAD ORDERS HERE -->
 
                         </tbody>
 
                     </table>
 
                 </div>
-
 
             </section>
 
@@ -1005,8 +655,11 @@
         <button
             class="close-modal"
             id="closeModal"
+            type="button"
         >
+
             ×
+
         </button>
 
 
@@ -1025,6 +678,7 @@
             <div class="phone-icon">
                 ▯
             </div>
+
 
             <div>
 
@@ -1098,25 +752,31 @@
 
             </div>
 
-
         </div>
 
 
         <div class="modal-actions">
 
+
             <button
                 class="approve-button"
                 id="approveButton"
+                type="button"
             >
+
                 APPROVE ORDER
+
             </button>
 
 
             <button
                 class="close-button"
                 id="modalCloseButton"
+                type="button"
             >
+
                 CLOSE
+
             </button>
 
         </div>
@@ -1128,13 +788,18 @@
 
 
 
-<!-- MOBILE OVERLAY -->
+<!-- MOBILE SIDEBAR OVERLAY -->
 
 <div
     class="sidebar-overlay"
     id="sidebarOverlay"
 ></div>
 
+
+
+<!-- ==================================================
+     JAVASCRIPT
+=================================================== -->
 
 <script src="orders.js"></script>
 
