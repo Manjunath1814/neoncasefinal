@@ -982,12 +982,9 @@ document.getElementById(
 
 function closeModal() {
 
-    modal.classList.remove(
-        "show"
-    );
+    modal.classList.remove("show");
 
-    editingModelId =
-        null;
+    resetModelForm();
 
 }
 
