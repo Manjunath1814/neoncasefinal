@@ -608,32 +608,23 @@ function openEditModal(
 /* =====================================================
    SAVE
 ===================================================== */
-
-saveButton.addEventListener(
-    "click",
-    saveModel
-);
-
-
 async function saveModel() {
 
     const name =
         modelName.value.trim();
 
-
     const order =
-        Number(
-            displayOrder.value
-        );
-
+        Number(displayOrder.value);
 
     const available =
         availableToggle.checked;
 
+    formError.textContent = "";
 
-    formError.textContent =
-        "";
 
+    /* ================================
+       VALIDATION
+    ================================= */
 
     if (!name) {
 
@@ -643,7 +634,6 @@ async function saveModel() {
         modelName.focus();
 
         return;
-
     }
 
 
@@ -658,33 +648,25 @@ async function saveModel() {
         displayOrder.focus();
 
         return;
-
     }
 
 
-    /*
-     * Prevent duplicate model names.
-     */
+    /* ================================
+       DUPLICATE CHECK
+    ================================= */
 
     const duplicate =
-        allModels.find(
-            (model) => {
+        allModels.find(model => {
 
-                return (
-                    model.id !==
-                    editingModelId &&
-
-                    String(
-                        model.name || ""
-                    )
+            return (
+                model.id !== editingModelId &&
+                String(model.name || "")
                     .trim()
-                    .toLowerCase()
-                    ===
-                    name.toLowerCase()
-                );
+                    .toLowerCase() ===
+                name.toLowerCase()
+            );
 
-            }
-        );
+        });
 
 
     if (duplicate) {
@@ -693,21 +675,25 @@ async function saveModel() {
             "This iPhone model already exists.";
 
         return;
-
     }
 
 
-    saveButton.disabled =
-        true;
+    /* ================================
+       SAVE BUTTON
+    ================================= */
 
-    saveButton.textContent =
-        "SAVING...";
+    saveButton.disabled = true;
+
+    saveButton.textContent = "SAVING...";
 
 
     try {
 
-
         if (editingModelId) {
+
+            /* =========================
+               EDIT EXISTING MODEL
+            ========================== */
 
             const modelRef =
                 doc(
@@ -720,81 +706,78 @@ async function saveModel() {
             await updateDoc(
                 modelRef,
                 {
-
-                    name,
-
-                    displayOrder:
-                        order,
-
-                    available,
-
+                    name: name,
+                    displayOrder: order,
+                    available: available,
                     updatedAt:
                         serverTimestamp()
-
                 }
             );
 
-        }
+        } else {
 
-        else {
+            /* =========================
+               ADD NEW MODEL
+            ========================== */
 
             await addDoc(
                 modelsCollection,
                 {
-
-                    name,
-
-                    displayOrder:
-                        order,
-
-                    available,
-
+                    name: name,
+                    displayOrder: order,
+                    available: available,
                     createdAt:
                         serverTimestamp(),
-
                     updatedAt:
                         serverTimestamp()
-
                 }
             );
 
         }
 
 
+        /* ================================
+           IMPORTANT:
+           CLOSE IMMEDIATELY AFTER SAVE
+        ================================= */
+
         closeModal();
 
-    }
 
-    catch (error) {
+        /* ================================
+           RESET FORM
+        ================================= */
+
+        resetModelForm();
+
+
+    } catch (error) {
 
         console.error(
-            "Unable to save model:",
+            "SAVE MODEL ERROR:",
             error
         );
 
 
         formError.textContent =
-            "Could not save the model. Check Firestore permissions and try again.";
+            "Model was not saved. " +
+            (error.message || "Please try again.");
 
     }
 
 
-    finally {
+    /* ================================
+       ALWAYS RESTORE BUTTON
+    ================================= */
 
-        saveButton.disabled =
-            false;
+    saveButton.disabled = false;
 
-        saveButton.textContent =
-            editingModelId
-                ? "SAVE CHANGES"
-                : "SAVE MODEL";
-
-    }
+    saveButton.textContent =
+        editingModelId
+            ? "SAVE CHANGES"
+            : "SAVE MODEL";
 
 }
-
-
-
 /* =====================================================
    AVAILABILITY
 ===================================================== */
