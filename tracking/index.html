@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Track Order — NeonCase</title>
+
+    <link
+        rel="stylesheet"
+        href="tracking.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<main class="tracking-page">
+
+
+    <!-- HEADER -->
+
+    <header class="tracking-header">
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+            neoncase<span>.in</span>
+        </a>
+
+        <div
+            class="account"
+            id="account"
+        >
+            Checking account...
+        </div>
+
+    </header>
+
+
+
+    <!-- LOADING -->
+
+    <section
+        class="loading-screen"
+        id="loadingScreen"
+    >
+
+        <div class="loader"></div>
+
+        <p>
+            Checking your account...
+        </p>
+
+    </section>
+
+
+
+    <!-- NOT AUTHENTICATED -->
+
+    <section
+        class="access-denied"
+        id="accessDenied"
+        hidden
+    >
+
+        <div class="denied-icon">
+            !
+        </div>
+
+        <span>
+            ORDER TRACKING
+        </span>
+
+        <h1>
+            Sign in to
+            <strong>track your order.</strong>
+        </h1>
+
+        <p>
+            Order tracking is available only
+            to customers signed in with their
+            NeonCase account.
+        </p>
+
+        <button
+            id="goToOrder"
+        >
+            GO TO ORDER PAGE
+            <span>→</span>
+        </button>
+
+    </section>
+
+
+
+    <!-- TRACKING -->
+
+    <section
+        class="tracking-content"
+        id="trackingContent"
+        hidden
+    >
+
+
+        <div class="heading">
+
+            <span>
+                YOUR ORDER
+            </span>
+
+            <h1>
+                Track your
+                <strong>NeonCase.</strong>
+            </h1>
+
+            <p>
+                Follow your order from
+                confirmation to delivery.
+            </p>
+
+        </div>
+
+
+
+        <!-- ORDER CARD -->
+
+        <div class="order-card">
+
+
+            <div class="order-top">
+
+                <div>
+
+                    <span>
+                        ORDER ID
+                    </span>
+
+                    <strong id="orderId">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="status-pill">
+                    ORDER CONFIRMED
+                </div>
+
+            </div>
+
+
+
+            <div class="product-row">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="../day-phone-case.png"
+                        alt="NeonCase"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        NEONCASE™
+                    </span>
+
+                    <h2 id="modelName">
+                        Loading...
+                    </h2>
+
+                    <p>
+                        Glow-in-the-dark
+                        phone case
+                    </p>
+
+                    <strong>
+                        ₹699
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRACKING TIMELINE -->
+
+            <div class="timeline">
+
+
+                <!-- CONFIRMED -->
+
+                <div
+                    class="timeline-item active"
+                >
+
+                    <div class="timeline-dot">
+                        ✓
+                    </div>
+
+                    <div class="timeline-text">
+
+                        <strong>
+                            Order Confirmed
+                        </strong>
+
+                        <span id="confirmedDate">
+                            Your order has been received.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROCESSING -->
+
+                <div
+                    class="timeline-item"
+                    id="processingStep"
+                >
+
+                    <div class="timeline-dot">
+                        2
+                    </div>
+
+                    <div class="timeline-text">
+
+                        <strong>
+                            Processing
+                        </strong>
+
+                        <span>
+                            Your order will be prepared soon.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SHIPPED -->
+
+                <div
+                    class="timeline-item"
+                    id="shippedStep"
+                >
+
+                    <div class="timeline-dot">
+                        3
+                    </div>
+
+                    <div class="timeline-text">
+
+                        <strong>
+                            Shipped
+                        </strong>
+
+                        <span>
+                            Your NeonCase is on the way.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DELIVERED -->
+
+                <div
+                    class="timeline-item"
+                    id="deliveredStep"
+                >
+
+                    <div class="timeline-dot">
+                        4
+                    </div>
+
+                    <div class="timeline-text">
+
+                        <strong>
+                            Delivered
+                        </strong>
+
+                        <span>
+                            Your order has arrived.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- DELIVERY DETAILS -->
+
+        <div class="delivery-card">
+
+            <div>
+
+                <span>
+                    DELIVERING TO
+                </span>
+
+                <strong id="customerName">
+                    Customer
+                </strong>
+
+                <p id="deliveryAddress">
+                    Loading address...
+                </p>
+
+            </div>
+
+
+            <div class="delivery-icon">
+                →
+            </div>
+
+        </div>
+
+
+
+        <a
+            href="../index.html"
+            class="back-home"
+        >
+            BACK TO NEONCASE
+        </a>
+
+
+    </section>
+
+
+</main>
+
+
+<script
+    type="module"
+    src="tracking.js"
+></script>
+
+</body>
+
+</html>
