@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f3eb"
+    >
+
+    <title>NeonCase — Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <div class="sidebar-top">
+
+
+            <!-- LOGO -->
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    NEON<span>CASE</span>
+                </div>
+
+                <div class="brand-admin">
+                    ADMIN PANEL
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="navigation">
+
+
+                <button
+                    class="nav-item active"
+                    data-page="dashboard"
+                >
+
+                    <span class="nav-icon">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                x="3"
+                                y="3"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="3"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="3"
+                                y="14"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="14"
+                                width="7"
+                                height="7"
+                                rx="1"
+                            ></rect>
+                        </svg>
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    class="nav-item"
+                    data-page="orders"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M5 7h14M5 12h14M5 17h9"
+                            ></path>
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Orders
+                    </span>
+
+                    <span
+                        class="nav-count"
+                        id="sidebarOrderCount"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    class="nav-item"
+                    data-page="models"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                x="7"
+                                y="2"
+                                width="10"
+                                height="20"
+                                rx="2"
+                            ></rect>
+
+                            <path
+                                d="M10 18h4"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        iPhone Models
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    class="nav-item"
+                    data-page="customers"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3"
+                            ></circle>
+
+                            <path
+                                d="M5 21c0-4 3-6 7-6s7 2 7 6"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Customers
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    class="nav-item"
+                    data-page="tracking"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="6"
+                                cy="18"
+                                r="2"
+                            ></circle>
+
+                            <circle
+                                cx="18"
+                                cy="6"
+                                r="2"
+                            ></circle>
+
+                            <path
+                                d="M8 17l8-10"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Tracking
+                    </span>
+
+                </button>
+
+
+
+                <div class="nav-divider"></div>
+
+
+
+                <button
+                    class="nav-item"
+                    data-page="settings"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
+                            ></circle>
+
+                            <path
+                                d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.5-1H6v-2.4h.2a1.7 1.7 0 0 0 1.5-1A1.7 1.7 0 0 0 8.1 9L8 8.9l1.7-1.7.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V6h2.4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L20 9l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2v2.4h-.2a1.7 1.7 0 0 0-1.7.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="store-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Store Online
+                    </strong>
+
+                    <small>
+                        neoncase.in
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                class="sign-out"
+                type="button"
+            >
+
+                <span>↪</span>
+
+                Sign Out
+
+            </button>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN AREA
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- MOBILE TOPBAR -->
+
+        <header class="mobile-header">
+
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="Open menu"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="mobile-brand">
+                NEON<span>CASE</span>
+            </div>
+
+
+            <div class="mobile-avatar">
+                A
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================
+             DESKTOP HEADER
+        ====================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-left">
+
+                <div class="eyebrow">
+                    OVERVIEW
+                </div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+
+            <div class="topbar-right">
+
+
+                <div class="store-live">
+
+                    <span></span>
+
+                    Store Online
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-profile-text">
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ˅
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================
+             DASHBOARD CONTENT
+        ====================================== -->
+
+        <div class="dashboard-content">
+
+
+            <!-- WELCOME -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <div class="welcome-label">
+                        NEONCASE STORE
+                    </div>
+
+                    <h2>
+                        Welcome back, Admin.
+                    </h2>
+
+                    <p>
+                        Here's what's happening
+                        with your store today.
+                    </p>
+
+                </div>
+
+
+                <div class="date-box">
+
+                    <span class="date-icon">
+                        ◷
+                    </span>
+
+                    <div>
+
+                        <small>
+                            TODAY
+                        </small>
+
+                        <strong
+                            id="currentDate"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 STAT CARDS
+            ================================== -->
+
+            <section class="stats-grid">
+
+
+                <!-- TOTAL ORDERS -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            TOTAL ORDERS
+                        </span>
+
+                        <div class="stat-icon blue">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <path
+                                    d="M6 3h12l1 4H5l1-4Z"
+                                ></path>
+
+                                <path
+                                    d="M5 7h14v13H5z"
+                                ></path>
+
+                                <path
+                                    d="M9 11h6"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="stat-number"
+                        id="totalOrders"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="stat-bottom">
+
+                        <span class="neutral-text">
+                            No orders yet
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PENDING -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            PENDING
+                        </span>
+
+                        <div class="stat-icon orange">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="8"
+                                ></circle>
+
+                                <path
+                                    d="M12 8v5l3 2"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="stat-number"
+                        id="pendingOrders"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="stat-bottom">
+
+                        <span class="neutral-text">
+                            Waiting for action
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROCESSING -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            PROCESSING
+                        </span>
+
+                        <div class="stat-icon dark-blue">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <path
+                                    d="M4 12h16"
+                                ></path>
+
+                                <path
+                                    d="M12 4v16"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="stat-number"
+                        id="processingOrders"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="stat-bottom">
+
+                        <span class="neutral-text">
+                            Currently processing
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- DELIVERED -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            DELIVERED
+                        </span>
+
+                        <div class="stat-icon green">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <path
+                                    d="M5 13l4 4L19 7"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="stat-number"
+                        id="deliveredOrders"
+                    >
+                        0
+                    </div>
+
+
+                    <div class="stat-bottom">
+
+                        <span class="neutral-text">
+                            Successfully delivered
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 LOWER DASHBOARD
+            ================================== -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- RECENT ORDERS -->
+
+                <div class="dashboard-card orders-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                ACTIVITY
+                            </span>
+
+                            <h3>
+                                Recent Orders
+                            </h3>
+
+                        </div>
+
+
+                        <button
+                            class="view-all"
+                            type="button"
+                            data-page="orders"
+                        >
+
+                            View all
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div
+                        class="orders-empty"
+                        id="recentOrders"
+                    >
+
+
+                        <div class="empty-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                            >
+
+                                <rect
+                                    x="5"
+                                    y="4"
+                                    width="14"
+                                    height="16"
+                                    rx="2"
+                                ></rect>
+
+                                <path
+                                    d="M8 9h8M8 13h5"
+                                ></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h4>
+                            No orders yet
+                        </h4>
+
+
+                        <p>
+                            New customer orders
+                            will appear here.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="dashboard-card quick-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                SHORTCUTS
+                            </span>
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="quick-actions">
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-page="orders"
+                        >
+
+                            <div class="quick-icon blue">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <path
+                                        d="M5 7h14M5 12h14M5 17h9"
+                                    ></path>
+
+                                </svg>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    View Orders
+                                </strong>
+
+                                <small>
+                                    Manage customer orders
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-page="models"
+                        >
+
+                            <div class="quick-icon purple">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <rect
+                                        x="7"
+                                        y="2"
+                                        width="10"
+                                        height="20"
+                                        rx="2"
+                                    ></rect>
+
+                                    <path
+                                        d="M10 18h4"
+                                    ></path>
+
+                                </svg>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    iPhone Models
+                                </strong>
+
+                                <small>
+                                    Manage available models
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-page="tracking"
+                        >
+
+                            <div class="quick-icon green">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                >
+
+                                    <circle
+                                        cx="6"
+                                        cy="18"
+                                        r="2"
+                                    ></circle>
+
+                                    <circle
+                                        cx="18"
+                                        cy="6"
+                                        r="2"
+                                    ></circle>
+
+                                    <path
+                                        d="M8 17l8-10"
+                                    ></path>
+
+                                </svg>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Order Tracking
+                                </strong>
+
+                                <small>
+                                    Monitor order status
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- STORE OVERVIEW -->
+
+            <section class="store-overview">
+
+
+                <div class="overview-left">
+
+                    <span class="card-eyebrow">
+                        STORE STATUS
+                    </span>
+
+                    <h3>
+                        NeonCase is ready for orders.
+                    </h3>
+
+                    <p>
+                        Your customer-facing store
+                        is currently online.
+                    </p>
+
+                </div>
+
+
+                <div class="overview-status">
+
+                    <span class="big-status-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            Online
+                        </strong>
+
+                        <small>
+                            neoncase.in
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =============================================
+     MOBILE OVERLAY
+============================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script
+    src="admin.js"
+></script>
+
+</body>
+
+</html>
