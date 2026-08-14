@@ -1,26 +1,26 @@
-// firebase-config.js
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
-export const firebaseConfig = {
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-    apiKey:
-        "AIzaSyBleFUWJq9xiSRZCMzxZG9VmWDayBmcGTg",
+const firebaseConfig = {
+    apiKey: "AIzaSyBleFUWJq9xiSRZCMzxZG9VmWDayBmcGTg",
+    authDomain: "neoncase.firebaseapp.com",
+    projectId: "neoncase",
+    storageBucket: "neoncase.firebasestorage.app",
+    messagingSenderId: "1004163074284",
+    appId: "1:1004163074284:web:4997dca90a0f06346bbdc9",
+    measurementId: "G-NPMZHKJLYH"
+};
 
-    authDomain:
-        "neoncase.firebaseapp.com",
+const app = initializeApp(firebaseConfig);
 
-    projectId:
-        "neoncase",
+const db = getFirestore(app);
 
-    storageBucket:
-        "neoncase.firebasestorage.app",
-
-    messagingSenderId:
-        "1004163074284",
-
-    appId:
-        "1:1004163074284:web:4997dca90a0f06346bbdc9",
-
-    measurementId:
-        "G-NPMZHKJLYH"
-
+export {
+    app,
+    db
 };
