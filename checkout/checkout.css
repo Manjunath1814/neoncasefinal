@@ -1,0 +1,513 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background: #faf7f0;
+
+    color: #111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* HEADER */
+
+.checkout-header {
+
+    height: 78px;
+
+    padding: 0 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #fffdf8;
+
+    border-bottom:
+        1px solid #e8e1d6;
+}
+
+
+.logo {
+
+    text-decoration: none;
+
+    color: #111;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.logo span {
+
+    color: #1766d4;
+}
+
+
+.customer-email {
+
+    color: #777;
+
+    font-size: 9px;
+
+    max-width: 250px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* MAIN */
+
+.checkout-page {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 65px 35px 90px;
+
+    display: grid;
+
+    grid-template-columns:
+        43% 57%;
+
+    gap: 75px;
+
+    align-items: start;
+}
+
+
+/* PRODUCT */
+
+.product-side {
+
+    position: sticky;
+
+    top: 35px;
+}
+
+
+.product-image-box {
+
+    height: 450px;
+
+    width: 100%;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #f5eee3 65%
+        );
+}
+
+
+.product-image-box img {
+
+    width: 90%;
+
+    height: 90%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 25px 30px
+            rgba(0,0,0,.14)
+        );
+}
+
+
+.product-tag {
+
+    margin-top: 25px;
+
+    color: #1766d4;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.product-side h1 {
+
+    margin-top: 10px;
+
+    font-size: 30px;
+
+    line-height: .98;
+
+    letter-spacing: -1.5px;
+}
+
+
+.price {
+
+    margin-top: 15px;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+
+.selected-model-box {
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid #e1d9cd;
+}
+
+
+.selected-model-box span {
+
+    display: block;
+
+    color: #888;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.selected-model-box strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #1766d4;
+
+    font-size: 13px;
+}
+
+
+/* DETAILS */
+
+.details-side {
+
+    max-width: 560px;
+}
+
+
+.step {
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.details-side h2 {
+
+    margin-top: 14px;
+
+    font-size: 50px;
+
+    line-height: .9;
+
+    letter-spacing: -2.5px;
+}
+
+
+.details-side h2 strong {
+
+    display: block;
+
+    color: #1766d4;
+}
+
+
+.intro {
+
+    margin-top: 18px;
+
+    color: #77736b;
+
+    font-size: 11px;
+}
+
+
+/* FORM */
+
+#checkoutForm {
+
+    margin-top: 35px;
+}
+
+
+.field {
+
+    margin-bottom: 19px;
+}
+
+
+.field label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #333;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+.field label b {
+
+    color: #1766d4;
+}
+
+
+.field label span {
+
+    margin-left: 5px;
+
+    color: #aaa;
+
+    font-size: 7px;
+
+    font-weight: 400;
+}
+
+
+.field input {
+
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    border:
+        1px solid #ddd6ca;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #fffdf8;
+
+    color: #111;
+
+    font-size: 11px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.field input:focus {
+
+    border-color: #1766d4;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(23,102,212,.08);
+}
+
+
+.field input::placeholder {
+
+    color: #aaa49b;
+}
+
+
+/* TWO COLUMNS */
+
+.two-column {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* BUTTON */
+
+#continueButton {
+
+    width: 100%;
+
+    height: 56px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1766d4;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+#continueButton span {
+
+    font-size: 18px;
+}
+
+
+#continueButton:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(23,102,212,.20);
+}
+
+
+.form-message {
+
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    color: #d14c4c;
+
+    text-align: center;
+
+    font-size: 9px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    .checkout-header {
+
+        padding: 0 22px;
+    }
+
+
+    .checkout-page {
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding:
+            40px 22px 70px;
+    }
+
+
+    .product-side {
+
+        position: relative;
+
+        top: auto;
+    }
+
+
+    .product-image-box {
+
+        height: 350px;
+    }
+
+
+    .details-side {
+
+        max-width: none;
+    }
+
+
+    .details-side h2 {
+
+        font-size: 42px;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .two-column {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    .customer-email {
+
+        max-width: 130px;
+    }
+}
