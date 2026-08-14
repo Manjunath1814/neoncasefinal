@@ -1,5 +1,4 @@
-import { firebaseConfig }
-    from "../firebase-config.js";
+import { firebaseConfig } from "../firebase-config.js";
 
 import {
     initializeApp
@@ -13,24 +12,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 
-/* =========================================================
-   INITIALIZE FIREBASE
-========================================================= */
-
-const app =
-    initializeApp(firebaseConfig);
-
-const auth =
-    getAuth(app);
-
-const provider =
-    new GoogleAuthProvider();
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
 const googleLogin =
     document.getElementById("googleLogin");
 
@@ -38,85 +19,95 @@ const loginMessage =
     document.getElementById("loginMessage");
 
 
-/* =========================================================
-   GOOGLE LOGIN
-========================================================= */
+try {
 
-googleLogin.addEventListener(
-    "click",
-    async () => {
+    const app =
+        initializeApp(firebaseConfig);
+
+    const auth =
+        getAuth(app);
+
+    const provider =
+        new GoogleAuthProvider();
+
+
+    googleLogin.addEventListener("click", async () => {
+
+        console.log("Google button clicked");
+
+        loginMessage.textContent =
+            "Opening Google login...";
+
+        googleLogin.disabled = true;
 
         try {
-
-            googleLogin.disabled = true;
-
-            loginMessage.textContent =
-                "Connecting to Google...";
 
             await signInWithRedirect(
                 auth,
                 provider
             );
 
-        }
+        } catch (error) {
 
-        catch (error) {
+            console.error(
+                "GOOGLE LOGIN ERROR:",
+                error
+            );
 
-            console.error(error);
+            loginMessage.textContent =
+                error.code +
+                " — " +
+                error.message;
 
             googleLogin.disabled = false;
 
-            loginMessage.textContent =
-                "Unable to sign in. Please try again.";
-
         }
-
-    }
-);
-
-
-/* =========================================================
-   AFTER GOOGLE REDIRECT
-========================================================= */
-
-getRedirectResult(auth)
-
-    .then((result) => {
-
-        if (!result) {
-            return;
-        }
-
-        const user = result.user;
-
-        console.log(
-            "Logged in:",
-            user.displayName,
-            user.email
-        );
-
-
-        loginMessage.textContent =
-            `Welcome, ${user.displayName || "Customer"}!`;
-
-
-        /*
-         * NEXT STEP:
-         *
-         * window.location.href =
-         * "../order/index.html";
-         */
-
-    })
-
-    .catch((error) => {
-
-        console.error(
-            "Redirect login error:",
-            error
-        );
-
-        loginMessage.textContent =
-            "Google sign-in could not be completed.";
 
     });
+
+
+    getRedirectResult(auth)
+
+        .then((result) => {
+
+            if (!result) {
+                return;
+            }
+
+            console.log(
+                "LOGIN SUCCESS:",
+                result.user
+            );
+
+            loginMessage.textContent =
+                "Login successful!";
+
+        })
+
+        .catch((error) => {
+
+            console.error(
+                "REDIRECT ERROR:",
+                error
+            );
+
+            loginMessage.textContent =
+                error.code +
+                " — " +
+                error.message;
+
+        });
+
+
+} catch (error) {
+
+    console.error(
+        "FIREBASE INITIALIZATION ERROR:",
+        error
+    );
+
+    loginMessage.textContent =
+        "Firebase error: " +
+        error.message;
+
+}
