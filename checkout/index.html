@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout — NeonCase</title>
+
+    <link
+        rel="stylesheet"
+        href="checkout.css"
+    >
+</head>
+
+<body>
+
+<header class="checkout-header">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+        neoncase<span>.in</span>
+    </a>
+
+    <div
+        id="customerEmail"
+        class="customer-email"
+    >
+        Checking account...
+    </div>
+
+</header>
+
+
+<main class="checkout-page">
+
+
+    <!-- PRODUCT SIDE -->
+
+    <section class="product-side">
+
+        <div class="product-image-box">
+
+            <img
+                src="../day-phone-case.png"
+                alt="NeonCase Phone Case"
+            >
+
+        </div>
+
+
+        <div class="product-tag">
+            NEONCASE™
+        </div>
+
+
+        <h1>
+            Glow-in-the-dark
+            <br>
+            phone case
+        </h1>
+
+
+        <div class="price">
+            ₹699
+        </div>
+
+
+        <div class="selected-model-box">
+
+            <span>
+                SELECTED IPHONE
+            </span>
+
+            <strong id="selectedModel">
+                Loading...
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FORM SIDE -->
+
+    <section class="details-side">
+
+        <div class="step">
+            02
+        </div>
+
+
+        <h2>
+            Delivery
+            <strong>details.</strong>
+        </h2>
+
+
+        <p class="intro">
+            Enter your delivery details carefully.
+        </p>
+
+
+        <form id="checkoutForm">
+
+
+            <!-- NAME -->
+
+            <div class="field">
+
+                <label for="fullName">
+                    Full Name <b>*</b>
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="field">
+
+                <label for="phone">
+                    Phone Number <b>*</b>
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="10-digit mobile number"
+                    maxlength="10"
+                    inputmode="numeric"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ADDRESS 1 -->
+
+            <div class="field">
+
+                <label for="address1">
+                    Address Line 1 <b>*</b>
+                </label>
+
+                <input
+                    type="text"
+                    id="address1"
+                    placeholder="House / Flat / Street"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ADDRESS 2 -->
+
+            <div class="field">
+
+                <label for="address2">
+                    Address Line 2
+                    <span>Optional</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="address2"
+                    placeholder="Area / Landmark"
+                >
+
+            </div>
+
+
+            <!-- STATE + DISTRICT -->
+
+            <div class="two-column">
+
+                <div class="field">
+
+                    <label for="state">
+                        State <b>*</b>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="state"
+                        placeholder="Enter state"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="district">
+                        District <b>*</b>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="district"
+                        placeholder="Enter district"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PINCODE -->
+
+            <div class="field">
+
+                <label for="pincode">
+                    Pincode <b>*</b>
+                </label>
+
+                <input
+                    type="text"
+                    id="pincode"
+                    placeholder="6-digit pincode"
+                    maxlength="6"
+                    inputmode="numeric"
+                    required
+                >
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                id="continueButton"
+            >
+
+                CONTINUE TO PAYMENT
+
+                <span>→</span>
+
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="checkout.js"
+></script>
+
+</body>
+
+</html>
