@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f3eb"
+    >
+
+    <title>NeonCase — Tracking</title>
+
+    <link
+        rel="stylesheet"
+        href="tracking.css"
+    >
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div>
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    NEON<span>CASE</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    ADMIN PANEL
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <a
+                    href="/admin/dashboard/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a
+                    href="/admin/orders/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ≡
+                    </span>
+
+                    Orders
+
+                </a>
+
+
+                <a
+                    href="/admin/models/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ▯
+                    </span>
+
+                    iPhone Models
+
+                </a>
+
+
+                <a
+                    href="/admin/coh/"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ◉
+                    </span>
+
+                    Customer History
+
+                </a>
+
+
+                <a
+                    href="/admin/tracking/"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+                        ⌁
+                    </span>
+
+                    Tracking
+
+                </a>
+
+
+                <div class="nav-divider"></div>
+
+
+                <button
+                    class="nav-item nav-disabled"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    Settings
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="store-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Store Online
+                    </strong>
+
+                    <small>
+                        neoncase.in
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="sign-out"
+                type="button"
+            >
+
+                ↪ &nbsp; Sign Out
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="mobile-logo">
+                NEON<span>CASE</span>
+            </div>
+
+
+            <div class="mobile-avatar">
+                A
+            </div>
+
+        </header>
+
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="topbar-label">
+                    ORDER MANAGEMENT
+                </div>
+
+                <h1>
+                    Tracking
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span></span>
+
+                    LIVE
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="tracking-content">
+
+
+            <section class="page-intro">
+
+                <div>
+
+                    <div class="intro-label">
+                        LIVE ORDER TRACKING
+                    </div>
+
+                    <h2>
+                        Track Orders
+                    </h2>
+
+                    <p>
+                        Monitor customer orders and
+                        their current delivery status.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- SEARCH -->
+
+            <section class="search-card">
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="trackingSearch"
+                        placeholder="Search order ID, customer or phone..."
+                    >
+
+                </div>
+
+
+                <div class="connection-status">
+
+                    <span
+                        id="connectionDot"
+                        class="connection-dot"
+                    ></span>
+
+                    <span id="connectionText">
+                        Connecting to Firestore...
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- LIVE ORDERS -->
+
+            <section class="tracking-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span>
+                            REAL-TIME DATA
+                        </span>
+
+                        <h3>
+                            Active Orders
+                        </h3>
+
+                    </div>
+
+
+                    <div class="live-pill">
+
+                        <span></span>
+
+                        LIVE
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="tracking-list"
+                    id="trackingList"
+                >
+
+                    <div class="loading">
+
+                        <div class="loader"></div>
+
+                        Loading orders...
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script
+    type="module"
+    src="tracking.js"
+></script>
+
+</body>
+
+  </html>
