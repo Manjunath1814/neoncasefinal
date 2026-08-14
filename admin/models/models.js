@@ -778,6 +778,28 @@ async function saveModel() {
             : "SAVE MODEL";
 
 }
+function resetModelForm() {
+
+    editingModelId = null;
+
+    modelName.value = "";
+
+    displayOrder.value =
+        getNextDisplayOrder();
+
+    availableToggle.checked = true;
+
+    formError.textContent = "";
+
+    saveButton.disabled = false;
+
+    saveButton.textContent =
+        "SAVE MODEL";
+
+    modalTitle.textContent =
+        "Add iPhone Model";
+
+}
 /* =====================================================
    AVAILABILITY
 ===================================================== */
