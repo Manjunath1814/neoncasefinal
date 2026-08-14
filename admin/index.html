@@ -1036,7 +1036,254 @@
 
 
         </div>
+<!-- =====================================================
+     IPHONE MODELS SECTION
+     DO NOT CHANGE DASHBOARD
+====================================================== -->
 
+<section
+    class="models-page"
+    id="modelsPage"
+    hidden
+>
+
+    <!-- PAGE HEADER -->
+
+    <div class="models-page-header">
+
+        <div>
+
+            <div class="models-eyebrow">
+                PRODUCT CATALOG
+            </div>
+
+            <h2>
+                iPhone Models
+            </h2>
+
+            <p>
+                Manage which iPhone models are available
+                for customers to select.
+            </p>
+
+        </div>
+
+
+        <button
+            class="add-model-button"
+            id="addModelButton"
+            type="button"
+        >
+
+            <span>+</span>
+
+            ADD MODEL
+
+        </button>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="models-toolbar">
+
+        <div class="models-search">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="modelSearch"
+                placeholder="Search iPhone models..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="model-count">
+
+            <span id="modelCount">
+                0
+            </span>
+
+            MODELS
+
+        </div>
+
+    </div>
+
+
+    <!-- MODELS LIST -->
+
+    <div
+        class="models-list"
+        id="modelsList"
+    >
+
+        <div class="models-loading">
+
+            Loading iPhone models...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADD / EDIT MODEL MODAL
+====================================================== -->
+
+<div
+    class="model-modal-backdrop"
+    id="modelModal"
+    hidden
+>
+
+    <div
+        class="model-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <button
+            class="model-modal-close"
+            id="closeModelModal"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-eyebrow">
+            PRODUCT CATALOG
+        </div>
+
+
+        <h3 id="modelModalTitle">
+            Add iPhone Model
+        </h3>
+
+
+        <p class="modal-description">
+            Add an iPhone model that customers can
+            select while placing an order.
+        </p>
+
+
+        <form id="modelForm">
+
+
+            <!-- MODEL NAME -->
+
+            <div class="form-group">
+
+                <label for="modelName">
+
+                    MODEL NAME
+
+                </label>
+
+                <input
+                    type="text"
+                    id="modelName"
+                    placeholder="e.g. iPhone 17 Pro Max"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DISPLAY ORDER -->
+
+            <div class="form-group">
+
+                <label for="modelOrder">
+
+                    DISPLAY ORDER
+
+                </label>
+
+                <input
+                    type="number"
+                    id="modelOrder"
+                    min="1"
+                    placeholder="1"
+                    required
+                >
+
+                <small>
+                    Smaller numbers appear first.
+                </small>
+
+            </div>
+
+
+            <!-- AVAILABILITY -->
+
+            <div class="availability-row">
+
+                <div>
+
+                    <strong>
+                        Available for customers
+                    </strong>
+
+                    <small>
+                        Turn this off to temporarily
+                        hide this model.
+                    </small>
+
+                </div>
+
+
+                <label class="main-toggle">
+
+                    <input
+                        type="checkbox"
+                        id="modelActive"
+                        checked
+                    >
+
+                    <span class="main-toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="model-modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-model-button"
+                    id="cancelModel"
+                >
+                    CANCEL
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-model-button"
+                >
+                    SAVE MODEL
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+        
     </main>
 
 </div>
