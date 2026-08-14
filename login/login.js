@@ -1,370 +1,257 @@
-/* =========================================================
+/* =====================================================
    NEONCASE — GOOGLE LOGIN
-   FIXED VERSION
-========================================================= */
-
-import { firebaseConfig } from "../firebase-config.js";
+===================================================== */
 
 import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    app
+} from "../firebase-config.js";
+
 
 import {
     getAuth,
     GoogleAuthProvider,
     signInWithPopup,
-    onAuthStateChanged,
     setPersistence,
     browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 
-/* =========================================================
-   FIREBASE INITIALIZATION
-========================================================= */
 
-let app;
-let auth;
-let provider;
+/* =====================================================
+   FIREBASE AUTH
+===================================================== */
 
-try {
-
-    app = initializeApp(firebaseConfig);
-
-    auth = getAuth(app);
-
-    provider = new GoogleAuthProvider();
-
-    console.log("Firebase initialized successfully.");
-
-} catch (error) {
-
-    console.error("FIREBASE INITIALIZATION ERROR:", error);
-
-    const message = document.getElementById("loginMessage");
-
-    if (message) {
-        message.textContent =
-            "Firebase could not be initialized. Check firebase-config.js";
-    }
-
-    throw error;
-}
+const auth =
+    getAuth(app);
 
 
-/* =========================================================
+const provider =
+    new GoogleAuthProvider();
+
+
+
+/* =====================================================
    HTML ELEMENTS
-========================================================= */
+===================================================== */
 
 const googleButton =
-    document.getElementById("googleLogin");
+    document.getElementById(
+        "googleLogin"
+    );
+
 
 const loginMessage =
-    document.getElementById("loginMessage");
+    document.getElementById(
+        "loginMessage"
+    );
 
 
-/* =========================================================
-   CHECK HTML
-========================================================= */
+
+/* =====================================================
+   CHECK ELEMENTS
+===================================================== */
 
 if (!googleButton) {
 
     console.error(
-        'ERROR: Button with id="googleLogin" was not found.'
+        "Google login button not found."
     );
 
-    if (loginMessage) {
+}
+
+
+if (!loginMessage) {
+
+    console.error(
+        "Login message element not found."
+    );
+
+}
+
+
+
+/* =====================================================
+   GOOGLE LOGIN
+===================================================== */
+
+googleButton.addEventListener(
+    "click",
+    async () => {
+
+        /* Disable button */
+
+        googleButton.disabled = true;
+
+
         loginMessage.textContent =
-            "Login button was not found.";
-    }
-
-} else {
-
-    console.log("Google login button found.");
-
-}
+            "Opening Google...";
 
 
-/* =========================================================
-   FIREBASE LOGIN PERSISTENCE
-========================================================= */
+        try {
 
-try {
+            /* =========================================
+               REMEMBER LOGIN
+            ========================================== */
 
-    await setPersistence(
-        auth,
-        browserLocalPersistence
-    );
-
-    console.log("Firebase persistence enabled.");
-
-} catch (error) {
-
-    console.warn(
-        "Persistence failed, continuing with login:",
-        error
-    );
-
-    /*
-       IMPORTANT:
-       We DO NOT stop the login if persistence fails.
-    */
-}
+            await setPersistence(
+                auth,
+                browserLocalPersistence
+            );
 
 
-/* =========================================================
-   CHECK EXISTING LOGIN
-========================================================= */
+            /* =========================================
+               GOOGLE SIGN IN
+            ========================================== */
 
-onAuthStateChanged(
-    auth,
-    (user) => {
+            const result =
+                await signInWithPopup(
+                    auth,
+                    provider
+                );
 
-        if (!user) {
-            console.log("No existing Firebase user.");
-            return;
-        }
 
-        console.log(
-            "Existing Firebase user:",
-            user.email
-        );
+            const user =
+                result.user;
 
-        if (loginMessage) {
+
+            console.log(
+                "Google login successful."
+            );
+
+
+            console.log(
+                "Name:",
+                user.displayName
+            );
+
+
+            console.log(
+                "Email:",
+                user.email
+            );
+
+
+            /* =========================================
+               SUCCESS MESSAGE
+            ========================================== */
 
             loginMessage.textContent =
-                `Welcome back, ${
-                    user.displayName || "Customer"
-                }`;
+                "Login successful. Opening your order...";
+
+
+            /* =========================================
+               GO TO ORDER PAGE
+            ========================================== */
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "../order/";
+
+                },
+                700
+            );
+
 
         }
 
-        setTimeout(() => {
 
-            window.location.href =
-                "../order/index.html";
+        catch (error) {
 
-        }, 700);
+            console.error(
+                "GOOGLE LOGIN ERROR:",
+                error
+            );
+
+
+            console.error(
+                "ERROR CODE:",
+                error.code
+            );
+
+
+            googleButton.disabled =
+                false;
+
+
+
+            /* =========================================
+               USER CANCELLED POPUP
+            ========================================== */
+
+            if (
+                error.code ===
+                "auth/popup-closed-by-user"
+            ) {
+
+                loginMessage.textContent =
+                    "Google sign-in was cancelled.";
+
+                return;
+            }
+
+
+
+            /* =========================================
+               UNAUTHORIZED DOMAIN
+            ========================================== */
+
+            if (
+                error.code ===
+                "auth/unauthorized-domain"
+            ) {
+
+                loginMessage.textContent =
+                    "This website domain is not authorized in Firebase.";
+
+                return;
+            }
+
+
+
+            /* =========================================
+               POPUP BLOCKED
+            ========================================== */
+
+            if (
+                error.code ===
+                "auth/popup-blocked"
+            ) {
+
+                loginMessage.textContent =
+                    "Google popup was blocked. Please allow popups and try again.";
+
+                return;
+            }
+
+
+
+            /* =========================================
+               ACCOUNT EXISTS
+            ========================================== */
+
+            if (
+                error.code ===
+                "auth/account-exists-with-different-credential"
+            ) {
+
+                loginMessage.textContent =
+                    "This email is already registered with another sign-in method.";
+
+                return;
+            }
+
+
+
+            /* =========================================
+               GENERAL ERROR
+            ========================================== */
+
+            loginMessage.textContent =
+                "Unable to sign in. Please try again.";
+
+        }
 
     }
 );
-
-
-/* =========================================================
-   GOOGLE SIGN-IN
-========================================================= */
-
-if (googleButton) {
-
-    googleButton.addEventListener(
-        "click",
-        async () => {
-
-            console.log("Google button clicked.");
-
-            try {
-
-                googleButton.disabled = true;
-
-                if (loginMessage) {
-                    loginMessage.textContent =
-                        "Opening Google...";
-                }
-
-
-                console.log(
-                    "Starting Google sign-in..."
-                );
-
-
-                const result =
-                    await signInWithPopup(
-                        auth,
-                        provider
-                    );
-
-
-                const user =
-                    result.user;
-
-
-                console.log(
-                    "GOOGLE LOGIN SUCCESSFUL"
-                );
-
-                console.log(
-                    "Name:",
-                    user.displayName
-                );
-
-                console.log(
-                    "Email:",
-                    user.email
-                );
-
-                console.log(
-                    "UID:",
-                    user.uid
-                );
-
-
-                if (loginMessage) {
-
-                    loginMessage.textContent =
-                        "Login successful. Opening your order...";
-
-                }
-
-
-                setTimeout(() => {
-
-                    window.location.href =
-                        "../order/index.html";
-
-                }, 500);
-
-
-            } catch (error) {
-
-                console.error(
-                    "=============================="
-                );
-
-                console.error(
-                    "GOOGLE LOGIN ERROR"
-                );
-
-                console.error(
-                    "ERROR CODE:",
-                    error.code
-                );
-
-                console.error(
-                    "ERROR MESSAGE:",
-                    error.message
-                );
-
-                console.error(
-                    "FULL ERROR:",
-                    error
-                );
-
-                console.error(
-                    "=============================="
-                );
-
-
-                googleButton.disabled = false;
-
-
-                /* -----------------------------------------
-                   USER CANCELLED POPUP
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/popup-closed-by-user"
-                ) {
-
-                    loginMessage.textContent =
-                        "Google sign-in was cancelled.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   POPUP BLOCKED
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/popup-blocked"
-                ) {
-
-                    loginMessage.textContent =
-                        "Google popup was blocked. Please allow popups and try again.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   UNAUTHORIZED DOMAIN
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/unauthorized-domain"
-                ) {
-
-                    loginMessage.textContent =
-                        "This website domain is not authorized in Firebase.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   OPERATION NOT ALLOWED
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/operation-not-allowed"
-                ) {
-
-                    loginMessage.textContent =
-                        "Google Sign-In is not enabled in Firebase.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   POPUP OPERATION NOT SUPPORTED
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/popup-operation-not-supported"
-                ) {
-
-                    loginMessage.textContent =
-                        "Google popup login is not supported in this browser.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   NETWORK ERROR
-                ----------------------------------------- */
-
-                if (
-                    error.code ===
-                    "auth/network-request-failed"
-                ) {
-
-                    loginMessage.textContent =
-                        "Network error. Please check your internet connection.";
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   GENERAL ERROR
-                ----------------------------------------- */
-
-                loginMessage.textContent =
-                    error.code ||
-                    error.message ||
-                    "Unable to sign in. Please try again.";
-
-            }
-
-        }
-    );
-
-}
