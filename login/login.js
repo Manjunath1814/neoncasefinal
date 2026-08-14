@@ -1,10 +1,13 @@
 /* =========================================================
    NEONCASE — GOOGLE LOGIN
+   FIXED VERSION
 ========================================================= */
 
-import { app }
-    from "../firebase-config.js";
+import { firebaseConfig } from "../firebase-config.js";
 
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
     getAuth,
@@ -16,33 +19,37 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 
-
 /* =========================================================
    FIREBASE INITIALIZATION
 ========================================================= */
 
-const app =
-    initializeApp(firebaseConfig);
+let app;
+let auth;
+let provider;
 
+try {
 
-const auth =
-    getAuth(app);
+    app = initializeApp(firebaseConfig);
 
+    auth = getAuth(app);
 
-const provider =
-    new GoogleAuthProvider();
+    provider = new GoogleAuthProvider();
 
+    console.log("Firebase initialized successfully.");
 
+} catch (error) {
 
-/* =========================================================
-   FIREBASE LOGIN PERSISTENCE
-========================================================= */
+    console.error("FIREBASE INITIALIZATION ERROR:", error);
 
-await setPersistence(
-    auth,
-    browserLocalPersistence
-);
+    const message = document.getElementById("loginMessage");
 
+    if (message) {
+        message.textContent =
+            "Firebase could not be initialized. Check firebase-config.js";
+    }
+
+    throw error;
+}
 
 
 /* =========================================================
@@ -50,16 +57,59 @@ await setPersistence(
 ========================================================= */
 
 const googleButton =
-    document.getElementById(
-        "googleLogin"
-    );
-
+    document.getElementById("googleLogin");
 
 const loginMessage =
-    document.getElementById(
-        "loginMessage"
+    document.getElementById("loginMessage");
+
+
+/* =========================================================
+   CHECK HTML
+========================================================= */
+
+if (!googleButton) {
+
+    console.error(
+        'ERROR: Button with id="googleLogin" was not found.'
     );
 
+    if (loginMessage) {
+        loginMessage.textContent =
+            "Login button was not found.";
+    }
+
+} else {
+
+    console.log("Google login button found.");
+
+}
+
+
+/* =========================================================
+   FIREBASE LOGIN PERSISTENCE
+========================================================= */
+
+try {
+
+    await setPersistence(
+        auth,
+        browserLocalPersistence
+    );
+
+    console.log("Firebase persistence enabled.");
+
+} catch (error) {
+
+    console.warn(
+        "Persistence failed, continuing with login:",
+        error
+    );
+
+    /*
+       IMPORTANT:
+       We DO NOT stop the login if persistence fails.
+    */
+}
 
 
 /* =========================================================
@@ -71,28 +121,23 @@ onAuthStateChanged(
     (user) => {
 
         if (!user) {
-
+            console.log("No existing Firebase user.");
             return;
-
         }
-
 
         console.log(
             "Existing Firebase user:",
             user.email
         );
 
+        if (loginMessage) {
 
-        loginMessage.textContent =
-            `Welcome back, ${
-                user.displayName || "Customer"
-            }`;
+            loginMessage.textContent =
+                `Welcome back, ${
+                    user.displayName || "Customer"
+                }`;
 
-
-        /*
-         * If the customer is already logged in,
-         * we can take them directly to the order page.
-         */
+        }
 
         setTimeout(() => {
 
@@ -105,135 +150,221 @@ onAuthStateChanged(
 );
 
 
-
 /* =========================================================
    GOOGLE SIGN-IN
 ========================================================= */
 
-googleButton.addEventListener(
-    "click",
-    async () => {
+if (googleButton) {
 
-        try {
+    googleButton.addEventListener(
+        "click",
+        async () => {
 
-            googleButton.disabled =
-                true;
+            console.log("Google button clicked.");
+
+            try {
+
+                googleButton.disabled = true;
+
+                if (loginMessage) {
+                    loginMessage.textContent =
+                        "Opening Google...";
+                }
 
 
-            loginMessage.textContent =
-                "Opening Google...";
-
-
-            const result =
-                await signInWithPopup(
-                    auth,
-                    provider
+                console.log(
+                    "Starting Google sign-in..."
                 );
 
 
-            const user =
-                result.user;
+                const result =
+                    await signInWithPopup(
+                        auth,
+                        provider
+                    );
 
 
-            console.log(
-                "Google login successful"
-            );
+                const user =
+                    result.user;
 
 
-            console.log(
-                "Name:",
-                user.displayName
-            );
+                console.log(
+                    "GOOGLE LOGIN SUCCESSFUL"
+                );
+
+                console.log(
+                    "Name:",
+                    user.displayName
+                );
+
+                console.log(
+                    "Email:",
+                    user.email
+                );
+
+                console.log(
+                    "UID:",
+                    user.uid
+                );
 
 
-            console.log(
-                "Email:",
-                user.email
-            );
+                if (loginMessage) {
+
+                    loginMessage.textContent =
+                        "Login successful. Opening your order...";
+
+                }
 
 
-            loginMessage.textContent =
-                "Login successful. Opening your order...";
+                setTimeout(() => {
+
+                    window.location.href =
+                        "../order/index.html";
+
+                }, 500);
 
 
-            /*
-             * Firebase has authenticated
-             * the customer and local persistence
-             * is enabled.
-             */
+            } catch (error) {
+
+                console.error(
+                    "=============================="
+                );
+
+                console.error(
+                    "GOOGLE LOGIN ERROR"
+                );
+
+                console.error(
+                    "ERROR CODE:",
+                    error.code
+                );
+
+                console.error(
+                    "ERROR MESSAGE:",
+                    error.message
+                );
+
+                console.error(
+                    "FULL ERROR:",
+                    error
+                );
+
+                console.error(
+                    "=============================="
+                );
 
 
-            setTimeout(() => {
-
-                window.location.href =
-                    "../order/index.html";
-
-            }, 500);
+                googleButton.disabled = false;
 
 
-        }
+                /* -----------------------------------------
+                   USER CANCELLED POPUP
+                ----------------------------------------- */
 
-        catch (error) {
+                if (
+                    error.code ===
+                    "auth/popup-closed-by-user"
+                ) {
 
-            console.error(
-                "GOOGLE LOGIN ERROR:",
-                error
-            );
+                    loginMessage.textContent =
+                        "Google sign-in was cancelled.";
 
-
-            console.error(
-                "ERROR CODE:",
-                error.code
-            );
-
-
-            googleButton.disabled =
-                false;
+                    return;
+                }
 
 
-            /*
-             * User closed the Google popup
-             */
+                /* -----------------------------------------
+                   POPUP BLOCKED
+                ----------------------------------------- */
 
-            if (
-                error.code ===
-                "auth/popup-closed-by-user"
-            ) {
+                if (
+                    error.code ===
+                    "auth/popup-blocked"
+                ) {
+
+                    loginMessage.textContent =
+                        "Google popup was blocked. Please allow popups and try again.";
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   UNAUTHORIZED DOMAIN
+                ----------------------------------------- */
+
+                if (
+                    error.code ===
+                    "auth/unauthorized-domain"
+                ) {
+
+                    loginMessage.textContent =
+                        "This website domain is not authorized in Firebase.";
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   OPERATION NOT ALLOWED
+                ----------------------------------------- */
+
+                if (
+                    error.code ===
+                    "auth/operation-not-allowed"
+                ) {
+
+                    loginMessage.textContent =
+                        "Google Sign-In is not enabled in Firebase.";
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   POPUP OPERATION NOT SUPPORTED
+                ----------------------------------------- */
+
+                if (
+                    error.code ===
+                    "auth/popup-operation-not-supported"
+                ) {
+
+                    loginMessage.textContent =
+                        "Google popup login is not supported in this browser.";
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   NETWORK ERROR
+                ----------------------------------------- */
+
+                if (
+                    error.code ===
+                    "auth/network-request-failed"
+                ) {
+
+                    loginMessage.textContent =
+                        "Network error. Please check your internet connection.";
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   GENERAL ERROR
+                ----------------------------------------- */
 
                 loginMessage.textContent =
-                    "Google sign-in was cancelled.";
-
-                return;
+                    error.code ||
+                    error.message ||
+                    "Unable to sign in. Please try again.";
 
             }
 
-
-            /*
-             * Domain isn't authorized
-             */
-
-            if (
-                error.code ===
-                "auth/unauthorized-domain"
-            ) {
-
-                loginMessage.textContent =
-                    "This website domain is not authorized in Firebase.";
-
-                return;
-
-            }
-
-
-            /*
-             * General error
-             */
-
-            loginMessage.textContent =
-                error.code ||
-                "Unable to sign in. Please try again.";
-
         }
+    );
 
-    }
-);
+}
