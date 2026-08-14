@@ -1231,38 +1231,43 @@ if (modelForm) {
             event.preventDefault();
 
 
-            const name =
-                document
-                    .getElementById(
-                        "modelName"
-                    )
-                    .value
-                    .trim();
+            const nameInput =
+                document.getElementById(
+                    "modelName"
+                );
 
+            const orderInput =
+                document.getElementById(
+                    "modelOrder"
+                );
 
-            const order =
-                Number(
-                    document
-                        .getElementById(
-                            "modelOrder"
-                        )
-                        .value
+            const activeInput =
+                document.getElementById(
+                    "modelActive"
                 );
 
 
-            const active =
-                document
-                    .getElementById(
-                        "modelActive"
-                    )
-                    .checked;
+            const name =
+                nameInput.value.trim();
 
+            const order =
+                Number(orderInput.value);
+
+            const active =
+                activeInput.checked;
+
+
+            /* =========================================
+               VALIDATION
+            ========================================= */
 
             if (!name) {
 
                 alert(
                     "Please enter an iPhone model."
                 );
+
+                nameInput.focus();
 
                 return;
 
@@ -1278,6 +1283,8 @@ if (modelForm) {
                     "Please enter a valid display order."
                 );
 
+                orderInput.focus();
+
                 return;
 
             }
@@ -1289,7 +1296,20 @@ if (modelForm) {
                 );
 
 
+            /*
+             * Remember whether this is EDIT
+             * before closing the modal.
+             */
+
+            const isEditing =
+                Boolean(editingModelId);
+
+
             try {
+
+                /* =====================================
+                   SAVING STATE
+                ===================================== */
 
                 if (saveButton) {
 
@@ -1302,20 +1322,21 @@ if (modelForm) {
                 }
 
 
-                if (editingModelId) {
+                /* =====================================
+                   UPDATE EXISTING MODEL
+                ===================================== */
 
-                    /*
-                     * EDIT EXISTING MODEL
-                     */
+                if (isEditing) {
 
                     await updateDoc(
+
                         doc(
                             modelsDB,
                             "phoneModels",
                             editingModelId
                         ),
-                        {
 
+                        {
                             name: name,
 
                             order: order,
@@ -1324,25 +1345,27 @@ if (modelForm) {
 
                             updatedAt:
                                 serverTimestamp()
-
                         }
+
                     );
 
                 }
 
+
+                /* =====================================
+                   ADD NEW MODEL
+                ===================================== */
+
                 else {
 
-                    /*
-                     * CREATE NEW MODEL
-                     */
-
                     await addDoc(
+
                         collection(
                             modelsDB,
                             "phoneModels"
                         ),
-                        {
 
+                        {
                             name: name,
 
                             order: order,
@@ -1354,28 +1377,37 @@ if (modelForm) {
 
                             updatedAt:
                                 serverTimestamp()
-
                         }
+
                     );
 
                 }
 
 
-                closeModelModal();
+                /* =====================================
+                   FIRESTORE SAVED SUCCESSFULLY
+                ===================================== */
 
-
-                await loadPhoneModels();
-
-
-                alert(
-                    editingModelId
-                        ? "Model updated successfully."
-                        : "Model added successfully."
+                console.log(
+                    "iPhone model saved successfully."
                 );
 
 
-                editingModelId =
-                    null;
+                /*
+                 * Close the popup immediately.
+                 */
+
+                closeModelModal();
+
+
+                /*
+                 * Reload models from Firestore.
+                 * This makes the newly saved model
+                 * appear in the list.
+                 */
+
+                await loadPhoneModels();
+
 
             }
 
@@ -1388,12 +1420,17 @@ if (modelForm) {
 
 
                 alert(
-                    "Could not save the model. Check your Firestore rules."
+                    "Could not save the model.\n\n" +
+                    "Please check your Firestore rules."
                 );
 
             }
 
             finally {
+
+                /*
+                 * Restore SAVE button.
+                 */
 
                 if (saveButton) {
 
@@ -1411,8 +1448,6 @@ if (modelForm) {
     );
 
 }
-
-
 /* =========================================================
    TOGGLE MODEL
 ========================================================= */
