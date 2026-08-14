@@ -18,7 +18,35 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+console.log("MODELS JS LOADED");
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const addButton =
+        document.getElementById("addModelButton");
+
+    const modal =
+        document.getElementById("modelModal");
+
+    if (!addButton) {
+        alert("ADD MODEL BUTTON NOT FOUND");
+        return;
+    }
+
+    if (!modal) {
+        alert("MODEL MODAL NOT FOUND");
+        return;
+    }
+
+    addButton.addEventListener("click", () => {
+
+        console.log("ADD MODEL CLICKED");
+
+        modal.classList.add("show");
+
+    });
+
+});
 
 /* =====================================================
    FIRESTORE COLLECTION
