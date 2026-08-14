@@ -1,0 +1,4882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NeonCase — Make Your Phone Glow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    /* =========================================================
+   NEONCASE
+   PART 1 — NAVIGATION + HERO
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: ##faf7f0;
+
+    color: #111111;
+
+    overflow-x: hidden;
+}
+
+
+button,
+a {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    width: 100%;
+
+    height: 76px;
+
+    background: rgba(247, 241, 230, 0.94);
+
+    border-bottom:
+        1px solid rgba(30, 35, 45, 0.08);
+
+    position: relative;
+
+    z-index: 100;
+}
+
+
+.nav-container {
+    width: 100%;
+
+    max-width: 1440px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    padding:
+        0 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    text-decoration: none;
+
+    color: #111111;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+
+.logo span {
+    color: #145fce;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+
+    margin-left: 80px;
+}
+
+
+.nav-links a {
+    position: relative;
+
+    text-decoration: none;
+
+    color: #202020;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.nav-links a:hover {
+    color: #145fce;
+}
+
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -8px;
+
+    width: 0;
+
+    height: 1.5px;
+
+    background: #145fce;
+
+    transition:
+        width 0.25s ease;
+}
+
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   NAV ACTIONS
+========================================================= */
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.nav-button {
+    width: 25px;
+
+    height: 25px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+
+.nav-button svg {
+    width: 20px;
+
+    height: 20px;
+
+    fill: none;
+
+    stroke: #171717;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.nav-button:hover svg {
+    transform: scale(1.08);
+}
+
+
+/* Cart number */
+
+.cart-count {
+    position: absolute;
+
+    top: -5px;
+
+    right: -7px;
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #145fce;
+
+    color: white;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+    display: none;
+
+    width: 30px;
+
+    height: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+
+.mobile-menu span {
+    display: block;
+
+    width: 21px;
+
+    height: 1.5px;
+
+    background: #111111;
+}
+
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section {
+    width: 100%;
+
+    min-height:
+        calc(100vh - 76px);
+
+    background:
+        radial-gradient(
+            circle at 72% 45%,
+            rgba(35, 111, 221, 0.13),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(24, 96, 205, 0.07),
+            transparent 42%
+        ),
+
+        #f7f1e6;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HERO CONTAINER
+========================================================= */
+
+.hero-container {
+    width: 100%;
+
+    max-width: 1440px;
+
+    min-height:
+        calc(100vh - 76px);
+
+    margin: 0 auto;
+
+    padding:
+        40px 52px 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        46% 54%;
+
+    align-items: center;
+}
+
+
+
+/* =========================================================
+   LEFT HERO CONTENT
+========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    padding-left: 32px;
+
+    padding-bottom: 10px;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.hero-eyebrow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    color: #185fbf;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.eyebrow-line {
+    width: 28px;
+
+    height: 1.5px;
+
+    background: #185fbf;
+}
+
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title {
+    margin: 0;
+
+    color: #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: clamp(
+        58px,
+        5.8vw,
+        88px
+    );
+
+    line-height: 0.91;
+
+    letter-spacing: -4px;
+
+    font-weight: 800;
+}
+
+
+.hero-title span {
+    display: block;
+
+    color: #111111;
+}
+
+
+.hero-title strong {
+    display: block;
+
+    color: #145fce;
+
+    font-weight: 800;
+}
+
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+    max-width: 390px;
+
+    margin-top: 27px;
+
+    color: #4a4945;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    font-weight: 400;
+}
+
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.hero-price {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    margin-top: 26px;
+}
+
+
+.price {
+    color: #111111;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+
+.price-label {
+    margin-top: 7px;
+
+    color: #55524d;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.buy-button {
+    width: 154px;
+
+    height: 48px;
+
+    margin-top: 25px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769dc,
+            #0d56c1
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(20, 95, 206, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.buy-button span {
+    font-size: 19px;
+
+    line-height: 0;
+}
+
+
+.buy-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(20, 95, 206, 0.3);
+}
+
+
+
+/* =========================================================
+   CUSTOMER TRUST
+========================================================= */
+
+.hero-trust {
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 25px;
+}
+
+
+.trust-avatars {
+    display: flex;
+
+    align-items: center;
+}
+
+
+.avatar {
+    width: 29px;
+
+    height: 29px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid #f7f1e6;
+
+    margin-left: -7px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #ffffff;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+
+.avatar-one {
+    background: #454545;
+}
+
+
+.avatar-two {
+    background: #7a513a;
+}
+
+
+.avatar-three {
+    background: #1e5278;
+}
+
+
+.avatar-four {
+    background: #222222;
+}
+
+
+.trust-content {
+    margin-left: 11px;
+}
+
+
+.trust-stars {
+    color: #145fce;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+.trust-content p {
+    margin-top: 4px;
+
+    color: #55524d;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+
+/* =========================================================
+   PRODUCT AREA
+========================================================= */
+
+.hero-product-area {
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 580px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   BLUE GLOW
+========================================================= */
+
+.hero-blue-glow {
+    position: absolute;
+
+    width: 490px;
+
+    height: 490px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(36, 124, 245, 0.24) 0%,
+            rgba(36, 124, 245, 0.10) 35%,
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   LIGHT RING
+========================================================= */
+
+.hero-light-ring {
+    position: absolute;
+
+    width: 510px;
+
+    height: 510px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 0 40px
+        rgba(42, 126, 238, 0.15);
+
+    z-index: 1;
+}
+
+
+
+/* =========================================================
+   PRODUCT
+========================================================= */
+
+.hero-product {
+    width: 570px;
+
+    height: 610px;
+
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.hero-product img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 30px 35px
+            rgba(0, 30, 80, 0.18)
+        );
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.hero-product:hover img {
+    transform:
+        translateY(-7px)
+        scale(1.015);
+}
+
+
+
+/* =========================================================
+   PRODUCT SHADOW
+========================================================= */
+
+.product-shadow {
+    position: absolute;
+
+    bottom: 75px;
+
+    width: 300px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(17, 52, 93, 0.18);
+
+    filter: blur(18px);
+
+    z-index: 1;
+}
+
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1500px) {
+
+    .hero-container {
+        padding-left: 70px;
+
+        padding-right: 70px;
+    }
+
+
+    .hero-content {
+        padding-left: 50px;
+    }
+
+
+    .hero-product {
+        width: 650px;
+
+        height: 680px;
+    }
+
+
+    .hero-blue-glow {
+        width: 560px;
+
+        height: 560px;
+    }
+
+
+    .hero-light-ring {
+        width: 570px;
+
+        height: 570px;
+    }
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .nav-container {
+        padding:
+            0 28px;
+    }
+
+
+    .nav-links {
+        gap: 22px;
+
+        margin-left: 20px;
+    }
+
+
+    .hero-container {
+        padding:
+            30px 28px 45px;
+
+        grid-template-columns:
+            48% 52%;
+    }
+
+
+    .hero-content {
+        padding-left: 10px;
+    }
+
+
+    .hero-title {
+        font-size: 55px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero-product {
+        width: 470px;
+
+        height: 520px;
+    }
+
+
+    .hero-blue-glow {
+        width: 420px;
+
+        height: 420px;
+    }
+
+
+    .hero-light-ring {
+        width: 430px;
+
+        height: 430px;
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 66px;
+    }
+
+
+    .nav-container {
+        padding:
+            0 18px;
+    }
+
+
+    .logo {
+        font-size: 20px;
+    }
+
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .nav-actions {
+        display: none;
+    }
+
+
+    .mobile-menu {
+        display: flex;
+    }
+
+
+
+    /* HERO */
+
+    .hero-section {
+        min-height: auto;
+
+        background:
+            radial-gradient(
+                circle at 75% 65%,
+                rgba(35, 111, 221, 0.14),
+                transparent 35%
+            ),
+
+            #f7f1e6;
+    }
+
+
+    .hero-container {
+        min-height: auto;
+
+        padding:
+            55px 20px 35px;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    .hero-content {
+        padding: 0;
+
+        text-align: left;
+    }
+
+
+    .hero-eyebrow {
+        margin-bottom: 17px;
+    }
+
+
+    .hero-title {
+        font-size: 51px;
+
+        letter-spacing: -2.8px;
+    }
+
+
+    .hero-description {
+        max-width: 330px;
+
+        margin-top: 20px;
+
+        font-size: 12px;
+    }
+
+
+    .hero-price {
+        margin-top: 21px;
+    }
+
+
+    .price {
+        font-size: 27px;
+    }
+
+
+    .buy-button {
+        width: 145px;
+
+        height: 45px;
+
+        margin-top: 21px;
+    }
+
+
+    .hero-trust {
+        margin-top: 22px;
+    }
+
+
+    /* PRODUCT */
+
+    .hero-product-area {
+        min-height: 430px;
+
+        height: 430px;
+
+        margin-top: 10px;
+    }
+
+
+    .hero-product {
+        width: 390px;
+
+        height: 430px;
+    }
+
+
+    .hero-blue-glow {
+        width: 360px;
+
+        height: 360px;
+    }
+
+
+    .hero-light-ring {
+        width: 370px;
+
+        height: 370px;
+    }
+
+
+    .product-shadow {
+        bottom: 35px;
+    }
+
+}
+
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero-container {
+        padding:
+            43px 17px 25px;
+    }
+
+
+    .hero-title {
+        font-size: 43px;
+
+        letter-spacing: -2.3px;
+    }
+
+
+    .hero-description {
+        font-size: 11px;
+
+        max-width: 290px;
+    }
+
+
+    .hero-product-area {
+        min-height: 365px;
+
+        height: 365px;
+    }
+
+
+    .hero-product {
+        width: 330px;
+
+        height: 365px;
+    }
+
+
+    .hero-blue-glow {
+        width: 300px;
+
+        height: 300px;
+    }
+
+
+    .hero-light-ring {
+        width: 310px;
+
+        height: 310px;
+    }
+
+
+    .product-shadow {
+        bottom: 25px;
+
+        width: 230px;
+    }
+
+}
+/* =========================================================
+   PART 2 — EXPERIENCE THE GLOW
+========================================================= */
+
+.experience-section {
+
+    width: 100%;
+
+    min-height: 850px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #f7f1e6;
+
+    transition:
+        background 1.2s ease,
+        color 1.2s ease;
+
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.experience-inner {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    min-height: 850px;
+
+    margin: 0 auto;
+
+    padding:
+        95px 55px 80px;
+
+    position: relative;
+
+}
+
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.experience-heading {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+.experience-number {
+
+    display: block;
+
+    color: #1766d4;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.experience-heading h2 {
+
+    margin: 0;
+
+    color: #111111;
+
+    font-size:
+        clamp(38px, 4.5vw, 68px);
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    transition:
+        color 1.2s ease;
+
+}
+
+
+.experience-heading p {
+
+    margin-top: 17px;
+
+    color: #66615a;
+
+    font-size: 13px;
+
+    transition:
+        color 1.2s ease;
+
+}
+
+
+
+/* =========================================================
+   TOGGLE AREA
+========================================================= */
+
+.glow-toggle-area {
+
+    width: 100%;
+
+    margin-top: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+
+.toggle-label {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    transition:
+        color 0.8s ease;
+
+}
+
+
+.day-label {
+
+    color: #e58b19;
+
+}
+
+
+.night-label {
+
+    color: #26374f;
+
+}
+
+
+
+/* =========================================================
+   TOGGLE BUTTON
+========================================================= */
+
+/* =========================================================
+   DAY / NIGHT TOGGLE
+========================================================= */
+
+.glow-toggle {
+    width: 280px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+
+/* LONG THIN LINE */
+
+.toggle-track {
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    width: 100%;
+    height: 7px;
+
+    transform: translateY(-50%);
+
+    border-radius: 20px;
+
+    overflow: visible;
+
+    background: #26374f;
+}
+
+
+/* ORANGE DAY HALF */
+
+.toggle-day {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    border-radius: 20px 0 0 20px;
+
+    background: #ed8b1c;
+}
+
+
+/* BLUE NIGHT HALF */
+
+.toggle-night {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    border-radius: 0 20px 20px 0;
+
+    background: #26374f;
+}
+
+
+/* =========================================================
+   MOVING KNOB
+========================================================= */
+
+.toggle-knob {
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 25px;
+    height: 25px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    border: 3px solid #ed8b1c;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.20);
+
+    z-index: 10;
+
+    transition:
+        left 0.7s cubic-bezier(
+            0.65,
+            0,
+            0.35,
+            1
+        ),
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+
+}
+
+
+/* =========================================================
+   NIGHT — MOVE KNOB TO FULL RIGHT
+========================================================= */
+
+.experience-section.night-mode
+.toggle-knob {
+
+    left: 100%;
+
+    border-color: #438cff;
+
+    box-shadow:
+        0 0 12px rgba(67, 140, 255, 0.55),
+        0 0 25px rgba(67, 140, 255, 0.25);
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE AREA
+========================================================= */
+
+.experience-image-box {
+
+    width: min(850px, 90%);
+
+    height: 540px;
+
+    margin:
+        50px auto 0;
+
+    border-radius: 28px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.95),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #e9ddca
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.9);
+
+    box-shadow:
+        0 25px 70px
+        rgba(40,35,25,0.10);
+
+    transition:
+        background 1.2s ease,
+        box-shadow 1.2s ease;
+
+}
+
+
+/* =========================================================
+   IMAGE GLOW — PREPARED FOR LATER
+========================================================= */
+
+.image-glow {
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,110,255,0.45),
+            rgba(0,110,255,0.12) 35%,
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    opacity: 0;
+
+    transform: scale(0.7);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+}
+
+
+/* =========================================================
+   PHONE IMAGE
+========================================================= */
+
+.experience-phone {
+
+    width: 500px;
+
+    height: 500px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 3;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 25px 30px
+            rgba(25,40,60,0.15)
+        );
+
+    transition:
+        filter 1.2s ease;
+
+}
+
+/* =========================================================
+   NIGHT MODE
+   ONLY THE PRODUCT IMAGE BOX CHANGES
+========================================================= */
+
+
+/* Keep the entire experience page unchanged */
+
+.experience-section.night-mode {
+    background: #f3eadb;
+}
+
+
+/* Heading stays exactly the same */
+
+.experience-section.night-mode
+.experience-heading h2 {
+    color: #111111;
+}
+
+
+.experience-section.night-mode
+.experience-heading p {
+    color: #66615a;
+}
+
+
+/* =========================================================
+   IMAGE BOX — THIS ALONE TURNS NIGHT
+========================================================= */
+
+.experience-section.night-mode
+.experience-image-box {
+
+    background:
+
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(18, 92, 190, 0.30),
+            transparent 42%
+        ),
+
+        linear-gradient(
+            145deg,
+            #071a32,
+            #030b18
+        );
+
+    border-color:
+        rgba(48, 126, 220, 0.25);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 55, 130, 0.28);
+
+}
+
+
+/* =========================================================
+   BLUE FOG STAYS INSIDE IMAGE BOX
+========================================================= */
+
+.experience-section.night-mode
+.image-glow {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT PHONE IMAGE
+========================================================= */
+
+.experience-section.night-mode
+.experience-phone {
+
+    filter:
+        drop-shadow(
+            0 20px 35px
+            rgba(0, 100, 255, 0.20)
+        );
+
+}
+
+
+
+
+/* Blue fog */
+
+.experience-section.night-mode
+.image-glow {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .experience-section {
+
+        min-height: 750px;
+
+    }
+
+
+    .experience-inner {
+
+        min-height: 750px;
+
+        padding:
+            70px 18px 60px;
+
+    }
+
+
+    .experience-heading h2 {
+
+        font-size: 39px;
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .experience-heading p {
+
+        font-size: 11px;
+
+    }
+
+
+    .glow-toggle-area {
+
+        gap: 9px;
+
+        margin-top: 30px;
+
+    }
+
+
+    .glow-toggle {
+
+        width: 190px;
+
+    }
+
+
+    .toggle-label {
+
+        font-size: 7px;
+
+    }
+
+
+    .experience-image-box {
+
+        width: 100%;
+
+        height: 440px;
+
+        margin-top: 40px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .experience-phone {
+
+        width: 360px;
+
+        height: 360px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .experience-heading h2 {
+
+        font-size: 32px;
+
+    }
+
+
+    .glow-toggle {
+
+        width: 150px;
+
+    }
+
+
+    .experience-image-box {
+
+        height: 390px;
+
+    }
+
+
+    .experience-phone {
+
+        width: 310px;
+
+        height: 310px;
+
+    }
+
+}
+    /* =========================================================
+   EXPERIENCE IMAGE BOX
+========================================================= */
+
+.experience-image-box {
+
+    width: min(850px, 90%);
+
+    height: 540px;
+
+    margin: 50px auto 0;
+
+    border-radius: 28px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.95),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #e9ddca
+        );
+
+    border: 1px solid
+        rgba(255,255,255,0.9);
+
+    box-shadow:
+        0 25px 70px
+        rgba(40,35,25,0.10);
+
+    transition:
+        background 1.2s ease,
+        border-color 1.2s ease,
+        box-shadow 1.2s ease;
+
+}
+
+
+/* =========================================================
+   BOTH PHONE IMAGES
+   EXACT SAME POSITION
+========================================================= */
+
+.experience-phone {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 500px;
+
+    height: 500px;
+
+    object-fit: contain;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: block;
+
+    z-index: 3;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   DAY IMAGE
+========================================================= */
+
+.day-phone {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT IMAGE
+========================================================= */
+
+.night-phone {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   BLUE FOG
+========================================================= */
+
+.image-glow {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 58%;
+
+    width: 500px;
+
+    height: 350px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.7);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,120,255,0.45),
+            rgba(0,90,220,0.18) 40%,
+            transparent 72%
+        );
+
+    filter: blur(35px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   NIGHT MODE
+   ONLY IMAGE BOX CHANGES
+========================================================= */
+
+.experience-section.night-mode
+.experience-image-box {
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(15,85,180,0.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #071a32,
+            #030a15
+        );
+
+    border-color:
+        rgba(45,120,220,0.30);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,60,150,0.30);
+
+}
+
+
+/* =========================================================
+   DAY → NIGHT IMAGE SWITCH
+========================================================= */
+
+.experience-section.night-mode
+.day-phone {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+.experience-section.night-mode
+.night-phone {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   NIGHT BLUE FOG
+========================================================= */
+
+.experience-section.night-mode
+.image-glow {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+            }
+    /* =========================================================
+   PART 3 — LIGHT. CAPTURED.
+========================================================= */
+
+.light-captured-section {
+
+    width: 100%;
+
+    min-height: 1000px;
+
+    padding:
+        110px 0 120px;
+
+    background: #f7f1e6;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.light-captured-heading {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+.section-number {
+
+    display: block;
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.light-captured-heading h2 {
+
+    color: #111111;
+
+    font-size:
+        clamp(45px, 6vw, 82px);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    font-weight: 800;
+
+}
+
+
+.light-captured-heading h2 span {
+
+    display: block;
+
+    color: #1766d4;
+
+}
+
+
+.light-captured-heading p {
+
+    margin-top: 20px;
+
+    color: #625d55;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =========================================================
+   CINEMATIC REEL
+========================================================= */
+
+.product-reel {
+
+    width: 100%;
+
+    margin-top: 70px;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* Soft fade at edges */
+
+.product-reel::before,
+.product-reel::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 12%;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+}
+
+
+.product-reel::before {
+
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #f7f1e6,
+            transparent
+        );
+
+}
+
+
+.product-reel::after {
+
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            #f7f1e6,
+            transparent
+        );
+
+}
+
+
+
+/* =========================================================
+   MOVING TRACK
+========================================================= */
+
+.reel-track {
+
+    display: flex;
+
+    width: max-content;
+
+    gap: 22px;
+
+    animation:
+        cinematicScroll 34s
+        linear
+        infinite;
+
+}
+
+
+.reel-track:hover {
+
+    animation-play-state: paused;
+
+}
+
+
+
+/* =========================================================
+   IMAGE CARDS
+========================================================= */
+
+.reel-image {
+
+    width: 420px;
+
+    height: 500px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #ebe1d1;
+
+    position: relative;
+
+}
+
+
+.reel-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 1s ease;
+
+}
+
+
+.reel-image:hover img {
+
+    transform:
+        scale(1.035);
+
+}
+
+
+
+/* =========================================================
+   SLOW INFINITE ANIMATION
+========================================================= */
+
+@keyframes cinematicScroll {
+
+    from {
+
+        transform:
+            translateX(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(
+                calc(
+                    -50% - 11px
+                )
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PURCHASE AREA
+========================================================= */
+
+.light-purchase {
+
+    margin:
+        110px auto 0;
+
+    width: min(600px, 90%);
+
+    text-align: center;
+
+}
+
+
+.purchase-brand {
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.light-purchase h3 {
+
+    margin-top: 15px;
+
+    color: #111111;
+
+    font-size:
+        clamp(30px, 4vw, 50px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.light-purchase h3 span {
+
+    display: block;
+
+    color: #1766d4;
+
+}
+
+
+.purchase-price {
+
+    margin-top: 28px;
+
+    color: #111111;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+
+.purchase-note {
+
+    margin-top: 6px;
+
+    color: #625d55;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.purchase-button {
+
+    width: 160px;
+
+    height: 50px;
+
+    margin:
+        25px auto 0;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d6ce0,
+            #0d58c8
+        );
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    box-shadow:
+        0 12px 28px
+        rgba(23,102,212,0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.purchase-button span {
+
+    font-size: 19px;
+
+}
+
+
+.purchase-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 17px 32px
+        rgba(23,102,212,0.30);
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .light-captured-section {
+
+        padding:
+            90px 0 100px;
+
+    }
+
+
+    .reel-image {
+
+        width: 350px;
+
+        height: 430px;
+
+    }
+
+
+    .reel-track {
+
+        gap: 17px;
+
+        animation-duration: 30s;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .light-captured-section {
+
+        min-height: 850px;
+
+        padding:
+            75px 0 90px;
+
+    }
+
+
+    .light-captured-heading {
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .light-captured-heading h2 {
+
+        font-size: 46px;
+
+        letter-spacing: -2.5px;
+
+    }
+
+
+    .light-captured-heading p {
+
+        font-size: 11px;
+
+    }
+
+
+    .product-reel {
+
+        margin-top: 50px;
+
+    }
+
+
+    .reel-image {
+
+        width: 275px;
+
+        height: 360px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .reel-track {
+
+        gap: 12px;
+
+        animation-duration: 26s;
+
+    }
+
+
+    .light-purchase {
+
+        margin-top: 80px;
+
+    }
+
+
+    .light-purchase h3 {
+
+        font-size: 31px;
+
+        letter-spacing: -1.5px;
+
+    }
+
+
+    .purchase-price {
+
+        font-size: 30px;
+
+    }
+
+}
+    /* =========================================================
+   PART 4 — WATCH THE GLOW
+========================================================= */
+
+.watch-glow-section {
+
+    width: 100%;
+
+    padding: 110px 0 120px;
+
+    background: #0a111d;
+
+    color: white;
+
+    overflow: hidden;
+
+}
+
+
+.watch-glow-heading {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+
+.watch-glow-heading > span {
+
+    color: #5b9eff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.watch-glow-heading h2 {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(42px, 5vw, 70px);
+
+    line-height: .9;
+
+    letter-spacing: -3px;
+
+}
+
+
+.watch-glow-heading strong {
+
+    display: block;
+
+    color: #438cff;
+
+}
+
+
+.watch-glow-heading p {
+
+    margin-top: 18px;
+
+    color: #9caabd;
+
+    font-size: 12px;
+
+}
+
+
+
+/* VIDEO */
+
+.watch-video {
+
+    width: min(1050px, 88%);
+
+    height: 590px;
+
+    margin: auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background: #030812;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.45);
+
+}
+
+
+.watch-video video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.video-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    pointer-events: none;
+
+}
+
+
+.play-symbol {
+
+    width: 64px;
+
+    height: 64px;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        rgba(255,255,255,.5);
+
+    background:
+        rgba(0,0,0,.25);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding-left: 4px;
+
+    font-size: 16px;
+
+}
+
+
+.video-overlay span {
+
+    margin-top: 15px;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+
+/* =========================================================
+   PART 5 — REVIEWS
+========================================================= */
+
+.reviews-section {
+
+    width: 100%;
+
+    padding: 110px 0;
+
+    background: #f7f1e6;
+
+    overflow: hidden;
+
+}
+
+
+.reviews-heading {
+
+    text-align: center;
+
+}
+
+
+.reviews-heading > span {
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.reviews-heading h2 {
+
+    margin-top: 14px;
+
+    font-size:
+        clamp(40px, 5vw, 65px);
+
+    line-height: .9;
+
+    letter-spacing: -3px;
+
+}
+
+
+.reviews-heading strong {
+
+    color: #1766d4;
+
+    display: block;
+
+}
+
+
+.reviews-track {
+
+    max-width: 1200px;
+
+    margin: 55px auto 0;
+
+    padding: 0 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.review-card {
+
+    min-height: 245px;
+
+    padding: 32px;
+
+    border-radius: 18px;
+
+    background: #fffaf2;
+
+    border: 1px solid
+        rgba(0,0,0,.06);
+
+    box-shadow:
+        0 15px 40px
+        rgba(50,40,25,.06);
+
+}
+
+
+.review-stars {
+
+    color: #1766d4;
+
+    letter-spacing: 2px;
+
+    font-size: 11px;
+
+}
+
+
+.review-card > p {
+
+    margin-top: 25px;
+
+    color: #252525;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+}
+
+
+.review-person {
+
+    margin-top: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.review-avatar {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #1766d4;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+}
+
+
+.review-person strong,
+.review-person span {
+
+    display: block;
+
+}
+
+
+.review-person strong {
+
+    font-size: 10px;
+
+}
+
+
+.review-person span {
+
+    margin-top: 3px;
+
+    color: #777;
+
+    font-size: 8px;
+
+}
+
+
+
+/* =========================================================
+   PART 6 — FAQ
+========================================================= */
+
+.faq-section {
+
+    width: 100%;
+
+    padding: 100px 0;
+
+    background: #f3eadb;
+
+    overflow: hidden;
+
+}
+
+
+.faq-container {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+}
+
+
+.faq-heading {
+
+    padding: 0 30px;
+
+}
+
+
+.faq-heading > span {
+
+    color: #1766d4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.faq-heading h2 {
+
+    margin-top: 13px;
+
+    font-size:
+        clamp(35px, 4vw, 55px);
+
+    line-height: .9;
+
+    letter-spacing: -2px;
+
+}
+
+
+.faq-heading strong {
+
+    color: #1766d4;
+
+}
+
+
+.faq-track {
+
+    margin-top: 45px;
+
+    display: flex;
+
+    gap: 15px;
+
+    overflow-x: auto;
+
+    padding:
+        0 30px 20px;
+
+    scrollbar-width: thin;
+
+}
+
+
+.faq-card {
+
+    flex: 0 0 245px;
+
+    min-height: 120px;
+
+    padding: 22px;
+
+    border: 1px solid
+        rgba(0,0,0,.08);
+
+    border-radius: 14px;
+
+    background: #fffaf2;
+
+    color: #111;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.faq-card:hover {
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+.faq-card > span {
+
+    display: block;
+
+    padding-right: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+}
+
+
+.faq-card > b {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 19px;
+
+    color: #1766d4;
+
+    font-size: 18px;
+
+}
+
+
+.faq-answer {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    margin-top: 0;
+
+    color: #666;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    transition:
+        max-height .35s ease,
+        margin-top .35s ease;
+
+}
+
+
+.faq-card.open .faq-answer {
+
+    max-height: 100px;
+
+    margin-top: 18px;
+
+}
+
+
+
+/* =========================================================
+   PART 7 — FINAL BUY
+========================================================= */
+
+.final-buy-section {
+
+    width: 100%;
+
+    padding: 100px 0;
+
+    background: #08111e;
+
+    overflow: hidden;
+
+}
+
+
+.final-buy-container {
+
+    max-width: 1200px;
+
+    min-height: 620px;
+
+    margin: auto;
+
+    padding: 0 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        55% 45%;
+
+    align-items: center;
+
+}
+
+
+/* PRODUCT */
+
+.final-product {
+
+    height: 570px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.final-product img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.final-blue-glow {
+
+    position: absolute;
+
+    width: 400px;
+
+    height: 400px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,120,255,.45),
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+}
+
+
+/* CONTENT */
+
+.final-buy-content {
+
+    padding-left: 45px;
+
+}
+
+
+.final-brand {
+
+    color: #5d9dff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.final-buy-content h2 {
+
+    margin-top: 18px;
+
+    color: white;
+
+    font-size:
+        clamp(45px, 5vw, 70px);
+
+    line-height: .9;
+
+    letter-spacing: -3px;
+
+}
+
+
+.final-buy-content h2 strong {
+
+    display: block;
+
+    color: #438cff;
+
+}
+
+
+.final-buy-content p {
+
+    margin-top: 22px;
+
+    max-width: 300px;
+
+    color: #aab6c7;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+.final-price {
+
+    margin-top: 30px;
+
+    color: white;
+
+    font-size: 36px;
+
+    font-weight: 700;
+
+}
+
+
+.final-prepaid {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8491a3;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.final-buy-button {
+
+    width: 160px;
+
+    height: 50px;
+
+    margin-top: 25px;
+
+    border-radius: 5px;
+
+    background: #438cff;
+
+    color: white;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.final-buy-button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.final-buy-button span {
+
+    font-size: 18px;
+
+}
+
+
+.final-trust {
+
+    margin-top: 20px;
+
+    color: #8290a3;
+
+    font-size: 8px;
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+/* =========================================================
+   PART 8 — FOOTER
+========================================================= */
+
+.site-footer {
+
+    width: 100%;
+
+    background: #050a12;
+
+    color: white;
+
+    padding:
+        80px 0 25px;
+
+}
+
+
+.footer-container {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 0 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap: 50px;
+
+}
+
+
+.footer-logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+.footer-logo span {
+
+    color: #438cff;
+
+}
+
+
+.footer-brand p {
+
+    margin-top: 18px;
+
+    color: #8c98a9;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+
+}
+
+
+.footer-socials {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    gap: 18px;
+
+}
+
+
+.footer-socials a {
+
+    color: #b9c2ce;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+}
+
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+}
+
+
+.footer-column h3 {
+
+    color: #438cff;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.footer-column a {
+
+    color: #929dac;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+}
+
+
+.footer-column a:hover {
+
+    color: white;
+
+}
+
+
+.footer-bottom {
+
+    max-width: 1250px;
+
+    margin:
+        65px auto 0;
+
+    padding:
+        20px 40px 0;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #626d7c;
+
+    font-size: 8px;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .watch-video {
+
+        height: 470px;
+
+    }
+
+
+    .reviews-track {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 600px;
+
+    }
+
+
+    .final-buy-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 50px;
+
+    }
+
+
+    .final-product {
+
+        height: 500px;
+
+    }
+
+
+    .final-buy-content {
+
+        padding-left: 0;
+
+        text-align: center;
+
+    }
+
+
+    .final-buy-content p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .final-buy-button {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .final-trust {
+
+        justify-content: center;
+
+    }
+
+
+    .footer-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .watch-glow-section {
+
+        padding: 75px 0 80px;
+
+    }
+
+
+    .watch-video {
+
+        width: 94%;
+
+        height: 350px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .reviews-section {
+
+        padding: 75px 0;
+
+    }
+
+
+    .reviews-track {
+
+        display: flex;
+
+        overflow-x: auto;
+
+        padding:
+            0 18px 20px;
+
+        scroll-snap-type: x mandatory;
+
+    }
+
+
+    .review-card {
+
+        flex:
+            0 0 82%;
+
+        scroll-snap-align: center;
+
+    }
+
+
+    .faq-section {
+
+        padding: 75px 0;
+
+    }
+
+
+    .faq-track {
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+    }
+
+
+    .faq-card {
+
+        flex-basis: 230px;
+
+    }
+
+
+    .final-buy-section {
+
+        padding: 70px 0;
+
+    }
+
+
+    .final-buy-container {
+
+        padding: 0 20px;
+
+    }
+
+
+    .final-product {
+
+        height: 390px;
+
+    }
+
+
+    .final-buy-content h2 {
+
+        font-size: 48px;
+
+    }
+
+
+    .footer-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        padding:
+            0 22px;
+
+        gap: 40px 25px;
+
+    }
+
+
+    .footer-brand {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .footer-bottom {
+
+        margin-top: 45px;
+
+        padding:
+            20px 22px 0;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+    }
+</style>
+<body>
+
+
+    <!-- =====================================================
+         PART 1 — NAVIGATION + HERO
+    ====================================================== -->
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <a href="index.html" class="logo">
+                NEON<span>CASE</span>
+            </a>
+
+
+            <!-- NAVIGATION LINKS -->
+
+            <nav class="nav-links">
+
+                <a href="#shop">Shop</a>
+
+                <a href="#story">Our Story</a>
+
+                <a href="#glow">How It Glows</a>
+
+                <a href="#reviews">Reviews</a>
+
+                <a href="#contact">Contact</a>
+
+            </nav>
+
+
+            <!-- NAVIGATION ACTIONS -->
+
+            <div class="nav-actions">
+
+
+                <!-- SEARCH -->
+
+                <button
+                    class="nav-button"
+                    aria-label="Search"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6.5"
+                        ></circle>
+
+                        <line
+                            x1="16"
+                            y1="16"
+                            x2="21"
+                            y2="21"
+                        ></line>
+
+                    </svg>
+
+                </button>
+
+
+                <!-- ACCOUNT -->
+
+                <button
+                    class="nav-button"
+                    aria-label="Account"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="8"
+                            r="3.5"
+                        ></circle>
+
+                        <path
+                            d="M5 20c.8-3.3 3.2-5 7-5s6.2 1.7 7 5"
+                        ></path>
+
+                    </svg>
+
+                </button>
+
+
+                <!-- CART -->
+
+                <button
+                    class="nav-button"
+                    aria-label="Cart"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M3 4h2l2.1 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"
+                        ></path>
+
+                        <circle
+                            cx="10"
+                            cy="20"
+                            r="1"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="20"
+                            r="1"
+                        ></circle>
+
+                    </svg>
+
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="mobile-menu"
+                aria-label="Menu"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <main>
+
+        <section class="hero-section">
+
+            <div class="hero-container">
+
+
+                <!-- =====================
+                     LEFT CONTENT
+                ====================== -->
+
+                <div class="hero-content">
+
+
+                    <!-- SMALL BRAND LABEL -->
+
+                    <div class="hero-eyebrow">
+
+                        <span class="eyebrow-line"></span>
+
+                        NEONCASE™
+
+                    </div>
+
+
+                    <!-- MAIN HEADING -->
+
+                    <h1 class="hero-title">
+
+                        YOUR PHONE.
+
+                        <span>
+                            BUT MAKE IT
+                        </span>
+
+                        <strong>
+                            GLOW.
+                        </strong>
+
+                    </h1>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="hero-description">
+
+                        The glow-in-the-dark phone case
+                        that makes your phone impossible
+                        to miss.
+
+                    </p>
+
+
+                    <!-- PRICE -->
+
+                    <div class="hero-price">
+
+                        <span class="price">
+                            ₹699
+                        </span>
+
+                        <span class="price-label">
+                            PREPAID ONLY
+                        </span>
+
+                    </div>
+
+
+                    <!-- BUY BUTTON -->
+
+                    <a
+                        href="#shop"
+                        class="buy-button"
+                    >
+
+                        BUY NOW
+
+                        <span>→</span>
+
+                    </a>
+
+
+                    <!-- CUSTOMER TRUST -->
+
+                    <div class="hero-trust">
+
+
+                        <!-- AVATARS -->
+
+                        <div class="trust-avatars">
+
+                            <div class="avatar avatar-one">
+                                R
+                            </div>
+
+                            <div class="avatar avatar-two">
+                                A
+                            </div>
+
+                            <div class="avatar avatar-three">
+                                P
+                            </div>
+
+                            <div class="avatar avatar-four">
+                                S
+                            </div>
+
+                        </div>
+
+
+                        <!-- TRUST TEXT -->
+
+                        <div class="trust-content">
+
+                            <div class="trust-stars">
+                                ★★★★★
+                            </div>
+
+                            <p>
+                                1,000+ Happy Customers
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+    <!-- =====================================================
+         PART 1 ENDS HERE
+
+         PART 2 WILL BE ADDED BELOW THIS LINE
+    ====================================================== -->
+
+<!-- =====================================================
+     PART 2 — EXPERIENCE THE GLOW
+====================================================== -->
+
+<section class="experience-section" id="experience">
+
+    <div class="experience-inner">
+
+
+        <!-- HEADING -->
+
+        <div class="experience-heading">
+
+            <span class="experience-number">
+                01
+            </span>
+
+            <h2>
+                EXPERIENCE THE GLOW.
+            </h2>
+
+            <p>
+                See how NeonCase transforms from day to night.
+            </p>
+
+        </div>
+
+
+        <!-- DAY / NIGHT TOGGLE -->
+
+        <div class="glow-toggle-area">
+
+            <span class="toggle-label day-label">
+                ☀ DAY
+            </span>
+
+
+            <button
+                class="glow-toggle"
+                id="glowToggle"
+                type="button"
+                aria-label="Switch between day and night"
+            >
+
+                <span class="toggle-track">
+
+                    <span class="toggle-day"></span>
+
+                    <span class="toggle-night"></span>
+
+                    <span class="toggle-knob"></span>
+
+                </span>
+
+            </button>
+
+
+            <span class="toggle-label night-label">
+                ☾ NIGHT
+            </span>
+
+        </div>
+
+
+        <!-- PRODUCT IMAGE PLACE -->
+<!-- =====================================================
+     EXPERIENCE IMAGE BOX
+====================================================== -->
+
+<div class="experience-image-box">
+
+    <!-- DAY IMAGE -->
+    <img
+        src="day-phone-case.png"
+        alt="NeonCase daytime phone case"
+        class="experience-phone day-phone"
+    >
+
+    <!-- NIGHT IMAGE -->
+    <img
+        src="night-phone-case.png"
+        alt="NeonCase glowing night phone case"
+        class="experience-phone night-phone"
+    >
+
+    <!-- BLUE FOG / ATMOSPHERIC GLOW -->
+    <div class="image-glow"></div>
+
+</div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PART 3 — LIGHT. CAPTURED.
+====================================================== -->
+
+<section class="light-captured-section" id="lightCaptured">
+
+    <!-- SECTION INTRO -->
+
+    <div class="light-captured-heading">
+
+        <span class="section-number">
+            02
+        </span>
+
+        <h2>
+            LIGHT.
+            <span>CAPTURED.</span>
+        </h2>
+
+        <p>
+            It charges in daylight.
+            It comes alive at night.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         CINEMATIC IMAGE REEL
+    ================================================== -->
+
+    <div class="product-reel">
+
+        <div class="reel-track" id="reelTrack">
+
+
+            <!-- IMAGE 1 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-1.jpg"
+                    alt="NeonCase in daylight"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 2 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-2.jpg"
+                    alt="NeonCase sand texture close up"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 3 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-3.jpg"
+                    alt="NeonCase beginning to glow"
+                >
+
+            </div>
+
+
+            <!-- IMAGE 4 -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-4.jpg"
+                    alt="NeonCase glowing in darkness"
+                >
+
+            </div>
+
+
+            <!-- DUPLICATE IMAGES
+                 Creates seamless infinite loop -->
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-1.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-2.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-3.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+
+            <div class="reel-image">
+
+                <img
+                    src="glow-4.jpg"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PURCHASE SECTION
+    ================================================== -->
+
+    <div class="light-purchase">
+
+        <span class="purchase-brand">
+            NEONCASE™
+        </span>
+
+        <h3>
+            THE GLOW-IN-THE-DARK
+            <span>PHONE CASE.</span>
+        </h3>
+
+        <div class="purchase-price">
+            ₹699
+        </div>
+
+        <div class="purchase-note">
+            PREPAID ONLY
+        </div>
+
+        <a
+            href="#shop"
+            class="purchase-button"
+        >
+            BUY NOW
+            <span>→</span>
+        </a>
+
+    </div>
+
+</section>
+                <!-- =====================================================
+     PART 4 — WATCH THE GLOW
+====================================================== -->
+
+<section class="watch-glow-section" id="watch">
+
+    <div class="watch-glow-heading">
+
+        <span>03</span>
+
+        <h2>
+            WATCH THE
+            <strong>GLOW.</strong>
+        </h2>
+
+        <p>
+            See NeonCase come alive in the dark.
+        </p>
+
+    </div>
+
+
+    <div class="watch-video">
+
+        <video
+            src="neoncase-glow.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+        ></video>
+
+        <div class="video-overlay">
+
+            <div class="play-symbol">
+                ▶
+            </div>
+
+            <span>
+                NEONCASE™
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PART 5 — CUSTOMER REVIEWS
+====================================================== -->
+
+<section class="reviews-section" id="reviews">
+
+    <div class="reviews-heading">
+
+        <span>04</span>
+
+        <h2>
+            WHAT THEY
+            <strong>SAY.</strong>
+        </h2>
+
+    </div>
+
+
+    <div class="reviews-track">
+
+
+        <!-- REVIEW 1 -->
+
+        <article class="review-card">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <p>
+                “The glow is honestly insane.
+                It looks so different at night.”
+            </p>
+
+            <div class="review-person">
+
+                <div class="review-avatar">
+                    R
+                </div>
+
+                <div>
+                    <strong>Rohit</strong>
+                    <span>Verified Customer</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- REVIEW 2 -->
+
+        <article class="review-card">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <p>
+                “Looks even better in real life.
+                The sand design is beautiful.”
+            </p>
+
+            <div class="review-person">
+
+                <div class="review-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Aditya</strong>
+                    <span>Verified Customer</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- REVIEW 3 -->
+
+        <article class="review-card">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <p>
+                “Everyone asks me where I got
+                this case. Absolutely love it.”
+            </p>
+
+            <div class="review-person">
+
+                <div class="review-avatar">
+                    P
+                </div>
+
+                <div>
+                    <strong>Pranav</strong>
+                    <span>Verified Customer</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PART 6 — FAQ
+====================================================== -->
+
+<section class="faq-section" id="faq">
+
+    <div class="faq-container">
+
+
+        <div class="faq-heading">
+
+            <span>05</span>
+
+            <h2>
+                GOT
+                <strong>QUESTIONS?</strong>
+            </h2>
+
+        </div>
+
+
+        <div class="faq-track">
+
+
+            <button class="faq-card">
+
+                <span>
+                    How does NeonCase glow?
+                </span>
+
+                <b>+</b>
+
+                <div class="faq-answer">
+
+                    NeonCase absorbs light during
+                    the day and the special glow
+                    material becomes visible in darkness.
+
+                </div>
+
+            </button>
+
+
+            <button class="faq-card">
+
+                <span>
+                    How long does the glow last?
+                </span>
+
+                <b>+</b>
+
+                <div class="faq-answer">
+
+                    The glow gradually fades over time
+                    and can be recharged by exposing
+                    the case to light again.
+
+                </div>
+
+            </button>
+
+
+            <button class="faq-card">
+
+                <span>
+                    How do I charge the glow?
+                </span>
+
+                <b>+</b>
+
+                <div class="faq-answer">
+
+                    Simply keep the case exposed to
+                    natural or artificial light.
+
+                </div>
+
+            </button>
+
+
+            <button class="faq-card">
+
+                <span>
+                    Which phones are supported?
+                </span>
+
+                <b>+</b>
+
+                <div class="faq-answer">
+
+                    Select your compatible phone model
+                    before placing your order.
+
+                </div>
+
+            </button>
+
+
+            <button class="faq-card">
+
+                <span>
+                    How long does delivery take?
+                </span>
+
+                <b>+</b>
+
+                <div class="faq-answer">
+
+                    Delivery timelines depend on your
+                    location and will be shown during checkout.
+
+                </div>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PART 7 — FINAL PURCHASE
+====================================================== -->
+
+<section class="final-buy-section" id="shop">
+
+    <div class="final-buy-container">
+
+
+        <!-- PRODUCT IMAGE -->
+
+        <div class="final-product">
+
+            <div class="final-blue-glow"></div>
+
+            <img
+                src="glow-4.jpg"
+                alt="NeonCase glowing phone case"
+            >
+
+        </div>
+
+
+        <!-- PURCHASE CONTENT -->
+
+        <div class="final-buy-content">
+
+            <span class="final-brand">
+                NEONCASE™
+            </span>
+
+            <h2>
+                READY TO
+                <strong>GLOW?</strong>
+            </h2>
+
+            <p>
+                Your phone doesn't need another
+                ordinary case.
+            </p>
+
+
+            <div class="final-price">
+                ₹699
+            </div>
+
+            <span class="final-prepaid">
+                PREPAID ONLY
+            </span>
+
+
+            <a
+                href="#checkout"
+                class="final-buy-button"
+            >
+
+                BUY NOW
+
+                <span>→</span>
+
+            </a>
+
+
+            <div class="final-trust">
+
+                ✓ Secure Checkout
+
+                <span>•</span>
+
+                ✓ Premium Case
+
+                <span>•</span>
+
+                ✓ Fast Delivery
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PART 8 — FOOTER
+====================================================== -->
+
+<footer class="site-footer" id="contact">
+
+    <div class="footer-container">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <a
+                href="#"
+                class="footer-logo"
+            >
+                neoncase<span>.in</span>
+            </a>
+
+            <p>
+                Light up your phone.
+                <br>
+                Stand out everywhere.
+            </p>
+
+
+            <div class="footer-socials">
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SHOP -->
+
+        <div class="footer-column">
+
+            <h3>
+                SHOP
+            </h3>
+
+            <a href="#shop">
+                All Cases
+            </a>
+
+            <a href="#shop">
+                Phone Models
+            </a>
+
+            <a href="#shop">
+                Buy Now
+            </a>
+
+        </div>
+
+
+
+        <!-- HELP -->
+
+        <div class="footer-column">
+
+            <h3>
+                HELP
+            </h3>
+
+            <a href="#">
+                Track Order
+            </a>
+
+            <a href="#">
+                Shipping
+            </a>
+
+            <a href="#">
+                Returns
+            </a>
+
+            <a href="#faq">
+                FAQs
+            </a>
+
+        </div>
+
+
+
+        <!-- COMPANY -->
+
+        <div class="footer-column">
+
+            <h3>
+                COMPANY
+            </h3>
+
+            <a href="#">
+                About Us
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 NeonCase.in. All Rights Reserved.
+        </span>
+
+        <span>
+            Made to Glow.
+        </span>
+
+    </div>
+
+</footer>
+<script>
+    const glowToggle =
+    document.getElementById("glowToggle");
+
+const experienceSection =
+    document.querySelector(".experience-section");
+
+
+glowToggle.addEventListener("click", function () {
+
+    experienceSection.classList.toggle("night-mode");
+
+});
+    /* =========================================================
+   FAQ ACCORDION
+========================================================= */
+
+const faqCards =
+    document.querySelectorAll(".faq-card");
+
+
+faqCards.forEach((card) => {
+
+    card.addEventListener("click", () => {
+
+        const alreadyOpen =
+            card.classList.contains("open");
+
+
+        faqCards.forEach((item) => {
+
+            item.classList.remove("open");
+
+        });
+
+
+        if (!alreadyOpen) {
+
+            card.classList.add("open");
+
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>
