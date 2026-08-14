@@ -8,27 +8,20 @@
     box-sizing: border-box;
 }
 
-
 html,
 body {
-
     width: 100%;
     min-height: 100%;
-
 }
 
-
 body {
-
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
     background: #faf7f0;
-
     color: #111111;
-
 }
 
 
@@ -37,15 +30,12 @@ body {
 ========================================================= */
 
 .login-page {
-
     min-height: 100vh;
 
     display: grid;
 
     grid-template-columns: 1fr 1fr;
-
 }
-
 
 
 /* =========================================================
@@ -53,7 +43,6 @@ body {
 ========================================================= */
 
 .login-showcase {
-
     min-height: 100vh;
 
     position: relative;
@@ -67,34 +56,43 @@ body {
     align-items: flex-end;
 
     background:
-
         radial-gradient(
             circle at 72% 38%,
-            rgba(35,112,220,.13),
+            rgba(35, 112, 220, 0.13),
             transparent 28%
         ),
-
         linear-gradient(
             145deg,
             #fffdf8,
             #f1e8d9
         );
-
 }
-
 
 .showcase-content {
     width: 100%;
+
+    position: relative;
+
     z-index: 3;
 }
 
+
+/* =========================================================
+   BRAND
+========================================================= */
+
 .brand {
     position: absolute;
+
     top: 55px;
     left: 55px;
+
     font-size: 21px;
+
     font-weight: 800;
+
     letter-spacing: -1px;
+
     z-index: 5;
 }
 
@@ -104,15 +102,15 @@ body {
 }
 
 
+/* =========================================================
+   SHOWCASE TEXT
+========================================================= */
+
 .showcase-copy {
-
     max-width: 570px;
-
 }
 
-
 .eyebrow {
-
     color: #1766d4;
 
     font-size: 9px;
@@ -120,35 +118,29 @@ body {
     font-weight: 800;
 
     letter-spacing: 2px;
-
 }
 
-
 .showcase-copy h1 {
-
     margin-top: 20px;
 
-    font-size:
-        clamp(48px, 5vw, 78px);
+    font-size: clamp(
+        48px,
+        5vw,
+        78px
+    );
 
-    line-height: .88;
+    line-height: 0.88;
 
     letter-spacing: -4px;
 
     font-weight: 800;
-
 }
-
 
 .showcase-copy h1 span {
-
     color: #1766d4;
-
 }
 
-
 .showcase-copy p {
-
     margin-top: 25px;
 
     max-width: 340px;
@@ -158,9 +150,7 @@ body {
     font-size: 12px;
 
     line-height: 1.6;
-
 }
-
 
 
 /* =========================================================
@@ -168,15 +158,12 @@ body {
 ========================================================= */
 
 .showcase-circle {
-
     position: absolute;
 
     width: 430px;
-
     height: 430px;
 
     right: -150px;
-
     top: 80px;
 
     border-radius: 50%;
@@ -184,14 +171,14 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(23,102,212,.10),
+            rgba(23, 102, 212, 0.10),
             transparent 68%
         );
 
     filter: blur(4px);
 
+    pointer-events: none;
 }
-
 
 
 /* =========================================================
@@ -199,7 +186,6 @@ body {
 ========================================================= */
 
 .login-area {
-
     min-height: 100vh;
 
     padding: 50px;
@@ -211,21 +197,20 @@ body {
     justify-content: center;
 
     background: #fffdf8;
-
 }
 
-
 .login-box {
-
     width: 100%;
 
     max-width: 410px;
-
 }
 
 
-.mobile-logo {
+/* =========================================================
+   MOBILE LOGO
+========================================================= */
 
+.mobile-logo {
     display: none;
 
     font-size: 21px;
@@ -233,24 +218,18 @@ body {
     font-weight: 800;
 
     letter-spacing: -1px;
-
 }
-
 
 
 /* =========================================================
-   HEADING
+   LOGIN HEADING
 ========================================================= */
 
 .login-heading {
-
     margin-bottom: 35px;
-
 }
 
-
 .login-heading > span {
-
     color: #1766d4;
 
     font-size: 8px;
@@ -258,34 +237,27 @@ body {
     font-weight: 800;
 
     letter-spacing: 2px;
-
 }
 
-
 .login-heading h2 {
-
     margin-top: 13px;
 
     font-size: 42px;
 
-    line-height: .95;
+    line-height: 0.95;
 
     letter-spacing: -2.5px;
 
+    font-weight: 800;
 }
 
-
 .login-heading h2 strong {
-
     display: block;
 
     color: #1766d4;
-
 }
 
-
 .login-heading p {
-
     margin-top: 17px;
 
     color: #77736b;
@@ -293,9 +265,7 @@ body {
     font-size: 11px;
 
     line-height: 1.6;
-
 }
-
 
 
 /* =========================================================
@@ -303,7 +273,6 @@ body {
 ========================================================= */
 
 .google-button {
-
     width: 100%;
 
     height: 58px;
@@ -327,55 +296,63 @@ body {
 
     color: #202124;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size: 12px;
 
     font-weight: 700;
 
     box-shadow:
         0 10px 30px
-        rgba(30,25,15,.05);
+        rgba(30, 25, 15, 0.05);
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        border-color .2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 
+    outline: none;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-
 .google-button:hover {
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     border-color: #c8c2b8;
 
     box-shadow:
         0 14px 35px
-        rgba(30,25,15,.09);
-
+        rgba(30, 25, 15, 0.09);
 }
-
 
 .google-button:active {
-
-    transform:
-        translateY(0);
-
+    transform: translateY(0);
 }
 
+.google-button:focus {
+    outline: none;
+
+    border-color: #1766d4;
+}
 
 .google-button:disabled {
-
-    opacity: .6;
+    opacity: 0.6;
 
     cursor: wait;
 
+    transform: none;
 }
 
 
-.google-icon {
+/* =========================================================
+   GOOGLE ICON
+========================================================= */
 
+.google-icon {
     width: 20px;
 
     height: 20px;
@@ -386,17 +363,16 @@ body {
 
     justify-content: center;
 
+    flex-shrink: 0;
 }
 
-
 .google-icon svg {
-
     width: 19px;
 
     height: 19px;
 
+    display: block;
 }
-
 
 
 /* =========================================================
@@ -404,7 +380,6 @@ body {
 ========================================================= */
 
 .login-message {
-
     min-height: 18px;
 
     margin-top: 15px;
@@ -416,17 +391,14 @@ body {
     font-size: 9px;
 
     line-height: 1.5;
-
 }
 
 
-
 /* =========================================================
-   SECURITY
+   SECURITY NOTE
 ========================================================= */
 
 .secure-note {
-
     margin-top: 30px;
 
     padding: 14px 16px;
@@ -449,16 +421,13 @@ body {
     font-size: 9px;
 
     line-height: 1.5;
-
 }
-
 
 .lock-icon {
-
     font-size: 13px;
 
+    flex-shrink: 0;
 }
-
 
 
 /* =========================================================
@@ -466,7 +435,6 @@ body {
 ========================================================= */
 
 .terms {
-
     margin-top: 28px;
 
     color: #aaa49b;
@@ -476,9 +444,7 @@ body {
     line-height: 1.7;
 
     text-align: center;
-
 }
-
 
 
 /* =========================================================
@@ -488,54 +454,50 @@ body {
 @media (max-width: 800px) {
 
     .login-page {
-
         grid-template-columns: 1fr;
-
     }
 
 
-    .login-showcase {
+    /* LEFT SHOWCASE */
 
+    .login-showcase {
         min-height: 290px;
 
         padding: 30px 25px;
 
         align-items: flex-end;
-
     }
 
 
     .brand {
-
         top: 28px;
 
         left: 25px;
 
         font-size: 19px;
+    }
 
+
+    .showcase-copy {
+        max-width: 100%;
     }
 
 
     .showcase-copy h1 {
-
         font-size: 43px;
 
         letter-spacing: -2.5px;
-
     }
 
 
     .showcase-copy p {
-
         margin-top: 14px;
 
         font-size: 10px;
-
     }
 
 
     .showcase-circle {
-
         width: 250px;
 
         height: 250px;
@@ -543,41 +505,38 @@ body {
         right: -100px;
 
         top: 30px;
-
     }
 
 
-    .login-area {
+    /* LOGIN AREA */
 
+    .login-area {
         min-height: 560px;
 
-        padding: 45px 24px 60px;
-
+        padding:
+            45px 24px 60px;
     }
 
 
     .login-box {
-
         max-width: 450px;
-
     }
 
 
     .mobile-logo {
-
         display: none;
-
     }
 
 
     .login-heading h2 {
-
         font-size: 36px;
-
     }
 
-}
 
+    .google-button {
+        height: 56px;
+    }
+}
 
 
 /* =========================================================
@@ -587,31 +546,78 @@ body {
 @media (max-width: 420px) {
 
     .login-showcase {
-
         min-height: 260px;
 
+        padding:
+            25px 20px 28px;
+    }
+
+
+    .brand {
+        top: 23px;
+
+        left: 20px;
+
+        font-size: 18px;
     }
 
 
     .showcase-copy h1 {
-
         font-size: 37px;
 
+        letter-spacing: -2px;
+    }
+
+
+    .showcase-copy p {
+        font-size: 9px;
+
+        max-width: 280px;
     }
 
 
     .login-area {
-
         padding:
             38px 20px 50px;
+    }
 
+
+    .login-heading {
+        margin-bottom: 28px;
     }
 
 
     .login-heading h2 {
-
         font-size: 32px;
 
+        letter-spacing: -2px;
     }
 
-  }
+
+    .login-heading p {
+        font-size: 10px;
+    }
+
+
+    .google-button {
+        height: 55px;
+
+        font-size: 11px;
+    }
+
+
+    .secure-note {
+        margin-top: 24px;
+
+        padding: 12px 14px;
+
+        font-size: 8px;
+    }
+
+
+    .terms {
+        margin-top: 22px;
+
+        font-size: 7px;
+    }
+}
