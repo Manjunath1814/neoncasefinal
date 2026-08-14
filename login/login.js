@@ -2,13 +2,8 @@
    NEONCASE — GOOGLE LOGIN
 ========================================================= */
 
-import { firebaseConfig }
+import { app }
     from "../firebase-config.js";
-
-
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 
 import {
