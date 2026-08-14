@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Order — NeonCase</title>
+
+    <link
+        rel="stylesheet"
+        href="order.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="order-page">
+
+        <!-- TOP BRAND -->
+
+        <header class="order-header">
+
+            <a
+                href="../index.html"
+                class="order-logo"
+            >
+                neoncase<span>.in</span>
+            </a>
+
+            <div
+                class="user-area"
+                id="userArea"
+            >
+                Checking login...
+            </div>
+
+        </header>
+
+
+        <!-- ORDER CONTENT -->
+
+        <section class="order-container">
+
+
+            <!-- PRODUCT -->
+
+            <div class="order-product">
+
+                <div class="product-image-box">
+
+                    <img
+                        src="../day-phone-case.png"
+                        alt="NeonCase phone case"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        NEONCASE™
+                    </span>
+
+                    <h1>
+                        Glow-in-the-dark
+                        phone case
+                    </h1>
+
+                    <div class="product-price">
+                        ₹699
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MODEL SELECTION -->
+
+            <div class="order-form">
+
+                <span class="form-number">
+                    01
+                </span>
+
+                <h2>
+                    Select your
+                    <strong>iPhone model.</strong>
+                </h2>
+
+                <p>
+                    Choose the exact model you
+                    want the case for.
+                </p>
+
+
+                <!-- SEARCH -->
+
+                <div class="model-search">
+
+                    <input
+                        type="search"
+                        id="modelSearch"
+                        placeholder="Search iPhone model..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <!-- MODELS -->
+
+                <div
+                    class="model-list"
+                    id="modelList"
+                >
+
+                    <div class="loading-models">
+                        Loading models...
+                    </div>
+
+                </div>
+
+
+                <!-- CONTINUE -->
+
+                <button
+                    type="button"
+                    class="continue-button"
+                    id="continueButton"
+                    disabled
+                >
+
+                    CONTINUE
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <p
+                    class="order-message"
+                    id="orderMessage"
+                ></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="order.js"
+    ></script>
+
+</body>
+
+</html>
