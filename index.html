@@ -4852,6 +4852,38 @@ glowToggle.addEventListener("click", function () {
     experienceSection.classList.toggle("night-mode");
 
 });
+    /* =========================================================
+   FAQ ACCORDION
+========================================================= */
+
+const faqCards =
+    document.querySelectorAll(".faq-card");
+
+
+faqCards.forEach((card) => {
+
+    card.addEventListener("click", () => {
+
+        const alreadyOpen =
+            card.classList.contains("open");
+
+
+        faqCards.forEach((item) => {
+
+            item.classList.remove("open");
+
+        });
+
+
+        if (!alreadyOpen) {
+
+            card.classList.add("open");
+
+        }
+
+    });
+
+});
 </script>
 </body>
 </html>
