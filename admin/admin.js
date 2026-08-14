@@ -1389,184 +1389,95 @@ function renderRecentOrders() {
    OPEN ORDER
 ========================================================= */
 
-function openOrder(
-    id
-) {
 
-    const order =
-        orders.find(
-            (item) =>
-                item.id === id
-        );
+                        function openOrder(id) {
 
+    // Close any other modal first
+    modelModal.hidden = true;
 
-    if (!order) return;
+    const order = orders.find(
+        item => item.id === id
+    );
 
+    if (!order) {
+        alert("Order not found.");
+        return;
+    }
 
-    selectedOrderId =
-        id;
+    selectedOrderId = id;
 
+    document.getElementById("orderModalTitle").textContent =
+        `#${order.orderId || order.id}`;
 
-    document
-        .getElementById(
-            "orderModalTitle"
-        )
-        .textContent =
-            `#${order.orderId || order.id}`;
-
-
-    document
-        .getElementById(
-            "orderStatusSelect"
-        )
-        .value =
-            order.orderStatus ||
-            "pending";
-
+    document.getElementById("orderStatusSelect").value =
+        order.orderStatus || "pending";
 
     const address = [
-
         order.address1,
-
         order.address2,
-
         order.district,
-
         order.state,
-
         order.pincode
-
     ]
         .filter(Boolean)
         .join(", ");
 
+    document.getElementById("orderDetails").innerHTML = `
 
-    document
-        .getElementById(
-            "orderDetails"
-        )
-        .innerHTML = `
+        <div class="detail-row">
+            <span>Customer</span>
+            <strong>
+                ${escapeHTML(order.customerName || "-")}
+            </strong>
+        </div>
 
-            <div class="detail-row">
+        <div class="detail-row">
+            <span>Email</span>
+            <strong>
+                ${escapeHTML(order.email || "-")}
+            </strong>
+        </div>
 
-                <span>
-                    Customer
-                </span>
+        <div class="detail-row">
+            <span>Phone</span>
+            <strong>
+                ${escapeHTML(order.phone || "-")}
+            </strong>
+        </div>
 
-                <strong>
-                    ${escapeHTML(
-                        order.customerName ||
-                        "-"
-                    )}
-                </strong>
+        <div class="detail-row">
+            <span>Model</span>
+            <strong>
+                ${escapeHTML(order.modelName || "-")}
+            </strong>
+        </div>
 
-            </div>
+        <div class="detail-row">
+            <span>Amount</span>
+            <strong>
+                ₹${Number(order.price || 699)}
+            </strong>
+        </div>
 
+        <div class="detail-row">
+            <span>Payment</span>
+            <strong>
+                ${escapeHTML(order.paymentStatus || "Pending")}
+            </strong>
+        </div>
 
-            <div class="detail-row">
+        <div class="detail-row">
+            <span>Address</span>
+            <strong>
+                ${escapeHTML(address || "-")}
+            </strong>
+        </div>
 
-                <span>
-                    Email
-                </span>
+    `;
 
-                <strong>
-                    ${escapeHTML(
-                        order.email ||
-                        "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <span>
-                    Phone
-                </span>
-
-                <strong>
-                    ${escapeHTML(
-                        order.phone ||
-                        "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <span>
-                    Model
-                </span>
-
-                <strong>
-                    ${escapeHTML(
-                        order.modelName ||
-                        "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <span>
-                    Amount
-                </span>
-
-                <strong>
-                    ₹${Number(
-                        order.price ||
-                        699
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <span>
-                    Payment
-                </span>
-
-                <strong>
-                    ${escapeHTML(
-                        order.paymentStatus ||
-                        "Pending"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <span>
-                    Address
-                </span>
-
-                <strong>
-                    ${escapeHTML(
-                        address ||
-                        "-"
-                    )}
-                </strong>
-
-            </div>
-
-        `;
-
-
-    orderModal.hidden =
-        false;
-
-}
-
-
+    // Show order modal
+    orderModal.hidden = false;
+                        }
 
 /* =========================================================
    UPDATE ORDER STATUS
@@ -1644,19 +1555,13 @@ document
 ========================================================= */
 
 document
-    .getElementById(
-        "closeOrderModal"
-    )
-    .addEventListener(
-        "click",
-        () => {
+    .getElementById("closeOrderModal")
+    .addEventListener("click", () => {
 
-            orderModal.hidden =
-                true;
+        orderModal.hidden = true;
+        selectedOrderId = null;
 
-        }
-    );
-
+    });
 
 
 /* =========================================================
@@ -1756,7 +1661,13 @@ function filterOrders() {
 }
 
 
+function closeModelModal() {
 
+    modelModal.hidden = true;
+
+    editingModelId = null;
+
+}
 /* =========================================================
    MODEL SEARCH
 ========================================================= */
