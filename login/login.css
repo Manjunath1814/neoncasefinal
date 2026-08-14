@@ -1,11 +1,21 @@
-/* =========================================================
-   NEONCASE — GOOGLE LOGIN
-========================================================= */
+/* =====================================================
+   NEONCASE — LOGIN
+===================================================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --beige: #f5f0e7;
+    --beige-light: #faf7f1;
+    --black: #111111;
+    --muted: #77736c;
+    --blue: #1766d4;
+    --border: #e4ded4;
+    --white: #ffffff;
 }
 
 html,
@@ -20,323 +30,348 @@ body {
         Helvetica,
         sans-serif;
 
-    background: #faf7f0;
-    color: #111111;
+    background: var(--beige);
+
+    color: var(--black);
 }
 
 
-/* =========================================================
-   MAIN PAGE
-========================================================= */
+/* =====================================================
+   PAGE
+===================================================== */
 
 .login-page {
     min-height: 100vh;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 }
 
 
-/* =========================================================
-   LEFT SHOWCASE
-========================================================= */
+/* =====================================================
+   BRAND SECTION
+===================================================== */
 
-.login-showcase {
+.brand-section {
     min-height: 100vh;
 
     position: relative;
 
-    overflow: hidden;
-
     padding: 55px;
+
+    background: var(--beige);
 
     display: flex;
 
-    align-items: flex-end;
+    flex-direction: column;
 
-    background:
-        radial-gradient(
-            circle at 72% 38%,
-            rgba(35, 112, 220, 0.13),
-            transparent 28%
-        ),
-        linear-gradient(
-            145deg,
-            #fffdf8,
-            #f1e8d9
-        );
-}
+    justify-content: space-between;
 
-.showcase-content {
-    width: 100%;
-
-    position: relative;
-
-    z-index: 3;
+    overflow: hidden;
 }
 
 
-/* =========================================================
+/* =====================================================
    BRAND
-========================================================= */
+===================================================== */
 
 .brand {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+}
+
+.brand span {
+    color: var(--blue);
+}
+
+
+/* =====================================================
+   DECORATION
+===================================================== */
+
+.brand-section::before {
+    content: "";
+
     position: absolute;
 
-    top: 55px;
-    left: 55px;
-
-    font-size: 21px;
-
-    font-weight: 800;
-
-    letter-spacing: -1px;
-
-    z-index: 5;
-}
-
-.brand span,
-.mobile-logo span {
-    color: #1766d4;
-}
-
-
-/* =========================================================
-   SHOWCASE TEXT
-========================================================= */
-
-.showcase-copy {
-    max-width: 570px;
-}
-
-.eyebrow {
-    color: #1766d4;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-.showcase-copy h1 {
-    margin-top: 20px;
-
-    font-size: clamp(
-        48px,
-        5vw,
-        78px
-    );
-
-    line-height: 0.88;
-
-    letter-spacing: -4px;
-
-    font-weight: 800;
-}
-
-.showcase-copy h1 span {
-    color: #1766d4;
-}
-
-.showcase-copy p {
-    margin-top: 25px;
-
-    max-width: 340px;
-
-    color: #706b63;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   DECORATIVE CIRCLE
-========================================================= */
-
-.showcase-circle {
-    position: absolute;
-
-    width: 430px;
-    height: 430px;
-
-    right: -150px;
-    top: 80px;
+    width: 420px;
+    height: 420px;
 
     border-radius: 50%;
+
+    right: -190px;
+    bottom: -160px;
 
     background:
         radial-gradient(
             circle,
-            rgba(23, 102, 212, 0.10),
+            rgba(23, 102, 212, 0.08),
             transparent 68%
         );
 
-    filter: blur(4px);
+    pointer-events: none;
+}
+
+.brand-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    left: -130px;
+    bottom: 100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.8),
+            transparent 70%
+        );
 
     pointer-events: none;
 }
 
 
-/* =========================================================
-   RIGHT LOGIN AREA
-========================================================= */
+/* =====================================================
+   BRAND CONTENT
+===================================================== */
 
-.login-area {
-    min-height: 100vh;
+.brand-content {
+    position: relative;
 
-    padding: 50px;
+    z-index: 2;
 
-    display: flex;
+    max-width: 500px;
 
-    align-items: center;
+    margin-top: auto;
 
-    justify-content: center;
-
-    background: #fffdf8;
+    margin-bottom: auto;
 }
 
-.login-box {
-    width: 100%;
+.small-label {
+    margin-bottom: 18px;
 
-    max-width: 410px;
-}
+    color: var(--blue);
 
-
-/* =========================================================
-   MOBILE LOGO
-========================================================= */
-
-.mobile-logo {
-    display: none;
-
-    font-size: 21px;
+    font-size: 9px;
 
     font-weight: 800;
 
-    letter-spacing: -1px;
+    letter-spacing: 3px;
+}
+
+.brand-content h1 {
+    font-size: clamp(
+        42px,
+        5vw,
+        76px
+    );
+
+    line-height: 0.94;
+
+    letter-spacing: -4px;
+
+    font-weight: 900;
+}
+
+.brand-content h1 span {
+    color: var(--blue);
+}
+
+.brand-content p {
+    max-width: 350px;
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
 }
 
 
-/* =========================================================
-   LOGIN HEADING
-========================================================= */
+/* =====================================================
+   BOTTOM TEXT
+===================================================== */
 
-.login-heading {
-    margin-bottom: 35px;
-}
+.bottom-text {
+    position: relative;
 
-.login-heading > span {
-    color: #1766d4;
+    z-index: 2;
+
+    color: #9a958c;
 
     font-size: 8px;
 
-    font-weight: 800;
+    font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
 }
 
-.login-heading h2 {
+
+/* =====================================================
+   LOGIN SECTION
+===================================================== */
+
+.login-section {
+    min-height: 100vh;
+
+    padding: 45px;
+
+    background: var(--beige-light);
+
+    border-left: 1px solid var(--border);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card {
+    width: 100%;
+
+    max-width: 390px;
+
+    padding: 48px 42px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(30, 25, 15, 0.06);
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.login-label {
+    color: var(--blue);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.login-card h2 {
     margin-top: 13px;
 
-    font-size: 42px;
+    font-size: 38px;
 
-    line-height: 0.95;
+    line-height: 1;
 
-    letter-spacing: -2.5px;
+    letter-spacing: -2px;
 
-    font-weight: 800;
+    font-weight: 900;
 }
 
-.login-heading h2 strong {
-    display: block;
 
-    color: #1766d4;
-}
+/* =====================================================
+   DESCRIPTION
+===================================================== */
 
-.login-heading p {
+.login-description {
     margin-top: 17px;
 
-    color: #77736b;
+    color: var(--muted);
 
-    font-size: 11px;
+    font-size: 10px;
 
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 
-/* =========================================================
+/* =====================================================
    GOOGLE BUTTON
-========================================================= */
+===================================================== */
 
 .google-button {
     width: 100%;
 
-    height: 58px;
+    height: 54px;
 
-    border:
-        1px solid #ded9d0;
+    margin-top: 30px;
 
-    border-radius: 8px;
+    padding: 0 16px;
+
+    border: 1px solid #dcd8d0;
+
+    border-radius: 9px;
 
     background: #ffffff;
+
+    color: #181818;
 
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: flex-start;
 
-    gap: 13px;
+    gap: 12px;
 
     cursor: pointer;
 
-    color: #202124;
+    font-size: 10px;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 10px 30px
-        rgba(30, 25, 15, 0.05);
+    font-weight: 800;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-
-    outline: none;
-
-    -webkit-tap-highlight-color: transparent;
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
 }
 
 .google-button:hover {
     transform: translateY(-2px);
 
-    border-color: #c8c2b8;
+    border-color: #c8c3b9;
 
     box-shadow:
-        0 14px 35px
-        rgba(30, 25, 15, 0.09);
+        0 10px 25px
+        rgba(0,0,0,0.08);
 }
 
 .google-button:active {
     transform: translateY(0);
-}
-
-.google-button:focus {
-    outline: none;
-
-    border-color: #1766d4;
 }
 
 .google-button:disabled {
@@ -348,276 +383,316 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    GOOGLE ICON
-========================================================= */
+===================================================== */
 
 .google-icon {
-    width: 20px;
+    width: 28px;
+    height: 28px;
 
-    height: 20px;
+    flex-shrink: 0;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    flex-shrink: 0;
+    border-radius: 50%;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    color: #4285f4;
+
+    background: #f5f7ff;
 }
 
-.google-icon svg {
-    width: 19px;
 
-    height: 19px;
+/* =====================================================
+   BUTTON ARROW
+===================================================== */
 
-    display: block;
+.google-button .arrow {
+    margin-left: auto;
+
+    color: #888;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    transition:
+        transform .2s ease;
+}
+
+.google-button:hover .arrow {
+    transform:
+        translateX(4px);
+
+    color: var(--blue);
 }
 
 
-/* =========================================================
-   MESSAGE
-========================================================= */
+/* =====================================================
+   LOGIN MESSAGE
+===================================================== */
 
 .login-message {
     min-height: 18px;
 
-    margin-top: 15px;
+    margin-top: 13px;
 
-    color: #858078;
+    color: var(--blue);
 
     text-align: center;
-
-    font-size: 9px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   SECURITY NOTE
-========================================================= */
-
-.secure-note {
-    margin-top: 30px;
-
-    padding: 14px 16px;
-
-    border:
-        1px solid #ece6dc;
-
-    border-radius: 8px;
-
-    background: #faf7f0;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #77736b;
-
-    font-size: 9px;
-
-    line-height: 1.5;
-}
-
-.lock-icon {
-    font-size: 13px;
-
-    flex-shrink: 0;
-}
-
-
-/* =========================================================
-   TERMS
-========================================================= */
-
-.terms {
-    margin-top: 28px;
-
-    color: #aaa49b;
 
     font-size: 8px;
 
-    line-height: 1.7;
+    font-weight: 700;
 
-    text-align: center;
+    line-height: 1.5;
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =====================================================
+   SECURITY NOTE
+===================================================== */
 
-@media (max-width: 800px) {
+.security-note {
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eeeae3;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    color: #9a958c;
+
+    font-size: 7px;
+
+    line-height: 1.5;
+}
+
+.security-note span:first-child {
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.login-footer {
+    width: 100%;
+
+    max-width: 390px;
+
+    margin-top: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #aaa59d;
+
+    font-size: 6px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
 
     .login-page {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            0.85fr
+            1.15fr;
+    }
+
+    .brand-section {
+        padding: 38px;
+    }
+
+    .login-section {
+        padding: 30px;
+    }
+
+    .brand-content h1 {
+        font-size: 52px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .login-page {
+        display: block;
     }
 
 
-    /* LEFT SHOWCASE */
+    /* BRAND */
 
-    .login-showcase {
-        min-height: 290px;
+    .brand-section {
+        min-height: auto;
 
-        padding: 30px 25px;
+        height: 380px;
 
-        align-items: flex-end;
+        padding:
+            28px 24px 30px;
+
+        justify-content:
+            flex-start;
     }
 
 
     .brand {
-        top: 28px;
-
-        left: 25px;
-
         font-size: 19px;
     }
 
 
-    .showcase-copy {
-        max-width: 100%;
+    .brand-content {
+        margin-top: auto;
+
+        margin-bottom: 20px;
     }
 
 
-    .showcase-copy h1 {
-        font-size: 43px;
+    .small-label {
+        margin-bottom: 13px;
+
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+    }
+
+
+    .brand-content h1 {
+
+        font-size: 42px;
+
+        line-height: 0.94;
 
         letter-spacing: -2.5px;
+
     }
 
 
-    .showcase-copy p {
-        margin-top: 14px;
+    .brand-content p {
+
+        max-width: 280px;
+
+        margin-top: 17px;
 
         font-size: 10px;
+
     }
 
 
-    .showcase-circle {
-        width: 250px;
-
-        height: 250px;
-
-        right: -100px;
-
-        top: 30px;
-    }
-
-
-    /* LOGIN AREA */
-
-    .login-area {
-        min-height: 560px;
-
-        padding:
-            45px 24px 60px;
-    }
-
-
-    .login-box {
-        max-width: 450px;
-    }
-
-
-    .mobile-logo {
+    .bottom-text {
         display: none;
     }
 
 
-    .login-heading h2 {
-        font-size: 36px;
+    /* LOGIN */
+
+    .login-section {
+
+        min-height:
+            calc(100vh - 380px);
+
+        padding:
+            30px 18px 25px;
+
+        border-left: none;
+
+        border-top:
+            1px solid var(--border);
+
+    }
+
+
+    .login-card {
+
+        max-width: 430px;
+
+        padding:
+            35px 24px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .login-card h2 {
+
+        font-size: 32px;
+
+        letter-spacing: -1.7px;
+
     }
 
 
     .google-button {
-        height: 56px;
+
+        height: 52px;
+
     }
+
+
+    .login-footer {
+
+        max-width: 430px;
+
+        padding:
+            0 4px;
+
+    }
+
 }
 
 
-/* =========================================================
+/* =====================================================
    SMALL PHONES
-========================================================= */
+===================================================== */
 
-@media (max-width: 420px) {
+@media (max-width: 380px) {
 
-    .login-showcase {
-        min-height: 260px;
-
-        padding:
-            25px 20px 28px;
+    .brand-section {
+        height: 350px;
     }
 
-
-    .brand {
-        top: 23px;
-
-        left: 20px;
-
-        font-size: 18px;
-    }
-
-
-    .showcase-copy h1 {
+    .brand-content h1 {
         font-size: 37px;
-
-        letter-spacing: -2px;
     }
 
-
-    .showcase-copy p {
-        font-size: 9px;
-
-        max-width: 280px;
+    .login-section {
+        min-height:
+            calc(100vh - 350px);
     }
 
-
-    .login-area {
+    .login-card {
         padding:
-            38px 20px 50px;
+            30px 20px;
     }
 
-
-    .login-heading {
-        margin-bottom: 28px;
-    }
-
-
-    .login-heading h2 {
-        font-size: 32px;
-
-        letter-spacing: -2px;
-    }
-
-
-    .login-heading p {
-        font-size: 10px;
-    }
-
-
-    .google-button {
-        height: 55px;
-
-        font-size: 11px;
-    }
-
-
-    .secure-note {
-        margin-top: 24px;
-
-        padding: 12px 14px;
-
-        font-size: 8px;
-    }
-
-
-    .terms {
-        margin-top: 22px;
-
-        font-size: 7px;
-    }
 }
