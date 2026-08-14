@@ -1,51 +1,16 @@
-/* =========================================================
-   NEONCASE LOGIN
-========================================================= */
+import { firebaseConfig }
+    from "../firebase-config.js";
 
-/* =========================================================
-   NEONCASE — FIREBASE GOOGLE LOGIN
-========================================================= */
-
-import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
     getAuth,
     GoogleAuthProvider,
     signInWithRedirect,
     getRedirectResult
-} from
-    "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-
-
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
-
-const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyBleFUWJq9xiSRZCMzxZG9VmWDayBmcGTg",
-
-    authDomain:
-        "neoncase.firebaseapp.com",
-
-    projectId:
-        "neoncase",
-
-    storageBucket:
-        "neoncase.firebasestorage.app",
-
-    messagingSenderId:
-        "1004163074284",
-
-    appId:
-        "1:1004163074284:web:4997dca90a0f06346bbdc9",
-
-    measurementId:
-        "G-NPMZHKJLYH"
-
-};
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 
 /* =========================================================
@@ -55,10 +20,8 @@ const firebaseConfig = {
 const app =
     initializeApp(firebaseConfig);
 
-
 const auth =
     getAuth(app);
-
 
 const provider =
     new GoogleAuthProvider();
@@ -81,7 +44,7 @@ const loginMessage =
 
 googleLogin.addEventListener(
     "click",
-    async function () {
+    async () => {
 
         try {
 
@@ -99,10 +62,7 @@ googleLogin.addEventListener(
 
         catch (error) {
 
-            console.error(
-                "Google Login Error:",
-                error
-            );
+            console.error(error);
 
             googleLogin.disabled = false;
 
@@ -116,7 +76,7 @@ googleLogin.addEventListener(
 
 
 /* =========================================================
-   CHECK LOGIN RESULT
+   AFTER GOOGLE REDIRECT
 ========================================================= */
 
 getRedirectResult(auth)
@@ -124,30 +84,17 @@ getRedirectResult(auth)
     .then((result) => {
 
         if (!result) {
-
             return;
-
         }
 
-
-        const user =
-            result.user;
-
+        const user = result.user;
 
         console.log(
-            "Logged in user:",
-            user
+            "Logged in:",
+            user.displayName,
+            user.email
         );
 
-
-        /*
-         * TEMPORARY:
-         * For now we only confirm login.
-         *
-         * Later this will become:
-         *
-         * login → order/index.html
-         */
 
         loginMessage.textContent =
             `Welcome, ${user.displayName || "Customer"}!`;
@@ -162,11 +109,10 @@ getRedirectResult(auth)
 
     })
 
-
     .catch((error) => {
 
         console.error(
-            "Login Result Error:",
+            "Redirect login error:",
             error
         );
 
