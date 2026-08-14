@@ -1,383 +1,124 @@
-/* =========================================================
-   NEONCASE — ORDER PAGE
-========================================================= */
-
-import { firebaseConfig }
-    from "../firebase-config.js";
-
+import { firebaseConfig } from "../firebase-config.js";
 
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
-
 import {
     getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
 
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    where,
-    orderBy
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+const googleLogin =
+    document.getElementById("googleLogin");
+
+const loginMessage =
+    document.getElementById("loginMessage");
 
 
-/* =========================================================
-   FIREBASE
-========================================================= */
+/* CHECK EXISTING LOGIN */
 
-const app =
-    initializeApp(firebaseConfig);
+onAuthStateChanged(auth, (user) => {
 
+    if (user) {
 
-const auth =
-    getAuth(app);
-
-
-const db =
-    getFirestore(app);
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const userArea =
-    document.getElementById("userArea");
-
-const modelList =
-    document.getElementById("modelList");
-
-const modelSearch =
-    document.getElementById("modelSearch");
-
-const continueButton =
-    document.getElementById("continueButton");
-
-const orderMessage =
-    document.getElementById("orderMessage");
-
-
-let allModels = [];
-
-let selectedModel = null;
-
-
-/* =========================================================
-   AUTHENTICATION CHECK
-========================================================= */
-
-onAuthStateChanged(
-    auth,
-    async (user) => {
-
-        /*
-         * NO GOOGLE LOGIN
-         *
-         * Send customer back to login page.
-         */
-
-        if (!user) {
-
-            window.location.replace(
-                "../login/index.html"
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * USER IS LOGGED IN
-         */
-
-        userArea.textContent =
-            user.displayName ||
-            user.email ||
-            "Customer";
-
-
-        /*
-         * Now load phone models
-         */
-
-        await loadPhoneModels();
-
-    }
-);
-
-
-/* =========================================================
-   LOAD PHONE MODELS FROM FIRESTORE
-========================================================= */
-
-async function loadPhoneModels() {
-
-    try {
-
-        const modelsQuery =
-            query(
-                collection(db, "phoneModels"),
-                where("active", "==", true),
-                orderBy("order", "asc")
-            );
-
-
-        const snapshot =
-            await getDocs(modelsQuery);
-
-
-        allModels = [];
-
-
-        snapshot.forEach((doc) => {
-
-            allModels.push({
-
-                id: doc.id,
-
-                ...doc.data()
-
-            });
-
-        });
-
-
-        renderModels(allModels);
-
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Phone model loading error:",
-            error
+        console.log(
+            "Already logged in:",
+            user.email
         );
 
+        loginMessage.textContent =
+            "You are already signed in.";
 
-        modelList.innerHTML = `
+        /*
+        Later we will redirect here:
 
-            <div class="loading-models">
-
-                Unable to load phone models.
-
-                <br><br>
-
-                Please refresh the page.
-
-            </div>
-
-        `;
+        window.location.replace(
+            "../order/index.html"
+        );
+        */
 
     }
 
-}
+});
 
 
-/* =========================================================
-   DISPLAY MODELS
-========================================================= */
+/* GOOGLE LOGIN */
 
-function renderModels(models) {
+googleLogin.addEventListener(
+    "click",
+    async () => {
 
-    if (!models.length) {
+        try {
 
-        modelList.innerHTML = `
+            googleLogin.disabled = true;
 
-            <div class="loading-models">
-
-                No iPhone models are currently available.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
+            loginMessage.textContent =
+                "Opening Google...";
 
 
-    modelList.innerHTML = "";
-
-
-    models.forEach((model) => {
-
-        const button =
-            document.createElement("button");
-
-
-        button.type =
-            "button";
-
-
-        button.className =
-            "model-option";
-
-
-        button.dataset.id =
-            model.id;
-
-
-        button.innerHTML = `
-
-            <span>
-                ${escapeHTML(model.name)}
-            </span>
-
-            <span class="model-check">
-                ✓
-            </span>
-
-        `;
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                selectModel(
-                    model,
-                    button
+            const result =
+                await signInWithPopup(
+                    auth,
+                    provider
                 );
 
-            }
-        );
+
+            const user =
+                result.user;
 
 
-        modelList.appendChild(button);
-
-    });
-
-}
-
-
-/* =========================================================
-   SELECT MODEL
-========================================================= */
-
-function selectModel(
-    model,
-    button
-) {
-
-    selectedModel =
-        model;
-
-
-    document
-        .querySelectorAll(".model-option")
-        .forEach((item) => {
-
-            item.classList.remove(
-                "selected"
-            );
-
-        });
-
-
-    button.classList.add(
-        "selected"
-    );
-
-
-    continueButton.disabled =
-        false;
-
-
-    orderMessage.textContent = "";
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-modelSearch.addEventListener(
-    "input",
-    () => {
-
-        const search =
-            modelSearch.value
-                .trim()
-                .toLowerCase();
-
-
-        const filtered =
-            allModels.filter(
-                (model) =>
-                    model.name
-                        .toLowerCase()
-                        .includes(search)
+            console.log(
+                "LOGIN SUCCESS:",
+                user.email
             );
 
 
-        renderModels(filtered);
-
-    }
-);
+            loginMessage.textContent =
+                `Welcome, ${user.displayName || "Customer"}!`;
 
 
-/* =========================================================
-   CONTINUE
-========================================================= */
+            /*
+             * DO NOT REDIRECT YET.
+             *
+             * First we confirm login works.
+             */
 
-continueButton.addEventListener(
-    "click",
-    () => {
-
-        if (!selectedModel) {
-
-            return;
 
         }
 
+        catch (error) {
 
-        /*
-         * NEXT STEP:
-         *
-         * We'll create the customer details page.
-         *
-         * For now we save the selected model
-         * temporarily in the URL.
-         */
-
-        const modelId =
-            encodeURIComponent(
-                selectedModel.id
+            console.error(
+                "GOOGLE LOGIN ERROR:",
+                error
             );
 
 
-        window.location.href =
-            `../checkout/index.html?model=${modelId}`;
+            console.error(
+                "ERROR CODE:",
+                error.code
+            );
+
+
+            googleLogin.disabled = false;
+
+
+            loginMessage.textContent =
+                error.code +
+                " — " +
+                error.message;
+
+        }
 
     }
 );
-
-
-/* =========================================================
-   BASIC HTML ESCAPE
-========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value)
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll("<", "&lt;")
-
-        .replaceAll(">", "&gt;")
-
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
-
-}
