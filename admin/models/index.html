@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NeonCase — iPhone Models</title>
+
+    <link
+        rel="stylesheet"
+        href="models.css"
+    >
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div>
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    NEON<span>CASE</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    ADMIN PANEL
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <a
+                    href="/neoncasefinal/admin/dashboard/"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="/neoncasefinal/admin/orders/"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">≡</span>
+                    Orders
+                </a>
+
+
+                <a
+                    href="/neoncasefinal/admin/models/"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">▯</span>
+                    iPhone Models
+                </a>
+
+
+                <a
+                    href="/neoncasefinal/admin/coh/"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◉</span>
+                    Customer History
+                </a>
+
+
+                <a
+                    href="/neoncasefinal/admin/tracking/"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⌁</span>
+                    Tracking
+                </a>
+
+
+                <div class="nav-divider"></div>
+
+
+                <button
+                    class="nav-item nav-disabled"
+                    type="button"
+                >
+                    <span class="nav-icon">⚙</span>
+                    Settings
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="store-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Store Online
+                    </strong>
+
+                    <small>
+                        neoncase.in
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="sign-out"
+                type="button"
+            >
+                ↪ &nbsp; Sign Out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="mobile-logo">
+                NEON<span>CASE</span>
+            </div>
+
+
+            <div class="mobile-avatar">
+                A
+            </div>
+
+        </header>
+
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="topbar-label">
+                    PRODUCT CATALOG
+                </div>
+
+                <h1>
+                    iPhone Models
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-status">
+
+                    <span></span>
+                    LIVE
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="models-content">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <div class="section-label">
+                        PRODUCT CATALOG
+                    </div>
+
+                    <h2>
+                        iPhone Models
+                    </h2>
+
+                    <p>
+                        Manage which iPhone models are
+                        available for customers to select.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="add-button"
+                    id="addModelButton"
+                    type="button"
+                >
+
+                    <span>+</span>
+
+                    ADD MODEL
+
+                </button>
+
+            </section>
+
+
+
+            <!-- SEARCH BAR -->
+
+            <section class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search iPhone models..."
+                    >
+
+                </div>
+
+
+                <div class="model-count">
+
+                    <strong id="modelCount">
+                        0
+                    </strong>
+
+                    <span>
+                        MODELS
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MODELS LIST -->
+
+            <section class="models-card">
+
+
+                <div
+                    id="modelsList"
+                    class="models-list"
+                >
+
+                    <div class="loading">
+
+                        <div class="loader"></div>
+
+                        Loading iPhone models...
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADD / EDIT MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="modelModal"
+>
+
+    <div class="model-modal">
+
+
+        <button
+            class="close-modal"
+            id="closeModal"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-label">
+            PRODUCT CATALOG
+        </div>
+
+
+        <h3 id="modalTitle">
+            Add iPhone Model
+        </h3>
+
+
+        <p class="modal-description">
+            Add an iPhone model that customers can
+            select while placing an order.
+        </p>
+
+
+
+        <!-- MODEL NAME -->
+
+        <label>
+            MODEL NAME
+        </label>
+
+        <input
+            type="text"
+            id="modelName"
+            class="modal-input"
+            placeholder="iPhone 16"
+            autocomplete="off"
+        >
+
+
+
+        <!-- DISPLAY ORDER -->
+
+        <label>
+            DISPLAY ORDER
+        </label>
+
+        <input
+            type="number"
+            id="displayOrder"
+            class="modal-input"
+            placeholder="1"
+            min="1"
+        >
+
+        <div class="input-hint">
+            Smaller numbers appear first.
+        </div>
+
+
+
+        <!-- AVAILABLE -->
+
+        <div class="availability-box">
+
+            <div>
+
+                <strong>
+                    Available for customers
+                </strong>
+
+                <small>
+                    Turn this off to temporarily hide
+                    this model.
+                </small>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="availableToggle"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+            id="formError"
+            class="form-error"
+        ></div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="cancel-button"
+                id="cancelButton"
+            >
+                CANCEL
+            </button>
+
+
+            <button
+                type="button"
+                class="save-button"
+                id="saveButton"
+            >
+                SAVE MODEL
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- DELETE MODAL -->
+
+<div
+    class="modal-overlay"
+    id="deleteModal"
+>
+
+    <div class="delete-modal">
+
+        <div class="delete-icon">
+            !
+        </div>
+
+        <h3>
+            Delete this model?
+        </h3>
+
+        <p>
+            This will permanently remove
+            <strong id="deleteModelName">
+                this model
+            </strong>
+            from your product catalog.
+        </p>
+
+
+        <div class="delete-actions">
+
+            <button
+                type="button"
+                class="cancel-button"
+                id="deleteCancel"
+            >
+                CANCEL
+            </button>
+
+            <button
+                type="button"
+                class="delete-confirm"
+                id="deleteConfirm"
+            >
+                DELETE
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+
+<script
+    type="module"
+    src="models.js"
+></script>
+
+</body>
+
+</html>
